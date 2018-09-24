@@ -35,7 +35,7 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right mainNav">
-          <li class="active"><a href="index.html">Home</a></li>
+          <li class="active"><a href="<c:url value="/"/>">Home</a></li>
           <li><a href="about.html">About</a></li>
             <li><a href="courses.html">Courses</a></li>
           <li><a href="price.html">Price</a></li>
