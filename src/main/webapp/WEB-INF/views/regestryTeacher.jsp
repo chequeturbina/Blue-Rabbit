@@ -8,13 +8,13 @@
 	<meta name="description" content="free-educational-responsive-web-template-webEdu">
 	<meta name="author" content="webThemez.com">
 	<title>free-educational-responsive-web-template-webEdu</title>
-	<link rel="favicon" href="img/favicon.png">
+	<link rel="favicon" href="/img/favicon.png">
 	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<!-- Custom styles for our template -->
-	<link rel="stylesheet" href="css/bootstrap-theme.css" media="screen">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
+	<link rel="stylesheet" href="/css/style.css">
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="assets/js/html5shiv.js"></script>
@@ -30,11 +30,11 @@
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
 				<a class="navbar-brand" href="index.html">
-					<img src="img/logo.png" alt="Techro HTML5 template"></a>
+					<img src="/img/logo.png" alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li><a href="index.html">Home</a></li>
+					<li><a href="index.html">Homes</a></li>
 					<li><a href="about.html">About</a></li>
 						<li><a href="courses.html">Courses</a></li>
 					<li><a href="price.html">Price</a></li>
@@ -220,7 +220,7 @@
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-	<script src="js/custom.js"></script>
+	<script src="/js/custom.js"></script>
 	<script type="text/javascript"> 
 		$(function() {
 			$('.multiselect-ui').multiselect({
@@ -231,7 +231,7 @@
 
 	<!-- Google Maps -->
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-	<script src="js/google-map.js"></script>
+	<script src="/js/google-map.js"></script>
 
 
 </body>
