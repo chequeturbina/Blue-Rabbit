@@ -29,10 +29,14 @@ public class Persona implements Serializable{
 	private char SEXO;
 	private Date FECHA_NACIMIENTO;
 	private String CORREO;
-	
+	private String PASSWORD;
 	@Temporal(TemporalType.DATE)
 	private Date FECHA_REGISTRO;
 	
+	//Este se ejecuta antes de crear la instancia y asigna la fecha al objeto bebe :)
+	public void prePersist() {
+		FECHA_REGISTRO = new Date();
+	}
 	
 	public long getID_PERSONA() {
 		return ID_PERSONA;
@@ -46,6 +50,13 @@ public class Persona implements Serializable{
 	}
 	public void setNOMBRE(String aNOMBRE) {
 		NOMBRE = aNOMBRE;
+	}
+	
+	public String getPASSWORD() {
+		return PASSWORD;
+	}
+	public void setPASSWORD(String pASSWORD) {
+		PASSWORD = pASSWORD;
 	}
 	
 	public String getAPELLIDO() {

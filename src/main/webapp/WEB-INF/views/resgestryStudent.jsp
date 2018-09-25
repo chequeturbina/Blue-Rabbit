@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,19 +68,20 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="Login">
-                                <form role="form" class="form-horizontal">
+                            
+                                <form  role="form" class="form-horizontal">
                                 <div class="form-group">
                                     <label for="email" class="col-sm-2 control-label">
                                         Correo</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="email1" placeholder="Correo electronico" />
+                                        <input type="email" class="form-control" path="correo" id="email1" placeholder="Correo electronico" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1" class="col-sm-2 control-label">
                                         Password</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                                        <input type="password" path="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
                                     </div>
                                 </div>
                                 <div class="row">
@@ -123,31 +125,31 @@
 						Registro
 					</h3>
 						
-						<form class="form-light mt-20" role="form">
+						<form method="POST" action="/registro/alumno" class="form-light mt-20" role="form">
 							<div class="form-group">
 								<label>
 								Nombre
 							</label>
-								<input type="text" class="form-control" placeholder="Nombre">
+								<input name="nombre" type="text" class="form-control" placeholder="Nombre">
 							</div>
 							<div class="form-group">
 								<label>
 								Apellido
 							</label>
-								<input type="text" class="form-control" placeholder="Apellido">
+								<input name="apellido" type="text" class="form-control" placeholder="Apellido">
 							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Correo</label>
-										<input type="email" class="form-control" placeholder="Correo electronico">
+										<input type="email" name="correo" class="form-control" placeholder="Correo electronico">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Password
 										</label>
-										<input type="Password" class="form-control" placeholder="Password">
+										<input type="Password" name="password" class="form-control" placeholder="Password">
 									</div>
 								</div>
 							</div>
@@ -155,7 +157,7 @@
 								<label>
 								Fecha de Nacimiento
 							</label>
-									<input type="date" class="form-control" name="bday">
+									<input type="date" name="Fecha_nacimiento" class="form-control" >
 							</div>
 
 							<div class="form-group">
@@ -169,7 +171,7 @@
 									</select>
 								</div>
 							</div>
-						<button type="submit" class="btn btn-two">Registrarse</button><p><br/></p>
+						<input type="submit" class="btn btn-two" value="Submit">Registrarse</input><p><br/></p>
 						</form>
 					</div>
 					

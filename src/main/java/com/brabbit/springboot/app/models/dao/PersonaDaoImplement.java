@@ -20,7 +20,15 @@ public class PersonaDaoImplement implements InterfacePersonaDao {
 	@Override
 	public List<Persona> findAll() {
 		// TODO Auto-generated method stub
-		return em.createQuery("from Persona").getResultList();
+		//return em.createQuery("from Persona").getResultList();
+		return null;
+	}
+
+	@Override
+	@Transactional
+	public void save(Persona persona) {
+		// TODO Auto-generated method stub
+		em.persist(persona);
 	}
 
 }
