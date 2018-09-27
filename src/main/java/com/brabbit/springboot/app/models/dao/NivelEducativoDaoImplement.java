@@ -1,35 +1,36 @@
 package com.brabbit.springboot.app.models.dao;
 
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.brabbit.springboot.app.models.entity.Persona;
+import com.brabbit.springboot.app.models.entity.NivelEducativo;
 
 @Repository
-public class PersonaDaoImplement implements InterfacePersonaDao {
+public class NivelEducativoDaoImplement implements InterfaceNivelEducativoDao {
 
 	@PersistenceContext
-	private EntityManager em;
+	private EntityManager em; 
 	
-	@Transactional(readOnly=true)
+	@Transactional
 	@Override
-	public List<Persona> findAll() {
+	public void save(NivelEducativo nivelEducativo) {
 		// TODO Auto-generated method stub
-		//return em.createQuery("from Persona").getResultList();
-		return null;
+
 	}
 
+
+	@SuppressWarnings("unchecked")
+	@Transactional(readOnly=true)
 	@Override
-	@Transactional
-	public void save(Persona persona) {
+	public List<NivelEducativo> findAll() {
 		// TODO Auto-generated method stub
-		em.persist(persona);
+		return em.createQuery("from NivelEducativo").getResultList();
 	}
 
 }

@@ -164,10 +164,9 @@
 								<label>Nivel Academico</label>
 								<div class="dropdown">
 									<select class="form-control" id="exampleFormControlSelect1">
-										<option>Primaria</option>
-										<option>Secundaria</option>
-										<option>Preparatoria</option>
-										<option>Universidad</option>
+										<c:forEach var="nivel" items="${niveles}">
+				                         <option > ${nivel.NIVEL} </option>
+			                              </c:forEach>
 									</select>
 								</div>
 							</div>
