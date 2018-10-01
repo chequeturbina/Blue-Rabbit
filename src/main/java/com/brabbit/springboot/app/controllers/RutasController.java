@@ -38,4 +38,11 @@ public class RutasController {
 		return "resgestryStudent";
 	}
 	
+	@RequestMapping("/admin")
+	public String Administrador(Model model) {
+		List<NivelEducativo> um = nivelEduDao.findAll();
+		model.addAttribute("niveles", um);
+		return "admin";
+	}
+	
 }
