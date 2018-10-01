@@ -130,26 +130,26 @@
 								<label>
 								Nombre
 							</label>
-								<input name="nombre" type="text" class="form-control" placeholder="Nombre">
+								<input name="nombre" type="text" required autocomplete="off" class="form-control" placeholder="Nombre" required>
 							</div>
 							<div class="form-group">
 								<label>
 								Apellido
 							</label>
-								<input name="apellido" type="text" class="form-control" placeholder="Apellido">
+								<input name="apellido" type="text" required autocomplete="off" class="form-control" placeholder="Apellido" required>
 							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Correo</label>
-										<input type="email" name="correo" class="form-control" placeholder="Correo electronico">
+										<input type="email" name="correo"  required autocomplete="off" class="form-control" placeholder="Correo electronico">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Password
 										</label>
-										<input type="Password" name="password" class="form-control" placeholder="Password">
+										<input type="Password" name="password" required autocomplete="off" class="form-control"  minlength="8" maxlength="16" placeholder="Password" required>
 									</div>
 								</div>
 							</div>
@@ -157,7 +157,7 @@
 								<label>
 								Fecha de Nacimiento
 							</label>
-									<input type="date" name="Fecha_nacimiento" class="form-control" >
+									<input type="date" name="Fecha_nacimiento" class="form-control" required>
 							</div>
 
 							<div class="form-group">
@@ -234,6 +234,8 @@
 			});
 		});
 	</script>
+	
+	
 	
 	<script LANGUAGE="JavaScript"> 
 	function Entrar(password) {window.location=password+".htm"} 

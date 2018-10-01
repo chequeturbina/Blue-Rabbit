@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,7 +40,7 @@ public class AlumnoController {
 			 @RequestParam("correo") String correo,
 			 @RequestParam("password") String password,
 			 @RequestParam("Fecha_nacimiento")@DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
-			 Model model) 		 
+			 ModelMap model) 		 
 	{
 		
 	Persona persona = new Persona();
@@ -49,17 +50,11 @@ public class AlumnoController {
 	persona.setPASSWORD(password);
 	persona.setFECHA_NACIMIENTO(Fecha_nacimiento);
 	System.out.println("******************"+persona.getID_PERSONA());
+	System.out.println("******************PERSONA CREADA");
+	System.out.println(persona.getID_PERSONA());	
 	personDao.save(persona);
-	 
-		System.out.println("******************PERSONA CREADA");
-		System.out.println(persona.getID_PERSONA());
-		List<NivelEducativo> um = nivelEduDao.findAll();
-		model.addAttribute("niveles", um);
-  	
-		for(NivelEducativo edu: nivelEduDao.findAll()) {
-			System.out.println(edu.getNIVEL());
-		}
-	 return "registro/alumno";
+	
+	    return "redirect:/registro/alumno";
 	 }
 	
 }
