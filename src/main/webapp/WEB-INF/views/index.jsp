@@ -31,7 +31,7 @@
         <!-- Button for smallest screens -->
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
         <a class="img-responsive" href="index.html">
-          <img src="img/logo.png"  width="70" height="70" alt="Techro HTML5 template"></a>
+          <img src="img/logo.png"  width="200" height="90" alt="Techro HTML5 template"></a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right mainNav">
@@ -148,7 +148,7 @@
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/2.png" alt="" />
 							</div><!--icon box top -->
-							<h4>Conocenos</h4>
+							<h4>Conferencias</h4>
 							<p>Descripcion.</p>
      						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
@@ -158,7 +158,7 @@
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/3.png" alt="" />
 							</div><!--icon box top -->
-							<h4>Ultimas Actualizaciones</h4>
+							<h4>Cobros</h4>
 							<p>Descripcion.</p>
      						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
@@ -168,7 +168,7 @@
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/4.png" alt="" />
 							</div><!--icon box top -->
-							<h4>Lecciones</h4>
+							<h4>Denuncias</h4>
 							<p>Descripcion.</p>
      						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
@@ -234,7 +234,7 @@
       <section class="container">
       <div class="row">
       	<div class="col-md-8"><div class="title-box clearfix "><h2 class="title-box_primary">Acerca de Nosotros</h2></div> 
-        <p><span>Somos un grupo de estudiantes, que buscamos crear una plataforma educativa.</span></p>
+        <p><span>ClassMates es una plataforma de conocimiento compartido, desarrollada con fines educativos.</span></p>
         <a href="#" title="read more" class="btn-inline " target="_self">leer mas</a> </div>
               
           
@@ -311,7 +311,7 @@
 				hover: false,
                 playPause: false,
                 navigation: false,
-				opacityOnGrid: false,
+				opacityOnGrid: true,
 				imagePath: 'assets/images/'
 			});
 
