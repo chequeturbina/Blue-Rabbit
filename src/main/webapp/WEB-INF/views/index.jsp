@@ -53,7 +53,7 @@
 
             <li>
               <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Iniciar Sesión</button>
+    Iniciar Sesion</button>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1" class="col-sm-2 control-label">
-                                        Contraseña</label>
+                                        Contraseï¿½a</label>
                                     <div class="col-sm-10">
                                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
                                     </div>
@@ -90,7 +90,7 @@
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary btn-sm">
                                             Enviar</button>
-                                        <a href="javascript:;">¿Olvidaste tu contraseña?</a>
+                                        <a href="javascript:;">ï¿½Olvidaste tu contraseï¿½a?</a>
                                     </div>
                                 </div>
                                 </form>
@@ -112,8 +112,8 @@
 	<header id="head">
 		<div class="container">
              <div class="heading-text">							
-							<h1 class="animated flipInY delay1">Empieza Cursos en Línea</h1>
-							<p>Educación en Línea</p>
+							<h1 class="animated flipInY delay1">Empieza Cursos en Linea</h1>
+							<p>Educacion en Linea</p>
 						</div>
             
 					<div class="fluid_container">                       
@@ -139,8 +139,8 @@
 								<img src="img/1.png" alt="" />
 							</div><!--icon box top -->
 							<h4>Cursos en Linea</h4>
-							<p>Descripción.</p>
-     						<p><a href="#"><em>Leer más</em></a></p>
+							<p>Descripciï¿½n.</p>
+     						<p><a href="#"><em>Leer mï¿½s</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
 					<div class="col-md-3">
@@ -148,9 +148,9 @@
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/2.png" alt="" />
 							</div><!--icon box top -->
-							<h4>Conócenos</h4>
-							<p>Descripción.</p>
-     						<p><a href="#"><em>Leer más</em></a></p>
+							<h4>Conï¿½cenos</h4>
+							<p>Descripciï¿½n.</p>
+     						<p><a href="#"><em>Leer mï¿½s</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
 					<div class="col-md-3">
@@ -158,8 +158,8 @@
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/3.png" alt="" />
 							</div><!--icon box top -->
-							<h4>Últimas Actualizaciones</h4>
-							<p>Descripción.</p>
+							<h4>ï¿½ltimas Actualizaciones</h4>
+							<p>Descripciï¿½n.</p>
      						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
@@ -170,7 +170,7 @@
 							</div><!--icon box top -->
 							<h4>Lecciones</h4>
 							<p>Descripcion.</p>
-     						<p><a href="#"><em>Leer más</em></a></p>
+     						<p><a href="#"><em>Leer mï¿½s</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
 				</div>
@@ -188,7 +188,7 @@
                             <div class="box_inner">
                                         <div class="box">
                                             <p class="title"><h5>Desarrollador</h5></p>
-                                            <p>Descripción del curso</p>
+                                            <p>Descripciï¿½n del curso</p>
                                         </div> 
                                 </div>
                             </div>
@@ -202,8 +202,8 @@
                             <div class="caption maxheight2">
                             <div class="box_inner">
                                         <div class="box">
-                                            <p class="title"><h5>Fotografía</h5></p>
-                                            <p>Descripción del curso.</p>
+                                            <p class="title"><h5>Fotografï¿½a</h5></p>
+                                            <p>Descripciï¿½n del curso.</p>
                                         </div> 
                                 </div>
                             </div>
@@ -217,8 +217,8 @@
                             <div class="caption maxheight2">
                            <div class="box_inner">
                                         <div class="box">
-                                            <p class="title"><h5>Edición de Audio</h5></p>
-                                            <p>Descripción Del curso.</p>
+                                            <p class="title"><h5>Ediciï¿½n de Audio</h5></p>
+                                            <p>Descripciï¿½n Del curso.</p>
                                         </div> 
                                 </div>
                             </div>
@@ -235,18 +235,18 @@
       <div class="row">
       	<div class="col-md-8"><div class="title-box clearfix "><h2 class="title-box_primary">Acerca de Nosotros</h2></div> 
         <p><span>Somos un grupo de estudiantes, que buscamos crear una plataforma educativa.</span></p>
-        <a href="#" title="read more" class="btn-inline " target="_self">leer más</a> </div>
+        <a href="#" title="read more" class="btn-inline " target="_self">leer mï¿½s</a> </div>
               
           
-          <div class="col-md-4"><div class="title-box clearfix "><h2 class="title-box_primary">Próximos cursos</h2></div> 
+          <div class="col-md-4"><div class="title-box clearfix "><h2 class="title-box_primary">Prï¿½ximos cursos</h2></div> 
             <div class="list styled custom-list">
             <ul>
-            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus." href="#">Matemáticas y Ciencias de la Computación</a></li>
-            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus." href="#">Matemáticas y filosofía</a></li>
-            <li><a title="Penatibus et magnis dis parturient montes ascetur ridiculus mus." href="#">Filosofía</a></li>
+            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus." href="#">Matemï¿½ticas y Ciencias de la Computaciï¿½n</a></li>
+            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus." href="#">Matemï¿½ticas y filosofï¿½a</a></li>
+            <li><a title="Penatibus et magnis dis parturient montes ascetur ridiculus mus." href="#">Filosofï¿½a</a></li>
             <li><a title="Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci." href="#">Historia</a></li>
-            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus." href="#">Arquelogía</a></li>
-            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus." href="#">Física</a></li>
+            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus." href="#">Arquelogï¿½a</a></li>
+            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus." href="#">Fï¿½sica</a></li>
             </ul>
             </div>
          </div>

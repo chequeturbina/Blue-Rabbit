@@ -6,9 +6,9 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="free-educational-responsive-web-template-webEdu">
+	<meta name="description" content="Blue-Rabbit">
 	<meta name="author" content="webThemez.com">
-	<title>free-educational-responsive-web-template-webEdu</title>
+	<title>"Blue-Rabbit"</title>
 	<link rel="favicon" href="/img/favicon.png">
 	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -35,12 +35,12 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li><a href="<c:url value="/"/>">Home</a></li>
-					<li><a href="about.html">About</a></li>
-						<li><a href="courses.html">Courses</a></li>
-					<li><a href="price.html">Price</a></li>
-					<li><a href="videos.html">Videos</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="<c:url value="/"/>">Inicio</a></li>
+					<li><a href="<c:url value="/"/>">Acerca</a></li>
+						<li><a href="<c:url value="/"/>">Cursos</a></li>
+					<li><a href="<c:url value="/"/>">Precio</a></li>
+					<li><a href="<c:url value="/"/>">Videos</a></li>
+					<li><a href="<c:url value="/"/>">Contacto</a></li>
 				    <li class="active">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro <b class="caret"></b></a>
 						<ul class="dropdown-menu">
@@ -170,7 +170,7 @@
 									</select>
 								</div>
 							</div>
-						<input type="submit" class="btn btn-two" value="Submit">Registrarse</input><p><br/></p>
+						<input type="submit" class="btn btn-two" value="Registrarse"></input><p><br/></p>
 						</form>
 					</div>
 					
@@ -198,12 +198,12 @@
 					<div class="col-md-6 panel">
 						<div class="panel-body">
 							<p class="simplenav">
-								<a href="index.html">Home</a> | 
-								<a href="about.html">About</a> |
-								<a href="courses.html">Courses</a> |
-								<a href="price.html">Price</a> |
-								<a href="videos.html">Videos</a> |
-								<a href="contact.html">Contact</a>
+								<a href="<c:url value="/"/>">Inicio</a> | 
+								<a href="<c:url value="/"/>">Acerca</a> |
+								<a href="<c:url value="/"/>">Cursos</a> |
+								<a href="<c:url value="/"/>">Precio</a> |
+								<a href="<c:url value="/"/>">Videos</a> |
+								<a href="<c:url value="/"/>">Contacto</a>
 							</p>
 						</div>
 					</div>
