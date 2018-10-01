@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1" class="col-sm-2 control-label">
-                                        Contrase�a</label>
+                                        Contraseña</label>
                                     <div class="col-sm-10">
                                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
                                     </div>
@@ -90,7 +90,7 @@
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary btn-sm">
                                             Enviar</button>
-                                        <a href="javascript:;">�Olvidaste tu contrase�a?</a>
+                                        <a href="javascript:;">Olvidaste tu contraseña?</a>
                                     </div>
                                 </div>
                                 </form>
@@ -139,8 +139,8 @@
 								<img src="img/1.png" alt="" />
 							</div><!--icon box top -->
 							<h4>Cursos en Linea</h4>
-							<p>Descripci�n.</p>
-     						<p><a href="#"><em>Leer m�s</em></a></p>
+							<p>Descripcion.</p>
+     						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
 					<div class="col-md-3">
@@ -148,9 +148,9 @@
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/2.png" alt="" />
 							</div><!--icon box top -->
-							<h4>Con�cenos</h4>
-							<p>Descripci�n.</p>
-     						<p><a href="#"><em>Leer m�s</em></a></p>
+							<h4>Conocenos</h4>
+							<p>Descripcion.</p>
+     						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
 					<div class="col-md-3">
@@ -158,8 +158,8 @@
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/3.png" alt="" />
 							</div><!--icon box top -->
-							<h4>�ltimas Actualizaciones</h4>
-							<p>Descripci�n.</p>
+							<h4>Ultimas Actualizaciones</h4>
+							<p>Descripcion.</p>
      						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
@@ -170,7 +170,7 @@
 							</div><!--icon box top -->
 							<h4>Lecciones</h4>
 							<p>Descripcion.</p>
-     						<p><a href="#"><em>Leer m�s</em></a></p>
+     						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
 				</div>
@@ -188,7 +188,7 @@
                             <div class="box_inner">
                                         <div class="box">
                                             <p class="title"><h5>Desarrollador</h5></p>
-                                            <p>Descripci�n del curso</p>
+                                            <p>Descripcion del curso</p>
                                         </div> 
                                 </div>
                             </div>
@@ -202,8 +202,8 @@
                             <div class="caption maxheight2">
                             <div class="box_inner">
                                         <div class="box">
-                                            <p class="title"><h5>Fotograf�a</h5></p>
-                                            <p>Descripci�n del curso.</p>
+                                            <p class="title"><h5>Fotografia</h5></p>
+                                            <p>Descripcion del curso.</p>
                                         </div> 
                                 </div>
                             </div>
@@ -217,8 +217,8 @@
                             <div class="caption maxheight2">
                            <div class="box_inner">
                                         <div class="box">
-                                            <p class="title"><h5>Edici�n de Audio</h5></p>
-                                            <p>Descripci�n Del curso.</p>
+                                            <p class="title"><h5>Edicion de Audio</h5></p>
+                                            <p>Descripcion Del curso.</p>
                                         </div> 
                                 </div>
                             </div>
@@ -235,18 +235,18 @@
       <div class="row">
       	<div class="col-md-8"><div class="title-box clearfix "><h2 class="title-box_primary">Acerca de Nosotros</h2></div> 
         <p><span>Somos un grupo de estudiantes, que buscamos crear una plataforma educativa.</span></p>
-        <a href="#" title="read more" class="btn-inline " target="_self">leer m�s</a> </div>
+        <a href="#" title="read more" class="btn-inline " target="_self">leer mas</a> </div>
               
           
-          <div class="col-md-4"><div class="title-box clearfix "><h2 class="title-box_primary">Pr�ximos cursos</h2></div> 
+          <div class="col-md-4"><div class="title-box clearfix "><h2 class="title-box_primary">Proximos cursos</h2></div> 
             <div class="list styled custom-list">
             <ul>
-            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus." href="#">Matem�ticas y Ciencias de la Computaci�n</a></li>
-            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus." href="#">Matem�ticas y filosof�a</a></li>
-            <li><a title="Penatibus et magnis dis parturient montes ascetur ridiculus mus." href="#">Filosof�a</a></li>
+            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus." href="#">Matematicas y Ciencias de la Computacion</a></li>
+            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus." href="#">Matematicas y filosofia</a></li>
+            <li><a title="Penatibus et magnis dis parturient montes ascetur ridiculus mus." href="#">Filosofia</a></li>
             <li><a title="Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci." href="#">Historia</a></li>
-            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus." href="#">Arquelog�a</a></li>
-            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus." href="#">F�sica</a></li>
+            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus." href="#">Arquelogia</a></li>
+            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus." href="#">Fisica</a></li>
             </ul>
             </div>
          </div>
