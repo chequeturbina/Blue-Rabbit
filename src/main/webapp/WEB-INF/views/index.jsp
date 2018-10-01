@@ -36,11 +36,11 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right mainNav">
           <li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-          <li><a href="about.html">Acerca</a></li>
-            <li><a href="courses.html">Cursos</a></li>
-          <li><a href="price.html">Precio</a></li>
-          <li><a href="videos.html">Videos</a></li>
-          <li><a href="contact.html">Contacto</a></li>
+          <li><a href="<c:url value="/"/>">Acerca</a></li>
+            <li><a href="<c:url value="/"/>">Cursos</a></li>
+          <li><a href="<c:url value="/"/>">Precio</a></li>
+          <li><a href="<c:url value="/"/>">Videos</a></li>
+          <li><a href="<c:url value="/"/>">Contacto</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registrate <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -53,7 +53,7 @@
 
             <li>
               <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Iniciar Sesión</button>
+    Iniciar Sesion</button>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1" class="col-sm-2 control-label">
-                                        Contraseña</label>
+                                        ContraseÃ±a</label>
                                     <div class="col-sm-10">
                                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
                                     </div>
@@ -90,7 +90,7 @@
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary btn-sm">
                                             Enviar</button>
-                                        <a href="javascript:;">¿Olvidaste tu contraseña?</a>
+                                        <a href="javascript:;">Olvidaste tu contraseÃ±a?</a>
                                     </div>
                                 </div>
                                 </form>
@@ -113,7 +113,7 @@
 		<div class="container">
              <div class="heading-text">							
 							<h1 class="animated flipInY delay1">Empieza Cursos en Linea</h1>
-							<p>educacion en linea gratuita</p>
+							<p>Educacion en Linea</p>
 						</div>
             
 					<div class="fluid_container">                       
@@ -139,9 +139,8 @@
 								<img src="img/1.png" alt="" />
 							</div><!--icon box top -->
 							<h4>Cursos en Linea</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
-							eset nec lacus elit dor broma.</p>
-     						<p><a href="#"><em>Read More</em></a></p>
+							<p>Descripcion.</p>
+     						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
 					<div class="col-md-3">
@@ -150,9 +149,8 @@
 								<img src="img/2.png" alt="" />
 							</div><!--icon box top -->
 							<h4>Conocenos</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
-							eset nec lacus elit dor broma.</p>
-     						<p><a href="#"><em>Leer más</em></a></p>
+							<p>Descripcion.</p>
+     						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
 					<div class="col-md-3">
@@ -161,8 +159,7 @@
 								<img src="img/3.png" alt="" />
 							</div><!--icon box top -->
 							<h4>Ultimas Actualizaciones</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
-							eset nec lacus elit dor broma.</p>
+							<p>Descripcion.</p>
      						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
@@ -171,10 +168,9 @@
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/4.png" alt="" />
 							</div><!--icon box top -->
-							<h4>Locaciones</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
-							eset nec lacus elit dor broma.</p>
-     						<p><a href="#"><em>Read More â†’</em></a></p>
+							<h4>Lecciones</h4>
+							<p>Descripcion.</p>
+     						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
 				</div>
@@ -192,7 +188,7 @@
                             <div class="box_inner">
                                         <div class="box">
                                             <p class="title"><h5>Desarrollador</h5></p>
-                                            <p>Lorem ipsum dolor sit amet, conc tetu er adipi scing. Praesent ves tibuum molestie lacuiirhs. Aenean.</p>
+                                            <p>Descripcion del curso</p>
                                         </div> 
                                 </div>
                             </div>
@@ -206,8 +202,8 @@
                             <div class="caption maxheight2">
                             <div class="box_inner">
                                         <div class="box">
-                                            <p class="title"><h5>Fotografías</h5></p>
-                                            <p>Lorem ipsum dolor sit amet, conc tetu er adipi scing. Praesent ves tibuum molestie lacuiirhs. Aenean.</p>
+                                            <p class="title"><h5>Fotografia</h5></p>
+                                            <p>Descripcion del curso.</p>
                                         </div> 
                                 </div>
                             </div>
@@ -221,8 +217,8 @@
                             <div class="caption maxheight2">
                            <div class="box_inner">
                                         <div class="box">
-                                            <p class="title"><h5>Edición de Audio</h5></p>
-                                            <p>Lorem ipsum dolor sit amet, conc tetu er adipi scing. Praesent ves tibuum molestie lacuiirhs. Aenean.</p>
+                                            <p class="title"><h5>Edicion de Audio</h5></p>
+                                            <p>Descripcion Del curso.</p>
                                         </div> 
                                 </div>
                             </div>
@@ -237,21 +233,20 @@
 	
       <section class="container">
       <div class="row">
-      	<div class="col-md-8"><div class="title-box clearfix "><h2 class="title-box_primary">About Us</h2></div> 
-        <p><span>Perspiciatis unde omnis iste natus error sit voluptatem. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus musull dui.</span></p>
-        <p>Lorem ipsumulum aenean noummy endrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Null dui. Fusce feugiat malesuada odio.</p><p>Lorem ipsumulum aenean noummy endrerit mauris. Cum sociis natoque penatibus et magnis dis parturient montes ascetur ridiculus mus. Null dui. Fusce feugiat malesuada odio.</p>
-        <a href="#" title="read more" class="btn-inline " target="_self">read more</a> </div>
+      	<div class="col-md-8"><div class="title-box clearfix "><h2 class="title-box_primary">Acerca de Nosotros</h2></div> 
+        <p><span>Somos un grupo de estudiantes, que buscamos crear una plataforma educativa.</span></p>
+        <a href="#" title="read more" class="btn-inline " target="_self">leer mas</a> </div>
               
           
-          <div class="col-md-4"><div class="title-box clearfix "><h2 class="title-box_primary">Up Coming Courses</h2></div> 
+          <div class="col-md-4"><div class="title-box clearfix "><h2 class="title-box_primary">Proximos cursos</h2></div> 
             <div class="list styled custom-list">
             <ul>
-            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus." href="#">Mathematics and Computer Science</a></li>
-            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus." href="#">Mathematics and Philosophy</a></li>
-            <li><a title="Penatibus et magnis dis parturient montes ascetur ridiculus mus." href="#">Philosophy and Modern Languages</a></li>
-            <li><a title="Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci." href="#">History (Ancient and Modern)</a></li>
-            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus." href="#">Classical Archaeology and Ancient History</a></li>
-            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus." href="#">Physics and Philosophy</a></li>
+            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus." href="#">Matematicas y Ciencias de la Computacion</a></li>
+            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus." href="#">Matematicas y filosofia</a></li>
+            <li><a title="Penatibus et magnis dis parturient montes ascetur ridiculus mus." href="#">Filosofia</a></li>
+            <li><a title="Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci." href="#">Historia</a></li>
+            <li><a title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus." href="#">Arquelogia</a></li>
+            <li><a title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus." href="#">Fisica</a></li>
             </ul>
             </div>
          </div>
@@ -282,7 +277,7 @@
 					<div class="col-md-6 panel">
 						<div class="panel-body">
 							<p class="text-right">
-								Copyright &copy; 2014. Template by <a href="http://webthemez.com/" rel="develop">WebThemez.com</a>
+								Copyright &copy; 2014. Template by <a href="BlueRabbit" rel="develop">Blue Rabbit International</a>
 							</p>
 						</div>
 					</div>
