@@ -58,7 +58,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    ï¿½</button>
+                    ×</button>
                
             </div>
             <div class="modal-body">
@@ -67,27 +67,27 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                             <div class="tab-pane active" id="Login">
-                                <form role="form" class="form-horizontal">
+                            
+                                <form  name="form1" role="form" class="form-horizontal">
                                 <div class="form-group">
                                     <label for="email" class="col-sm-2 control-label">
                                         Correo</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="email1" placeholder="Correo electronico" />
+                                        <input type="email" name="txt" class="form-control" path="correo" id="email1" placeholder="Correo electronico" />
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1" class="col-sm-2 control-label">
                                         Password</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                                        <input type="password" name="num" path="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-2">
                                     </div>
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary btn-sm">
-                                            Submit</button>
+                                        <input type="button" class="btn btn-primary btn-sm" onclick="administrador()" value="Iniciar Sesion">
                                         <a href="javascript:;">Forgot your password?</a>
                                     </div>
                                 </div>
@@ -227,6 +227,14 @@
 				includeSelectAllOption: true
 			});
 		});
+	</script>
+	<!--  Script para validar admin en inicar sesion -->
+	<script>
+	function administrador(){
+		if (document.form1.txt.value=="admin@admin" && document.form1.num.value=="1234"){window.location.href="<c:url value="/admin"/>";return}
+		else {alert("Error en Usuario o Contraseña. Intenta de nuevo.")}
+		}
+	document.oncontextmenu=new Function("return false");
 	</script>
 
 	<!-- Google Maps -->
