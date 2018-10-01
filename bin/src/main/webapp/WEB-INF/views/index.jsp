@@ -35,12 +35,12 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right mainNav">
-          <li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-          <li><a href="about.html">Acerca</a></li>
-            <li><a href="courses.html">Cursos</a></li>
-          <li><a href="price.html">Precio</a></li>
+          <li class="active"><a href="<c:url value="/"/>">Home</a></li>
+          <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses</a></li>
+          <li><a href="price.html">Price</a></li>
           <li><a href="videos.html">Videos</a></li>
-          <li><a href="contact.html">Contacto</a></li>
+          <li><a href="contact.html">Contact</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registrate <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -53,7 +53,7 @@
 
             <li>
               <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Iniciar Sesión</button>
+    QUE ONDITA BANDITA</button>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1" class="col-sm-2 control-label">
-                                        Contraseña</label>
+                                        Password</label>
                                     <div class="col-sm-10">
                                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
                                     </div>
@@ -89,8 +89,8 @@
                                     </div>
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary btn-sm">
-                                            Enviar</button>
-                                        <a href="javascript:;">¿Olvidaste tu contraseña?</a>
+                                            Submit</button>
+                                        <a href="javascript:;">Forgot your password?</a>
                                     </div>
                                 </div>
                                 </form>
@@ -112,14 +112,14 @@
 	<header id="head">
 		<div class="container">
              <div class="heading-text">							
-							<h1 class="animated flipInY delay1">Empieza Cursos en Linea</h1>
-							<p>educacion en linea gratuita</p>
+							<h1 class="animated flipInY delay1">Start Online Education</h1>
+							<p>Free Online education template for elearning and online education institute.</p>
 						</div>
             
 					<div class="fluid_container">                       
                     <div class="camera_wrap camera_emboss pattern_1" id="camera_wrap_4">
                         <div data-thumb="img/slides/thumbs/img1.jpg" data-src="img/slides/img1.jpg">
-                            <h2>Nosotros desarrollamos.</h2>
+                            <h2>We develop.</h2>
                         </div> 
                         <div data-thumb="img/slides/thumbs/img2.jpg" data-src="img/slides/img2.jpg">
                         </div>
@@ -138,7 +138,7 @@
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/1.png" alt="" />
 							</div><!--icon box top -->
-							<h4>Cursos en Linea</h4>
+							<h4>Online Courses</h4>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
 							eset nec lacus elit dor broma.</p>
      						<p><a href="#"><em>Read More</em></a></p>
@@ -149,10 +149,10 @@
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/2.png" alt="" />
 							</div><!--icon box top -->
-							<h4>Conocenos</h4>
+							<h4>Meet our Staff</h4>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
 							eset nec lacus elit dor broma.</p>
-     						<p><a href="#"><em>Leer más</em></a></p>
+     						<p><a href="#"><em>Read More</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
 					<div class="col-md-3">
@@ -160,10 +160,10 @@
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/3.png" alt="" />
 							</div><!--icon box top -->
-							<h4>Ultimas Actualizaciones</h4>
+							<h4>Latest Updates</h4>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
 							eset nec lacus elit dor broma.</p>
-     						<p><a href="#"><em>Leer mas</em></a></p>
+     						<p><a href="#"><em>Read More</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
 					<div class="col-md-3">
@@ -171,7 +171,7 @@
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/4.png" alt="" />
 							</div><!--icon box top -->
-							<h4>Locaciones</h4>
+							<h4>Placements</h4>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tempus eleifend risus ut congue
 							eset nec lacus elit dor broma.</p>
      						<p><a href="#"><em>Read More â†’</em></a></p>
@@ -181,7 +181,7 @@
     </div>
       <section class="news-box top-margin">
         <div class="container">
-            <h2><span>Nuevos cursos</span></h2>
+            <h2><span>New Courses</span></h2>
             <div class="row">
        
                 <div class="col-lg-4 col-md-4 col-sm-12">
@@ -191,7 +191,7 @@
                             <div class="caption maxheight2">
                             <div class="box_inner">
                                         <div class="box">
-                                            <p class="title"><h5>Desarrollador</h5></p>
+                                            <p class="title"><h5>Developer</h5></p>
                                             <p>Lorem ipsum dolor sit amet, conc tetu er adipi scing. Praesent ves tibuum molestie lacuiirhs. Aenean.</p>
                                         </div> 
                                 </div>
@@ -206,7 +206,7 @@
                             <div class="caption maxheight2">
                             <div class="box_inner">
                                         <div class="box">
-                                            <p class="title"><h5>Fotografías</h5></p>
+                                            <p class="title"><h5>Photography   </h5></p>
                                             <p>Lorem ipsum dolor sit amet, conc tetu er adipi scing. Praesent ves tibuum molestie lacuiirhs. Aenean.</p>
                                         </div> 
                                 </div>
@@ -221,7 +221,7 @@
                             <div class="caption maxheight2">
                            <div class="box_inner">
                                         <div class="box">
-                                            <p class="title"><h5>Edición de Audio</h5></p>
+                                            <p class="title"><h5>Audio Editing</h5></p>
                                             <p>Lorem ipsum dolor sit amet, conc tetu er adipi scing. Praesent ves tibuum molestie lacuiirhs. Aenean.</p>
                                         </div> 
                                 </div>
