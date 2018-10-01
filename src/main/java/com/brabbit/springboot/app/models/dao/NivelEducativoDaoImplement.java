@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,8 +30,10 @@ public class NivelEducativoDaoImplement implements InterfaceNivelEducativoDao {
 	@Transactional(readOnly=true)
 	@Override
 	public List<NivelEducativo> findAll() {
-		// TODO Auto-generated method stub
-		return em.createQuery("from NivelEducativo").getResultList();
+		List niveles = null;
+		Query query = em.createQuery("from NivelEducativo");
+	    niveles= query.getResultList();
+	    return niveles;
 	}
 
 }

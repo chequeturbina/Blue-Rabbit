@@ -1,6 +1,7 @@
 package com.brabbit.springboot.app.controllers;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Access;
 
@@ -41,11 +42,6 @@ public class AlumnoController {
 			 Model model) 		 
 	{
 		
-		model.addAttribute("niveles",nivelEduDao.findAll());
-  	
-		for(NivelEducativo edu: nivelEduDao.findAll()) {
-			System.out.println(edu.getNIVEL());
-		}
 	Persona persona = new Persona();
 	persona.setNOMBRE(nombre);
 	persona.setAPELLIDO(apellido);
@@ -57,7 +53,13 @@ public class AlumnoController {
 	 
 		System.out.println("******************PERSONA CREADA");
 		System.out.println(persona.getID_PERSONA());
-	 return "index";
+		List<NivelEducativo> um = nivelEduDao.findAll();
+		model.addAttribute("niveles", um);
+  	
+		for(NivelEducativo edu: nivelEduDao.findAll()) {
+			System.out.println(edu.getNIVEL());
+		}
+	 return "registro/alumno";
 	 }
 	
 }

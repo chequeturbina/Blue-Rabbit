@@ -165,12 +165,12 @@
 								<div class="dropdown">
 									<select class="form-control" id="exampleFormControlSelect1">
 										<c:forEach var="nivel" items="${niveles}">
-				                         <option > ${nivel.NIVEL} </option>
+				                         <option value="${nivel.ID_NIVEL}"> ${nivel.NIVEL} </option>
 			                              </c:forEach>
 									</select>
 								</div>
 							</div>
-						<input type="submit" class="btn btn-two" value="Submit">Registrarse</input><p><br/></p>
+						<input type="submit" class="btn btn-two" value="Registrarse"></input><p><br/></p>
 						</form>
 					</div>
 					
@@ -234,6 +234,10 @@
 			});
 		});
 	</script>
+	
+	<script LANGUAGE="JavaScript"> 
+	function Entrar(password) {window.location=password+".htm"} 
+	</script> 
 
 	<!-- Google Maps -->
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
