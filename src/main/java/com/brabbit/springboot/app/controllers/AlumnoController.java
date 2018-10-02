@@ -54,6 +54,7 @@ public class AlumnoController {
 	System.out.println(persona.getID_PERSONA());	
 	personDao.save(persona);
 	
+	
 	    return "redirect:/registro/alumno";
 	 }
 	
