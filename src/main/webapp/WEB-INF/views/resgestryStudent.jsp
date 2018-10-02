@@ -31,7 +31,7 @@
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
 				<a class="img-responsive" href="index.html">
-					<img src="/img/logo.png" width="70" height="70" alt="Techro HTML5 template"></a>
+					<img src="/img/logo.png" width="200" height="90" alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
@@ -159,10 +159,11 @@
 									<input type="date" name="Fecha_nacimiento" class="form-control" required>
 							</div>
 
-							<div class="form-group">
+							<div
+							 class="form-group">
 								<label>Nivel Academico</label>
 								<div class="dropdown">
-									<select class="form-control" id="exampleFormControlSelect1">
+									<select name="nivelEdu" class="form-control" id="exampleFormControlSelect1">
 										<c:forEach var="nivel" items="${niveles}">
 				                         <option value="${nivel.ID_NIVEL}"> ${nivel.NIVEL} </option>
 			                              </c:forEach>
