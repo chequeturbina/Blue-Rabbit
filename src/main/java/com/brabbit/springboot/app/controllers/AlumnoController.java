@@ -60,6 +60,10 @@ public class AlumnoController {
 	NivelEducativo niv = nivelEduDao.findOne(nivel);
 	alumno.setID_NIVEL(niv);
 
+	System.out.println(niv.getNIVEL()+"Si lo logro");
+	alumNoDao.save(alumno);
+	System.out.println(persona.getID_PERSONA());
+	
 	String err = "Exito al Registrar. Se te enviara un correo de confirmación";
 	model.addAttribute("alerta",err);
 	    return "alertusuario";
