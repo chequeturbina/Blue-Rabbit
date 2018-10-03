@@ -58,7 +58,7 @@
             	<div class="row">
             		<div class="col col-lg-8">
 						    <h1>
-		                    	Pagina Administrador
+		                    	En Construccion
 		                    </h1>
 					</div>
 				</div>
