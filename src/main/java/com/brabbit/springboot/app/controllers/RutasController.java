@@ -45,4 +45,9 @@ public class RutasController {
 		return "admin";
 	}
 	
+	@GetMapping("/alerta")
+	public String alertusuario(Model model) {
+		return "alertusuario";		
+	}
+	
 }

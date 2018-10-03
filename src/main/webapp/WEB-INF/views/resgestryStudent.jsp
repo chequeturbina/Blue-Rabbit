@@ -131,7 +131,7 @@
 						Registro
 					</h3>
 						
-						<form method="POST" action="/registro/alumno" class="form-light mt-20" role="form">
+						<form method="POST" action="/registro/alumno" class="form-light mt-20" role="form" modelAttribute="message">
 							<div class="form-group">
 								<label>
 								Nombre
