@@ -9,4 +9,7 @@ public interface InterfaceNivelEducativoDao {
 		public void save(NivelEducativo nivelEducativo);
 		
 		public List<NivelEducativo> findAll();
+		
+		public NivelEducativo findOne(long id);
+		
 }

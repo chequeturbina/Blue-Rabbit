@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.brabbit.springboot.app.models.dao.AlumnoDaoImplement;
 import com.brabbit.springboot.app.models.dao.NivelEducativoDaoImplement;
 import com.brabbit.springboot.app.models.dao.PersonaDaoImplement;
+import com.brabbit.springboot.app.models.entity.Alumno;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
 import com.brabbit.springboot.app.models.entity.Persona;
 
@@ -39,11 +40,13 @@ public class AlumnoController {
 			 @RequestParam("apellido") String apellido,
 			 @RequestParam("correo") String correo,
 			 @RequestParam("password") String password,
+			 @RequestParam("nivelEdu") long nivel, 
 			 @RequestParam("Fecha_nacimiento")@DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
 			 ModelMap model) 		 
 	{
 		
 	Persona persona = new Persona();
+	Alumno alumno = new Alumno();
 	persona.setNOMBRE(nombre);
 	persona.setAPELLIDO(apellido);
 	persona.setCORREO(correo);
@@ -53,7 +56,12 @@ public class AlumnoController {
 	System.out.println("******************PERSONA CREADA");
 	System.out.println(persona.getID_PERSONA());	
 	personDao.save(persona);
+	NivelEducativo niv = nivelEduDao.findOne(nivel);
+	alumno.setID_NIVEL(niv);
 	
+	System.out.println(niv.getNIVEL()+"Si lo logro");
+	alumNoDao.save(alumno);
+	System.out.println(persona.getID_PERSONA());
 	
 	    return "redirect:/registro/alumno";
 	 }

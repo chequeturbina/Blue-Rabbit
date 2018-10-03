@@ -36,4 +36,13 @@ public class NivelEducativoDaoImplement implements InterfaceNivelEducativoDao {
 	    return niveles;
 	}
 
+	
+	public NivelEducativo findOne(long id) {
+		return em.find(NivelEducativo.class, id);
+	}
+
+
+	
+	
+	
 }
