@@ -26,7 +26,24 @@ public class Alumno implements Serializable {
 	
 	@OneToOne(cascade= {CascadeType.ALL})
 	 @JoinColumn(name="ID_NIVEL")
-	private NivelEducativo ID_NIVEL; 
+	private NivelEducativo ID_NIVEL;
+
+	
+	public long getID_ALUMNO() {
+		return ID_ALUMNO;
+	}
+
+	public void setID_ALUMNO(long iD_ALUMNO) {
+		ID_ALUMNO = iD_ALUMNO;
+	}
+
+	public NivelEducativo getID_NIVEL() {
+		return ID_NIVEL;
+	}
+
+	public void setID_NIVEL(NivelEducativo iD_NIVEL) {
+		ID_NIVEL = iD_NIVEL;
+	} 
 	
 	
 

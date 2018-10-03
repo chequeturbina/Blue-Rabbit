@@ -29,11 +29,8 @@
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-<<<<<<< HEAD
 				<a class="img-responsive" href="index.html">
-=======
 				<a class="img-responsive" href="<c:url value="/"/>">
->>>>>>> fa5159da936c9d896b4cd758c5ba836ab60eb8d2
 					<img src="/img/logo.png" width="200" height="90" alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
@@ -62,7 +59,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    ×</button>
+                    ï¿½</button>
                
             </div>
             <div class="modal-body">
@@ -239,7 +236,7 @@
 	<script>
 	function administrador(){
 		if (document.form1.txt.value=="admin@admin" && document.form1.num.value=="1234"){window.location.href="<c:url value="/admin"/>";return}
-		else {alert("Error en Usuario o Contraseña. Intenta de nuevo.")}
+		else {alert("Error en Usuario o Contraseï¿½a. Intenta de nuevo.")}
 		}
 	document.oncontextmenu=new Function("return false");
 	</script>

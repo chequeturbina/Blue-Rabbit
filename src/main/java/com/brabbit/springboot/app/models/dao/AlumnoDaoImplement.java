@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.brabbit.springboot.app.models.entity.Alumno;
+import com.brabbit.springboot.app.models.entity.NivelEducativo;
 
 @Repository
 public class AlumnoDaoImplement implements InterfaceAlumnoDao {
@@ -22,5 +23,7 @@ public class AlumnoDaoImplement implements InterfaceAlumnoDao {
 		// TODO Auto-generated method stub
 		em.persist(alumno);
 	}
+
+
 
 }
