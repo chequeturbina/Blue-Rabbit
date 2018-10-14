@@ -39,7 +39,6 @@
 					<li><a href="<c:url value="/"/>">Inicio</a></li>
 					<li><a href="<c:url value="/"/>">Acerca</a></li>
 						<li><a href="<c:url value="/"/>">Cursos</a></li>
-					<li><a href="<c:url value="/"/>">Precio</a></li>
 					<li><a href="<c:url value="/"/>">Videos</a></li>
 					<li><a href="<c:url value="/"/>">Contacto</a></li>
 				    <li class="active">
