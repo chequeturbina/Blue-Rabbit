@@ -53,16 +53,9 @@
 			<!--/.nav-collapse -->
 		</div>
 	</div>
+</head>
 	<!-- /.navbar -->
-	<div class="container">
-            	<div class="row">
-            		<div class="col col-lg-8">
-						    <h1>
-		                    	En Construccion
-		                    </h1>
-					</div>
-				</div>
-            </div>
+	
     <footer id="footer">
  
 		

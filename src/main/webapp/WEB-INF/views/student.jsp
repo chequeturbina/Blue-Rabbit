@@ -40,10 +40,6 @@
           <li><a href="<c:url value="alumno"/>">Carrito de Compra</a></li>
          
           <!-- chorizote para iniciar sesion-->
-
-            <li>
-              <button class="btn btn-primary btn-blue" data-toggle="modal" data-target="#myModal" onclick="location.href='/'">SALIR</button>
-            </li>
             <li><button type="button" class="btn btn-danger">Denuncia</button></li>
             <!--Hasta aqui acaba el puto chorizote-->
             
