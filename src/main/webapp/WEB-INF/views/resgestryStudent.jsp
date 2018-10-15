@@ -160,8 +160,7 @@
 									<input type="date" name="Fecha_nacimiento" class="form-control" required>
 							</div>
 
-							<div
-							 class="form-group">
+							<div class="form-group">
 								<label>Nivel Academico</label>
 								<div class="dropdown">
 									<select name="nivelEdu" class="form-control" id="exampleFormControlSelect1">
@@ -171,7 +170,7 @@
 									</select>
 								</div>
 							</div>
-						<input type="submit" class="btn btn-two" value="Registrarse"></input><p><br/></p>
+						<input type="submit" class="btn btn-two btn-blue" onclick="location.href='/alumno'" value="Registrarse"></input><p><br/></p>
 						</form>
 					</div>
 					
