@@ -172,12 +172,16 @@ label {
 }
 .btn-action, .btn-primary {
 	color: #FFEFD7;
+	background: #0A56B9;
 	background-image: -webkit-linear-gradient(top, #0ecfec 0%, #09bed9 100%);
 	background-image: linear-gradient(to bottom, #0ecfec 0%, #09bed9 100%);
  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0ecfec22', endColorstr='#09bed900', GradientType=0);
  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 	background-repeat: repeat-x;
 	border: 0 none;
+}
+.btn-blue{
+	background: #0A56B9;
 }
 .btn-action:hover, .btn-primary:hover {
 	background: #0A56B9;
@@ -811,7 +815,6 @@ nav#filter a.current {
 	background: #0A56B9 !important;
 }
 .btn {
-	background: #0362DF;
 	color: #fff;
 }
 .footer2 a {

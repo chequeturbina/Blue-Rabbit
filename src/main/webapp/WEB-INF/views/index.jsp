@@ -36,13 +36,10 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right mainNav">
           <li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-          <li><a href="<c:url value="/"/>">Acerca</a></li>
-            <li><a href="<c:url value="/"/>">Cursos</a></li>
-          <li><a href="<c:url value="/"/>">Videos</a></li>
-          <li><a href="<c:url value="/"/>">Contacto</a></li>
+            <li><a href="<c:url value="/"/>">Tutorias</a></li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registrate <b class="caret"></b></a>
-            <ul class="dropdown-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro <b class="caret"></b></a>
+						<ul class="dropdown-menu">
               <li><a href="<c:url value="registro/alumno"/>">Alumno</a></li>
               <li><a href="<c:url value="registro/profesor"/>">Profesor</a></li>
             </ul>
@@ -51,7 +48,7 @@
            <!-- chorizote para iniciar sesion-->
 
             <li>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+              <button class="btn btn-primary btn-blue" data-toggle="modal" data-target="#myModal">
     Iniciar Sesion</button>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
@@ -97,6 +94,7 @@
                             
     </div>
             </li>
+            <li><button type="button" class="btn btn-danger">Denuncia</button></li>
 
             <!--Hasta aqui acaba el puto chorizote-->
             
@@ -132,7 +130,7 @@
 
   <div class="container">
     <div class="row">
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<div class="grey-box-icon">
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/1.png" alt="" />
@@ -142,37 +140,26 @@
      						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<div class="grey-box-icon">
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/2.png" alt="" />
 							</div><!--icon box top -->
-							<h4>Conferencias</h4>
+							<h4>Tendencias</h4>
 							<p>Descripcion.</p>
      						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
-					<div class="col-md-3">
+					<div class="col-md-4">
 						<div class="grey-box-icon">
 							<div class="icon-box-top grey-box-icon-pos">
 								<img src="img/3.png" alt="" />
 							</div><!--icon box top -->
-							<h4>Cobros</h4>
+							<h4>Destacado</h4>
 							<p>Descripcion.</p>
      						<p><a href="#"><em>Leer mas</em></a></p>
 						</div><!--grey box -->
 					</div><!--/span3-->
-					<div class="col-md-3">
-						<div class="grey-box-icon">
-							<div class="icon-box-top grey-box-icon-pos">
-								<img src="img/4.png" alt="" />
-							</div><!--icon box top -->
-							<h4>Denuncias</h4>
-							<p>Descripcion.</p>
-     						<p><a href="#"><em>Leer mas</em></a></p>
-						</div><!--grey box -->
-					</div><!--/span3-->
-				</div>
     </div>
       <section class="news-box top-margin">
         <div class="container">

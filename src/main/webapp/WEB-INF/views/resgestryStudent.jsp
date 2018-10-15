@@ -36,12 +36,9 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li><a href="<c:url value="/"/>">Inicio</a></li>
-					<li><a href="<c:url value="/"/>">Acerca</a></li>
-						<li><a href="<c:url value="/"/>">Cursos</a></li>
-					<li><a href="<c:url value="/"/>">Videos</a></li>
-					<li><a href="<c:url value="/"/>">Contacto</a></li>
-				    <li class="active">
+					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
+					<li><a href="<c:url value="/"/>">Tutorias</a></li>
+				    <li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="<c:url value="/registro/alumno"/>">Alumno</a></li>
@@ -51,7 +48,7 @@
 					 <!-- chorizote para iniciar sesion-->
 
             <li>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+              <button class="btn btn-primary btn-blue" data-toggle="modal" data-target="#myModal">
     Iniciar Sesion</button>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
@@ -97,6 +94,7 @@
                             
     </div>
             </li>
+            <li><button type="button" class="btn btn-danger">Denuncia</button></li>
 
             <!--Hasta aqui acaba el puto chorizote-->
 				</ul>

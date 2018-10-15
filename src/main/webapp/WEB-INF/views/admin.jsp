@@ -43,7 +43,7 @@
           <!-- chorizote para iniciar sesion-->
 
             <li>
-              <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="location.href='/'">SALIR</button>
+              <button class="btn btn-primary btn-blue" data-toggle="modal" data-target="#myModal" onclick="location.href='/'">SALIR</button>
             </li>
 
             <!--Hasta aqui acaba el puto chorizote-->
