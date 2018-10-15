@@ -26,7 +26,7 @@
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-				<a class="img-responsive" href="index.html">
+				<a class="img-responsive" href="<c:url value="/"/>">
 				<a class="img-responsive" href="<c:url value="/"/>">
 					<img src="/img/logo.png" width="200" height="90" alt="Techro HTML5 template"></a>
 			</div>
@@ -211,12 +211,7 @@
 					<div class="col-md-6 panel">
 						<div class="panel-body">
 							<p class="simplenav">
-								<a href="<c:url value="/"/>">Inicio</a> | 
-								<a href="<c:url value="/"/>">Acerca</a> |
-								<a href="<c:url value="/"/>">Cursos</a> |
-								<a href="<c:url value="/"/>">Precio</a> |
-								<a href="<c:url value="/"/>">Videos</a> |
-								<a href="<c:url value="/"/>">Contacto</a>
+								<a href="<c:url value="/"/>">Inicio</a>
 							</p>
 						</div>
 					</div>

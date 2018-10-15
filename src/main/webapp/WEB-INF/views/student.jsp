@@ -24,28 +24,22 @@
 	<![endif]-->
 </head>
 <body>
-	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse">
     <div class="container">
       <div class="navbar-header">
         <!-- Button for smallest screens -->
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-        <a class="img-responsive" href="index.html">
+        <a class="img-responsive" href="<c:url value="/"/>">
           <img src="img/logo.png"  width="200" height="90" alt="Techro HTML5 template"></a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav pull-right mainNav">
-          <li class="active"><a href="<c:url value="admin"/>">Inicio</a></li>
-          <li><a href="<c:url value="admin"/>">Eliminar</a></li>
-          <li><a href="<c:url value="admin"/>">Peticiones Denuncia</a></li>
-          <li><a href="<c:url value="admin"/>">Cobrar</a></li>
-         
+          <li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
+          <li><a href="<c:url value="alumno"/>">Mis Cursos</a></li>
+          <li><a href="<c:url value="alumno"/>">Lista de Deseos</a></li>
+          <li><a href="<c:url value="alumno"/>">Carrito de Compra</a></li>         
           <!-- chorizote para iniciar sesion-->
-
-            <li>
-              <button class="btn btn-primary btn-blue" data-toggle="modal" data-target="#myModal" onclick="location.href='/'">SALIR</button>
-            </li>
-
+            <li><button type="button" class="btn btn-danger">Denuncia</button></li>
             <!--Hasta aqui acaba el puto chorizote-->
             
         </ul>
@@ -53,16 +47,150 @@
 			<!--/.nav-collapse -->
 		</div>
 	</div>
+</body>
 	<!-- /.navbar -->
-	<div class="container">
-            	<div class="row">
-            		<div class="col col-lg-8">
-						    <h1>
-		                    	En Construccion
-		                    </h1>
-					</div>
-				</div>
-            </div>
+<div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="img/perfil.png"  width="200" height="90" alt="Techro HTML5 template">
+                            <div class="file btn btn-lg btn-primary">
+                                Cambiar Foto
+                                <input type="file" name="file"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        Nombre usuario
+                                    </h5>
+                                    <h6>
+                                        Profesion
+                                    </h6>
+                                    <p class="proile-rating">calificacion : <span>8/10</span></p>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Acerca de</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Cronologia</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Editar Perfil"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-work">
+                            <p>CV</p>
+                            <p>Habilidades</p>
+                            <a href="">Habilidad 1</a><br/>
+                            <a href="">Habilidad 2</a><br/>
+                            <a href="">Habilidad 3</a><br/>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>User Id</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Usuario123</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Nombre</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>nombre usuario</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>usuario123@gmail.com</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Numero Celular</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>123 456 789</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Profesion</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>nombre profesion</p>
+                                            </div>
+                                        </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Experiencia</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Experto</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Costo por Hora</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>10$/hr</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Total Cursos</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>23</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Nivel de Ingles</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Experto</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Disponibilidad</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>6 meses</p>
+                                            </div>
+                                        </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Biografia</label><br/>
+                                        <p>Tu descripcion</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>           
+        </div>
     <footer id="footer">
  
 		

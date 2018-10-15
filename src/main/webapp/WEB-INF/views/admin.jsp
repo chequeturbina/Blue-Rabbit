@@ -30,7 +30,7 @@
       <div class="navbar-header">
         <!-- Button for smallest screens -->
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-        <a class="img-responsive" href="index.html">
+        <a class="img-responsive" href="<c:url value="/"/>">
           <img src="img/logo.png"  width="200" height="90" alt="Techro HTML5 template"></a>
       </div>
       <div class="navbar-collapse collapse">
@@ -53,16 +53,45 @@
 			<!--/.nav-collapse -->
 		</div>
 	</div>
+</head>
+	<!DOCTYPE HTML>
+<html>
+<head>
+<script type="text/javascript">
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	theme: "light1", // "light2", "dark1", "dark2"
+	animationEnabled: false, // change to true		
+	title:{
+		text: "Grafico de ejemplo"
+	},
+	data: [
+	{
+		// Change type to "bar", "area", "spline", "pie",etc.
+		type: "column",
+		dataPoints: [
+			{ label: "apple",  y: 10  },
+			{ label: "orange", y: 15  },
+			{ label: "banana", y: 25  },
+			{ label: "mango",  y: 30  },
+			{ label: "grape",  y: 28  }
+		]
+	}
+	]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
+</body>
+</html>
 	<!-- /.navbar -->
-	<div class="container">
-            	<div class="row">
-            		<div class="col col-lg-8">
-						    <h1>
-		                    	En Construccion
-		                    </h1>
-					</div>
-				</div>
-            </div>
+	
     <footer id="footer">
  
 		
