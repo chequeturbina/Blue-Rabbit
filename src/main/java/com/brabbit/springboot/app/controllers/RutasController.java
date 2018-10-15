@@ -26,6 +26,18 @@ public class RutasController {
 		return "index";		
 	}
 	
+	@RequestMapping("/profesor")
+	public String Profesor(Model model) {
+		return "teacher";		
+	}
+	
+	@RequestMapping("/alumno")
+	public String Alumno(Model model) {
+		List<NivelEducativo> um = nivelEduDao.findAll();
+		model.addAttribute("niveles", um);
+		return "student";
+	}
+	
 	@GetMapping("registro/profesor")
 	public String RegistroProfesor(Model model) {
 		return "regestryTeacher";		

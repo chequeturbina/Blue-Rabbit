@@ -124,7 +124,7 @@
 						Registro
 					</h3>
 						
-						<form class="form-light mt-20" role="form">
+						<form action="/profesor" class="form-light mt-20" role="form" modelAttribute="message">
 							<div class="form-group">
 								<label>
 								Nombre
@@ -165,7 +165,7 @@
 									<input type="file" id="ejemplo_archivo_1">
 								</div>
 							</div>
-						<button type="submit" class="btn btn-two">Registrarse</button><p><br/></p>
+						<button type="submit" class="btn btn-two btn-blue" onclick="location.href='/profesor'">Registrarse</button><p><br/></p>
 						</form>
 					</div>
 					
