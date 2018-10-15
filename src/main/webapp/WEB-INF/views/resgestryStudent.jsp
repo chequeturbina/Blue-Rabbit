@@ -147,9 +147,16 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label>Password
+										<label>Contraseña
 										</label>
 										<input type="Password" name="password" required autocomplete="off" class="form-control"  minlength="8" maxlength="16" placeholder="Password" required>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Confirma tu Contraseña
+										</label>
+										<input type="Password" name="ConfirmPass" required autocomplete="off" class="form-control"  minlength="8" maxlength="16" placeholder="Password" required>
 									</div>
 								</div>
 							</div>

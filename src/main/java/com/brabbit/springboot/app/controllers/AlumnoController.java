@@ -8,10 +8,17 @@ import javax.persistence.Access;
 import org.apache.commons.logging.Log;
 import org.apache.logging.log4j.spi.LoggerContextFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,6 +43,7 @@ public class AlumnoController {
 	 @Autowired
 	 	private NivelEducativoDaoImplement nivelEduDao;
 	
+	
 	@RequestMapping(value = "/registro/alumno", method = RequestMethod.POST)
 	 public String formularioPersona(@RequestParam("nombre") String nombre,
 			 @RequestParam("apellido") String apellido,
@@ -43,9 +51,13 @@ public class AlumnoController {
 			 @RequestParam("password") String password,
 			 @RequestParam("nivelEdu") long nivel, 
 			 @RequestParam("Fecha_nacimiento")@DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
+			 @RequestParam("ConfirmPass") String confirm,
 			 Model model) 		 
 	{
-		
+		String returnVal = "password";
+		if(result.hasErrors()) {
+			returnVal = "password";
+		} else {
 	Persona persona = new Persona();
 	Alumno alumno = new Alumno();
 	persona.setNOMBRE(nombre);
@@ -66,7 +78,9 @@ public class AlumnoController {
 	
 	String err = "Exito al Registrar. Se te enviara un correo de confirmación";
 	model.addAttribute("alerta",err);
-	    return "alertusuario";
+	    
 	 }
+		return "alertusuario";
+	}
 	
 }
