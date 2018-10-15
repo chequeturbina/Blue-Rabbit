@@ -54,33 +54,33 @@ public class AlumnoController {
 			 @RequestParam("ConfirmPass") String confirm,
 			 Model model) 		 
 	{
-		String returnVal = "password";
-		if(result.hasErrors()) {
-			returnVal = "password";
-		} else {
-	Persona persona = new Persona();
-	Alumno alumno = new Alumno();
-	persona.setNOMBRE(nombre);
-	persona.setAPELLIDO(apellido);
-	persona.setCORREO(correo);
-	persona.setPASSWORD(password);
-	persona.setFECHA_NACIMIENTO(Fecha_nacimiento);
-	System.out.println("******************"+persona.getID_PERSONA());
-	System.out.println("******************PERSONA CREADA");
-	System.out.println(persona.getID_PERSONA());	
-	personDao.save(persona);
-	NivelEducativo niv = nivelEduDao.findOne(nivel);
-	alumno.setID_NIVEL(niv);
-
-	System.out.println(niv.getNIVEL()+"Si lo logro");
-	alumNoDao.save(alumno);
-	System.out.println(persona.getID_PERSONA());
 	
-	String err = "Exito al Registrar. Se te enviara un correo de confirmación";
-	model.addAttribute("alerta",err);
-	    
+		if(password.contentEquals(confirm)) {
+			Persona persona = new Persona();
+			Alumno alumno = new Alumno();
+			persona.setNOMBRE(nombre);
+			persona.setAPELLIDO(apellido);
+			persona.setCORREO(correo);
+			persona.setPASSWORD(password);
+			persona.setFECHA_NACIMIENTO(Fecha_nacimiento);
+			System.out.println("******************"+persona.getID_PERSONA());
+			System.out.println("******************PERSONA CREADA");
+			System.out.println(persona.getID_PERSONA());	
+			personDao.save(persona);
+			NivelEducativo niv = nivelEduDao.findOne(nivel);
+			alumno.setID_NIVEL(niv);
+
+			System.out.println(niv.getNIVEL()+"Si lo logro");
+			alumNoDao.save(alumno);
+			System.out.println(persona.getID_PERSONA());
+			
+			String alerta = "Exito al registrar se te enviara un correo";
+			model.addAttribute("Confirm",alerta);
+		} else {
+			String alerta = "Contraseña no coincide tendras que llenar de nuevo el formulario";
+			model.addAttribute("Confirm",alerta);
 	 }
-		return "alertusuario";
+		return "ConfirmStudent";
 	}
 	
 }

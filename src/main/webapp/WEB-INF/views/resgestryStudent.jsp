@@ -16,14 +16,10 @@
 	<!-- Custom styles for our template -->
 	<link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
 	<link rel="stylesheet" href="/css/style.css">
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	<script src="/js/html5shiv.js"></script>
-	<script src="/js/respond.min.js"></script>
-	<![endif]-->
 </head>
 
 <body>
+
 	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse">
 		<div class="container">
@@ -45,6 +41,7 @@
 							<li><a href="<c:url value="/registro/profesor"/>">Profesor</a></li>
 						</ul>
 					</li>
+					
 					 <!-- chorizote para iniciar sesion-->
 
             <li>
@@ -56,7 +53,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    ×</button>
+                    X</button>
                
             </div>
             <div class="modal-body">
@@ -94,9 +91,13 @@
                             
     </div>
             </li>
+            
+            <!--Hasta aqui acaba el puto chorizote-->
+            
+            
             <li><button type="button" class="btn btn-danger">Denuncia</button></li>
 
-            <!--Hasta aqui acaba el puto chorizote-->
+            
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -147,19 +148,24 @@
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label>Contraseña
+										<label>Password
 										</label>
 										<input type="Password" name="password" required autocomplete="off" class="form-control"  minlength="8" maxlength="16" placeholder="Password" required>
 									</div>
 								</div>
+							</div>
+							<div class="row">
+							<div class="col-md-6">
+									<div class="form-group">
+									</div>
+								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label>Confirma tu Contraseña
+										<label>Confirma Password
 										</label>
 										<input type="Password" name="ConfirmPass" required autocomplete="off" class="form-control"  minlength="8" maxlength="16" placeholder="Password" required>
 									</div>
-								</div>
-							</div>
+								</div></div>
 							<div class="form-group">
 								<label>
 								Fecha de Nacimiento
@@ -252,10 +258,7 @@
 	document.oncontextmenu=new Function("return false");
 	</script>
 
-	<!-- Google Maps -->
-	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-	<script src="/js/google-map.js"></script>
-
+	
 
 </body>
 </html>
