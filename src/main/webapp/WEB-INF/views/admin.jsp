@@ -30,7 +30,7 @@
       <div class="navbar-header">
         <!-- Button for smallest screens -->
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-        <a class="img-responsive" href="index.html">
+        <a class="img-responsive" href="<c:url value="/"/>">
           <img src="img/logo.png"  width="200" height="90" alt="Techro HTML5 template"></a>
       </div>
       <div class="navbar-collapse collapse">
