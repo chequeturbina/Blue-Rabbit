@@ -31,16 +31,6 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-					<li><a href="<c:url value="/"/>">Tutorias</a></li>
-				    <li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="<c:url value="/registro/alumno"/>">Alumno</a></li>
-							<li><a href="<c:url value="/registro/profesor"/>">Profesor</a></li>
-						</ul>
-					</li>
-					
 					 </ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -51,11 +41,7 @@
 			<div class="container">
             	<div class="row">
             		<div class="col col-lg-8">
-            			<header id="head" class="secondary">
-						    <h1>
-		                    	Registro
-		                    </h1>
-						</header>
+            		
 					</div>
 				</div>
             </div>
@@ -65,9 +51,7 @@
 	<div class="container">
 				<div class="row">
 					<div class="col-md-8">
-						<h3 class="section-title">
-						Registro
-					</h3>						
+											
 						
 						<h1>${Confirm}</h1>
 						<input type="submit" class="btn btn-two btn-blue" onclick="location.href='/registro/alumno'" value="Aceptar"></input><p><br/></p>

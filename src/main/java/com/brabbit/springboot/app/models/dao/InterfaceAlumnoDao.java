@@ -7,5 +7,4 @@ public interface InterfaceAlumnoDao {
 
 	public void save(Alumno alumno);
 		
-	
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Access;
+import javax.persistence.EntityManager;
 
 import org.apache.commons.logging.Log;
 import org.apache.logging.log4j.spi.LoggerContextFactory;
@@ -19,6 +20,7 @@ import org.springframework.validation.Validator;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -52,20 +54,31 @@ public class AlumnoController {
 			 @RequestParam("nivelEdu") long nivel, 
 			 @RequestParam("Fecha_nacimiento")@DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
 			 @RequestParam("ConfirmPass") String confirm,
-			 Model model) 		 
+			 Model model,
+			 RedirectAttributes ra) 		 
 	{
+		Persona persona = new Persona();
+		boolean validoC = false;
+		 ValidarCorreo vc = new ValidarCorreo();
+		 persona.setCORREO(correo);
+		 validoC = vc.validar(correo);
+		 Persona validar = personDao.porCorreo(correo);
 	
-		if(password.contentEquals(confirm)) {
-			Persona persona = new Persona();
+		if(password.contentEquals(confirm) & (validoC & validar == null)) {
+			
+			
 			Alumno alumno = new Alumno();
 			persona.setNOMBRE(nombre);
+			 
 			persona.setAPELLIDO(apellido);
-			persona.setCORREO(correo);
+			
+			
 			persona.setPASSWORD(password);
 			persona.setFECHA_NACIMIENTO(Fecha_nacimiento);
 			System.out.println("******************"+persona.getID_PERSONA());
 			System.out.println("******************PERSONA CREADA");
-			System.out.println(persona.getID_PERSONA());	
+			System.out.println(persona.getID_PERSONA());
+			
 			personDao.save(persona);
 			NivelEducativo niv = nivelEduDao.findOne(nivel);
 			alumno.setID_NIVEL(niv);
@@ -75,12 +88,16 @@ public class AlumnoController {
 			System.out.println(persona.getID_PERSONA());
 			
 			String alerta = "Exito al registrar se te enviara un correo";
-			model.addAttribute("Confirm",alerta);
+			ra.addAttribute("Confirm",alerta);
 		} else {
-			String alerta = "Contraseña no coincide tendras que llenar de nuevo el formulario";
-			model.addAttribute("Confirm",alerta);
+			String alerta = "Los Datos no coinciden, verificar por favor";
+			ra.addAttribute("Confirm",alerta);
 	 }
 		return "ConfirmStudent";
 	}
 	
+	@RequestMapping("/alert/ConfirmStudent")
+	public String RegistroAlumno(Model model) {
+		return "ConfirmStudent";
+	}
 }

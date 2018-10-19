@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="PERSONA")
@@ -24,6 +25,7 @@ public class Persona implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ID_PERSONA;
 	
+	@NotNull(message = "Name cannot be null")
 	private String NOMBRE;
 	private String APELLIDO;
 	private char SEXO;
@@ -89,8 +91,6 @@ public class Persona implements Serializable{
 	public void setCORREO(String cORREO) {
 		CORREO = cORREO;
 	}
-	//@id@OneToOne
-	
 	//mappedBy
 	
 }
