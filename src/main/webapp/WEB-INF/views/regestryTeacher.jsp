@@ -124,48 +124,77 @@
 						Registro
 					</h3>
 						
-						<form action="/profesor" class="form-light mt-20" role="form" modelAttribute="message">
+						<form method="POST" action="/registro/profesor" class="form-light mt-20" role="form"  enctype="multipart/form-data" modelAttribute="message">
 							<div class="form-group">
 								<label>
 								Nombre
 							</label>
-								<input type="text" class="form-control" placeholder="Nombre">
+								<input type="text" name="name" class="form-control" placeholder="Nombre">
+							</div>
+							<div class="form-group">
+								<label>
+								Apellidos
+							</label>
+								<input type="text" name="lastname" class="form-control" placeholder="Apellidos">
 							</div>
 							<div class="form-group">
 								<label>
 								RFC
 							</label>
-								<input type="text" class="form-control" placeholder="RFC">
+								<input type="text" name="rfc" class="form-control" placeholder="RFC">
 							</div>
 							<div class="form-group">
 								<label>
 								CURP
 							</label>
-								<input type="text" class="form-control" placeholder="CURP">
+								<input type="text" name="curp" class="form-control" placeholder="CURP">
 							</div>
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Correo</label>
-										<input type="email" class="form-control" placeholder="Correo electronico">
+										<input type="email" name="correo"  required autocomplete="off" class="form-control" placeholder="Correo electronico">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
 										<label>Password
 										</label>
-										<input type="Password" class="form-control" placeholder="Password">
+										<input type="Password" name="password" required autocomplete="off" class="form-control"  minlength="8" maxlength="16" placeholder="Password" required>
 									</div>
 								</div>
 							</div>
-
+							<div class="row">
+							<div class="col-md-6">
+									<div class="form-group">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>Confirma Password
+										</label>
+										<input type="Password" name="ConfirmPass" required autocomplete="off" class="form-control"  minlength="8" maxlength="16" placeholder="Password" required>
+									</div>
+								</div></div>
+							<div class="form-group">
+								<label>
+								Fecha de Nacimiento
+							</label>
+									<input type="date" name="Fecha_nacimiento" class="form-control" required>
+							</div>
 							<div class="form-group">
 								<label>CV</label>
 								<div class="form-group">
-									<input type="file" id="ejemplo_archivo_1">
+									<input type="file" name="cv" id="ejemplo_archivo_1">
 								</div>
 							</div>
-						<button type="submit" class="btn btn-two btn-blue" onclick="location.href='/profesor'">Registrarse</button><p><br/></p>
+							<div class="form-group">
+								<label>INE/IDE</label>
+								<div class="form-group">
+									<input type="file" name="ine" id="ejemplo_archivo_1">
+								</div>
+							</div>
+						<button type="submit" class="btn btn-two btn-blue" >Registrarse</button><p><br/></p>
 						</form>
 					</div>
 					
@@ -213,6 +242,7 @@
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="/js/custom.js"></script>
 	<script type="text/javascript"> 
 		$(function() {
@@ -229,7 +259,9 @@
 		}
 	document.oncontextmenu=new Function("return false");
 	</script>
-
+	
+	<!-- Cargamos y mostramos la imagen -->
+	
 	<!-- Google Maps -->
 	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 	<script src="/js/google-map.js"></script>

@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,8 +24,10 @@ public class Profesor implements Serializable{
 	private String  RFC;
 	@Column(unique=true)
 	private String  CURP;
-	private String  IFE;
-	private String  CV;
+	@Lob
+	private byte[]  INE;
+	@Lob
+	private byte[]  CV;
 	private String  CVT;
 	
 	@OneToOne(cascade={CascadeType.ALL})
@@ -47,19 +50,19 @@ public class Profesor implements Serializable{
 		CURP = cURP;
 	}
 
-	public String getIFE() {
-		return IFE;
+	public byte[] getINE() {
+		return INE;
 	}
 
-	public void setIFE(String iFE) {
-		IFE = iFE;
+	public void setINE(byte[] iNE) {
+		INE = iNE;
 	}
 
-	public String getCV() {
+	public byte[] getCV() {
 		return CV;
 	}
 
-	public void setCV(String cV) {
+	public void setCV(byte[] cV) {
 		CV = cV;
 	}
 
