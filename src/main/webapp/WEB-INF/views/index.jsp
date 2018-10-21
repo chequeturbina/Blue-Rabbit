@@ -16,7 +16,8 @@
 	<link rel="stylesheet" href="css/font-awesome.min.css"> 
 	<link rel="stylesheet" href="css/bootstrap-theme.css" media="screen"> 
 	<link rel="stylesheet" href="css/style.css">
-    <link rel='stylesheet' id='camera-css'  href='css/camera.css' type='text/css' media='all'> 
+    <link rel='stylesheet' id='camera-css'  href='css/camera.css' type='text/css' media='all'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="assets/js/html5shiv.js"></script>
@@ -37,9 +38,11 @@
         <ul class="nav navbar-nav pull-right mainNav">
           <li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
             <li><a href="<c:url value="/"/>">Tutorias</a></li>
+            
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro <b class="caret"></b></a>
 						<ul class="dropdown-menu">
+	
               <li><a href="<c:url value="registro/alumno"/>">Alumno</a></li>
               <li><a href="<c:url value="registro/profesor"/>">Profesor</a></li>
             </ul>
@@ -95,6 +98,53 @@
     </div>
             </li>
             <li><button type="button" class="btn btn-danger">Denuncia</button></li>
+            
+            <!-- Inicio barra de busqueda-->
+            <form class="busqueda" action="">
+  				<input type="text" placeholder="Buscar..." name="search">
+  				<button type="submit"><i class="fa fa-search"></i></button>
+  				
+  				<style>
+  					* {
+  						box-sizing: border-box;
+					}	
+
+					/* Estilo del campo de busqueda */
+					form.busqueda input[type=text] {
+  						padding: 10px;
+  						font-size: 17px;
+  						border: 1px solid grey;
+  						float: left;
+  						width: 80%;
+  						background: #f1f1f1;
+					}
+
+					/* Estilo del boton */
+					form.busqueda button {
+  						float: left;
+  						width: 20%;
+  						padding: 10px;
+  						background: #2196F3;
+  						color: white;
+  						font-size: 17px;
+  						border: 1px solid grey;
+  						border-left: none; /* Evita doble borde */
+  						cursor: pointer;
+					}
+
+					form.busqueda button:hover {
+  						background: #0b7dda;
+					}
+
+					/* Limpia flotantes */
+					form.busqueda::after {
+  						content: "";
+  						clear: both;
+  						display: table;
+					}
+  				</style>
+		</form> 
+		<!-- Final barra de busqueda-->
 
             <!--Hasta aqui acaba el puto chorizote-->
             
@@ -272,6 +322,7 @@
 	</footer>
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+	
 	<script src="js/modernizr-latest.js"></script> 
 	<script type='text/javascript' src='js/jquery.min.js'></script>
     <script type='text/javascript' src='js/fancybox/jquery.fancybox.pack.js'></script>

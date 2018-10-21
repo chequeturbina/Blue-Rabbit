@@ -89,6 +89,9 @@
                     <div class="col-md-2">
                         <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Editar Perfil"/>
                     </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Crear Curso"/>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
