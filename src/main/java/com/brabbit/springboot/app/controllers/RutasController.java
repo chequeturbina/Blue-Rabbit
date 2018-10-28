@@ -3,13 +3,14 @@ package com.brabbit.springboot.app.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.brabbit.springboot.app.models.dao.NivelEducativoDaoImplement;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
+import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 
 //AQUI SE DEFINIRAN LAS RUTAS HACIA LAS VISTAS.
 @Controller
@@ -26,24 +27,30 @@ public class RutasController {
 		return "index";		
 	}
 	
+	//Cargar la pagina de inicio de sesion desde index y cualquier ruta disponible para iniciar sesion
+	@RequestMapping("/loginpage")
+	public String Loginpage(Model model) {
+		return "login";
+	}
+	
 	@RequestMapping("/profesor")
 	public String Profesor(Model model) {
 		return "teacher";		
 	}
 	
-	@RequestMapping("/alumno")
+	@RequestMapping("/student")
 	public String Alumno(Model model) {
 		List<NivelEducativo> um = nivelEduDao.findAll();
 		model.addAttribute("niveles", um);
 		return "student";
 	}
 	
-	@GetMapping("registro/profesor")
+	@GetMapping("/registroP")
 	public String RegistroProfesor(Model model) {
 		return "regestryTeacher";		
 	}
 	
-	@RequestMapping("registro/alumno")
+	@RequestMapping("/registroA")
 	public String RegistroAlumno(Model model) {
 		List<NivelEducativo> um = nivelEduDao.findAll();
 		model.addAttribute("niveles", um);
@@ -57,9 +64,5 @@ public class RutasController {
 		return "admin";
 	}
 	
-	@GetMapping("/alerta")
-	public String alertusuario(Model model) {
-		return "alertusuario";		
-	}
 	
 }

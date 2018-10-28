@@ -52,10 +52,52 @@
 		<div class="row">
 			<div class="col">
 				<header id="head" class="secondary">
-					<h1>${Confirm}</h1>
+					<h1>Iniciar Sesion</h1>
 				</header>
 			</div>
+		</div>
 	
+		 <c:if test="${error != null}">
+		 <div class="alert alert-danger">${error}</div>
+		 </c:if>
+		 <c:if test="${info != null}">
+		 <div class="alert alert-danger">${info}</div>
+		 </c:if>
+		 <c:if test="${success != null}">
+		 <div class="alert alert-info">${success}</div>
+		 </c:if>
+	</div>
+
+
+	<!-- container -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<h3 class="section-title"></h3>
+
+				<form method="POST" action="/login" class="form-light mt-20"
+					role="form" modelAttribute="message">
+					<div class="form-group">
+						<label> Email </label> <input name="username" id="username"
+							type="email" required autocomplete="off" class="form-control"
+							placeholder="Email" autofocus required>
+					</div>
+					<div class="form-group">
+						<label> Password </label> <input name="password" id="password"
+							type="password" required autocomplete="off" class="form-control"
+							placeholder="Password" autofocus required>
+					</div>
+
+					<input type="submit" class="btn btn-two btn-blue"
+						value="Inicar Sesion"></input>
+					<p>
+						<br />
+					</p>
+				</form>
+			</div>
+
+		</div>
+	</div>
 	<!-- /container -->
 
 	<footer id="footer">

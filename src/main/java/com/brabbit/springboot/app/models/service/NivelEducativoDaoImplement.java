@@ -1,4 +1,4 @@
-package com.brabbit.springboot.app.models.dao;
+package com.brabbit.springboot.app.models.service;
 
 
 import java.util.List;

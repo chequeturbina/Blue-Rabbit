@@ -1,4 +1,4 @@
-package com.brabbit.springboot.app.models.dao;
+package com.brabbit.springboot.app.models.service;
 
 import com.brabbit.springboot.app.models.entity.Alumno;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;

@@ -1,4 +1,4 @@
-package com.brabbit.springboot.app.models.dao;
+package com.brabbit.springboot.app.models.service;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class PersonaDaoImplement implements InterfacePersonaDao {
 	}
 	
 	public Persona porCorreo(String correo) {
-		List<Persona> results = em.createQuery("SELECT w FROM Persona w WHERE w.CORREO = :correo",Persona.class).setParameter("correo", correo).getResultList();
+		List<Persona> results = em.createQuery("SELECT w FROM Persona w WHERE w.username = :correo",Persona.class).setParameter("correo", correo).getResultList();
 		return results.isEmpty() ? null : results.get(0);}
 
 	
