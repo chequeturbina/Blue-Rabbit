@@ -15,54 +15,52 @@ import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 //AQUI SE DEFINIRAN LAS RUTAS HACIA LAS VISTAS.
 @Controller
 
-
-
 public class RutasController {
-	
-	 @Autowired
-	 	private NivelEducativoDaoImplement nivelEduDao;
-	 
+
+	@Autowired
+	private NivelEducativoDaoImplement nivelEduDao;
+
 	@GetMapping("/")
 	public String inicio(Model model) {
-		return "index";		
+		return "index";
 	}
-	
-	//Cargar la pagina de inicio de sesion desde index y cualquier ruta disponible para iniciar sesion
+
+	// Cargar la pagina de inicio de sesion desde index y cualquier ruta disponible
+	// para iniciar sesion
 	@RequestMapping("/loginpage")
 	public String Loginpage(Model model) {
 		return "login";
 	}
-	
+
 	@RequestMapping("/profesor")
 	public String Profesor(Model model) {
-		return "teacher";		
+		return "teacher";
 	}
-	
+
 	@RequestMapping("/student")
 	public String Alumno(Model model) {
 		List<NivelEducativo> um = nivelEduDao.findAll();
 		model.addAttribute("niveles", um);
 		return "student";
 	}
-	
+
 	@GetMapping("/registroP")
 	public String RegistroProfesor(Model model) {
-		return "regestryTeacher";		
+		return "regestryTeacher";
 	}
-	
+
 	@RequestMapping("/registroA")
 	public String RegistroAlumno(Model model) {
 		List<NivelEducativo> um = nivelEduDao.findAll();
 		model.addAttribute("niveles", um);
 		return "resgestryStudent";
 	}
-	
+
 	@RequestMapping("/admin")
 	public String Administrador(Model model) {
 		List<NivelEducativo> um = nivelEduDao.findAll();
 		model.addAttribute("niveles", um);
 		return "admin";
 	}
-	
-	
+
 }

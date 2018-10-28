@@ -38,78 +38,69 @@ import com.brabbit.springboot.app.models.service.RoleDaoImplement;
 
 @Controller
 public class AlumnoController {
-	
-	 @Autowired	
-		private PersonaDaoImplement personDao;
-	 
-	 @Autowired
-	 	private AlumnoDaoImplement alumNoDao;
-	 
-	 @Autowired
-	 	private RoleDaoImplement roleDao;
-	 
-	 @Autowired
-	 	private NivelEducativoDaoImplement nivelEduDao;
-	
-	
+
+	@Autowired
+	private PersonaDaoImplement personDao;
+
+	@Autowired
+	private AlumnoDaoImplement alumNoDao;
+
+	@Autowired
+	private RoleDaoImplement roleDao;
+
+	@Autowired
+	private NivelEducativoDaoImplement nivelEduDao;
+
 	@RequestMapping(value = "/registro/alumno", method = RequestMethod.POST)
-	 public String formularioPersona(@RequestParam("nombre") String nombre,
-			 @RequestParam("apellido") String apellido,
-			 @RequestParam("correo") String correo,
-			 @RequestParam("password") String password,
-			 @RequestParam("nivelEdu") long nivel, 
-			 @RequestParam("Fecha_nacimiento")@DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
-			 @RequestParam("ConfirmPass") String confirm,
-			 Model model,
-			 @RequestParam(value="error", required=false) String error,
-			 RedirectAttributes ra) 		 
-	{
+	public String formularioPersona(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,
+			@RequestParam("correo") String correo, @RequestParam("password") String password,
+			@RequestParam("nivelEdu") long nivel,
+			@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
+			@RequestParam("ConfirmPass") String confirm, Model model,
+			@RequestParam(value = "error", required = false) String error, RedirectAttributes ra) {
 		Persona persona = new Persona();
 		boolean validoC = false;
-		 ValidarCorreo vc = new ValidarCorreo();
-		 persona.setUsername(correo);
-		 validoC = vc.validar(correo);
-		 Persona validar = personDao.porCorreo(correo);
-	
-		 /*No importara ahorita la verificacion del correo, hasta depsues*/
-		if(password.contentEquals(confirm) /*& (validoC & validar == null)*/) {
-			
-			
+		ValidarCorreo vc = new ValidarCorreo();
+		persona.setUsername(correo);
+		validoC = vc.validar(correo);
+		Persona validar = personDao.porCorreo(correo);
+
+		/* No importara ahorita la verificacion del correo, hasta depsues */
+		if (password.contentEquals(confirm) /* & (validoC & validar == null) */) {
+
 			Alumno alumno = new Alumno();
 			Role role = new Role();
 			persona.setNombre(nombre);
-			 
+
 			persona.setApellido(apellido);
-			
-			
+
 			persona.setPassword(password);
 			persona.setfNacimiento(Fecha_nacimiento);
-			System.out.println("******************"+persona.getId());
+			System.out.println("******************" + persona.getId());
 			System.out.println("******************PERSONA CREADA");
 			System.out.println(persona.getId());
-			
+
 			role.setRoles("ROLE_USER");
 			roleDao.save(role);
 			persona.addRole(role);
 			personDao.save(persona);
 			NivelEducativo niv = nivelEduDao.findOne(nivel);
 			alumno.setID_NIVEL(niv);
-			
-			
-			System.out.println(niv.getNIVEL()+"Si lo logro");
+
+			System.out.println(niv.getNIVEL() + "Si lo logro");
 			alumNoDao.save(alumno);
 			System.out.println(persona.getId());
-			
+
 			String alerta = "Exito al registrar se te enviara un correo";
-			ra.addAttribute("Confirm",alerta);
+			ra.addAttribute("Confirm", alerta);
 			return "redirect:/alerta";
 		} else {
 			ra.addFlashAttribute("error", "Contraseña no coincide o el Correo no es valido");
 			return "redirect:/registroA";
-	 }
-		
+		}
+
 	}
-	
+
 	@RequestMapping("/alerta")
 	public String RegistroAlumno(Model model) {
 		return "ConfirmStudent";

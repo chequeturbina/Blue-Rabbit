@@ -23,70 +23,58 @@ import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
 import java.io.*;
 
 import java.util.Date;
+
 @Controller
 public class ProfesorController {
-	 @Autowired	
-		private ProfesorDaoImplement profesorDao;
-	 
-	 @Autowired
-	 	private PersonaDaoImplement personDao;
-	 
-	
-	
-	@RequestMapping(value = "/registro/profesor", method = RequestMethod.POST)
-	 public String formularioPersona(@RequestParam("cv") MultipartFile cv,
-			 @RequestParam("ine") MultipartFile ine,
-			 @RequestParam("name") String nombre,
-			 @RequestParam("lastname") String apellido,
-			 @RequestParam("rfc") String rfc,
-			 @RequestParam("curp") String curp,
-			 @RequestParam("correo") String correo,
-			 @RequestParam("password") String password,
-			 @RequestParam("ConfirmPass") String confirm,
-			 @RequestParam("Fecha_nacimiento")@DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
-			 ModelMap modelMap,
-			 @RequestParam(value="error", required=false) String error,
-			 RedirectAttributes ra) 		 
-	 {
-		
-		Persona persona = new Persona();
-		
-		if(password.contentEquals(confirm) /*& (validoC & validar == null)*/) {
-		persona.setUsername(correo);
-		persona.setNombre(nombre); 
-		persona.setApellido(apellido);
-		persona.setPassword(password);
-		persona.setfNacimiento(Fecha_nacimiento);
-		personDao.save(persona);
-		
-		Profesor profesor = new Profesor();
-		profesor.setCURP(curp);
-		profesor.setRFC(rfc);
-		try {
-			profesor.setINE(ine.getBytes());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
-			profesor.setCV(cv.getBytes());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		profesorDao.save(profesor);
-		
+	@Autowired
+	private ProfesorDaoImplement profesorDao;
 
-		modelMap.addAttribute("ine", ine);
-	    modelMap.addAttribute("cv", cv);
-	    String alerta = "Exito al registrar se te enviara un correo";
-		ra.addAttribute("Confirm",alerta);
-		return "redirect:/alerta";
-	} else {
-		ra.addFlashAttribute("error", "Contraseña no coincide o el Correo no es valido");
-		return "redirect:/registroP";
-		
-	}
+	@Autowired
+	private PersonaDaoImplement personDao;
+
+	@RequestMapping(value = "/registro/profesor", method = RequestMethod.POST)
+	public String formularioPersona(@RequestParam("cv") MultipartFile cv, @RequestParam("ine") MultipartFile ine,
+			@RequestParam("name") String nombre, @RequestParam("lastname") String apellido,
+			@RequestParam("rfc") String rfc, @RequestParam("curp") String curp, @RequestParam("correo") String correo,
+			@RequestParam("password") String password, @RequestParam("ConfirmPass") String confirm,
+			@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
+			ModelMap modelMap, @RequestParam(value = "error", required = false) String error, RedirectAttributes ra) {
+
+		Persona persona = new Persona();
+
+		if (password.contentEquals(confirm) /* & (validoC & validar == null) */) {
+			persona.setUsername(correo);
+			persona.setNombre(nombre);
+			persona.setApellido(apellido);
+			persona.setPassword(password);
+			persona.setfNacimiento(Fecha_nacimiento);
+			personDao.save(persona);
+
+			Profesor profesor = new Profesor();
+			profesor.setCURP(curp);
+			profesor.setRFC(rfc);
+			try {
+				profesor.setINE(ine.getBytes());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				profesor.setCV(cv.getBytes());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			profesorDao.save(profesor);
+
+			modelMap.addAttribute("ine", ine);
+			modelMap.addAttribute("cv", cv);
+			return "mostrando";
+		} else {
+			ra.addFlashAttribute("error", "Contraseña no coincide o el Correo no es valido");
+			return "redirect:/registroP";
+
+		}
 	}
 }

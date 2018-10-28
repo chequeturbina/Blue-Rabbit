@@ -20,37 +20,39 @@ import com.brabbit.springboot.app.models.entity.Role;
 import com.brabbit.springboot.app.models.entity.Persona;
 
 @Service("jpaUserDetailsService")
-public class JpaUserDetailsService implements UserDetailsService{
+public class JpaUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private IUsuarioDao usuarioDao;
-	
+
 	private Logger logger = LoggerFactory.getLogger(JpaUserDetailsService.class);
-	
+
 	@Override
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
-        Persona persona = usuarioDao.findByUsername(username);
-        
-        if(persona == null) {
-        	logger.error("Error en el Login: no existe el usuario '" + username + "' en el sistema!");
-        	throw new UsernameNotFoundException("Username: " + username + " no existe en el sistema!");
-        }
-        
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        
-        for(Role role: persona.getRoles()) {
-        	logger.info("Role: ".concat(role.getRoles()));
-        	authorities.add(new SimpleGrantedAuthority(role.getRoles()));
-        }
-        
-        if(authorities.isEmpty()) {
-        	logger.error("Error en el Login: Usuario '" + username + "' no tiene roles asignados!");
-        	throw new UsernameNotFoundException("Error en el Login: usuario '" + username + "' no tiene roles asignados!");
-        }
-        
-		return new User(persona.getUsername(), persona.getPassword(), persona.getEnabled(), true, true, true, authorities);
+
+		Persona persona = usuarioDao.findByUsername(username);
+
+		if (persona == null) {
+			logger.error("Error en el Login: no existe el usuario '" + username + "' en el sistema!");
+			throw new UsernameNotFoundException("Username: " + username + " no existe en el sistema!");
+		}
+
+		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+
+		for (Role role : persona.getRoles()) {
+			logger.info("Role: ".concat(role.getRoles()));
+			authorities.add(new SimpleGrantedAuthority(role.getRoles()));
+		}
+
+		if (authorities.isEmpty()) {
+			logger.error("Error en el Login: Usuario '" + username + "' no tiene roles asignados!");
+			throw new UsernameNotFoundException(
+					"Error en el Login: usuario '" + username + "' no tiene roles asignados!");
+		}
+
+		return new User(persona.getUsername(), persona.getPassword(), persona.getEnabled(), true, true, true,
+				authorities);
 	}
 
 }

@@ -52,9 +52,8 @@
 
 					<!-- chorizote para iniciar sesion-->
 
-					<li>
-						<a class="btn btn-two btn-blue" href="<c:url value="/logout" />">Cerrar Sesion</a>
-					</li>
+					<li><a class="btn btn-two btn-blue"
+						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
 
 					<!--Hasta aqui acaba el puto chorizote-->
 

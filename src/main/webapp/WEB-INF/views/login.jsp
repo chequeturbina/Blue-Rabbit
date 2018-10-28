@@ -44,7 +44,7 @@
 			</div>
 			<!--/.nav-collapse -->
 		</div>
-		
+
 	</div>
 	<!-- /.navbar -->
 
@@ -56,16 +56,16 @@
 				</header>
 			</div>
 		</div>
-	
-		 <c:if test="${error != null}">
-		 <div class="alert alert-danger">${error}</div>
-		 </c:if>
-		 <c:if test="${info != null}">
-		 <div class="alert alert-danger">${info}</div>
-		 </c:if>
-		 <c:if test="${success != null}">
-		 <div class="alert alert-info">${success}</div>
-		 </c:if>
+
+		<c:if test="${error != null}">
+			<div class="alert alert-danger">${error}</div>
+		</c:if>
+		<c:if test="${info != null}">
+			<div class="alert alert-danger">${info}</div>
+		</c:if>
+		<c:if test="${success != null}">
+			<div class="alert alert-info">${success}</div>
+		</c:if>
 	</div>
 
 

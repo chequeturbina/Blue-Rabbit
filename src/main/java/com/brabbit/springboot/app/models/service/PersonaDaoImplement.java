@@ -24,12 +24,12 @@ public class PersonaDaoImplement implements InterfacePersonaDao {
 
 	@PersistenceContext
 	private EntityManager em;
-	
-	@Transactional(readOnly=true)
+
+	@Transactional(readOnly = true)
 	@Override
 	public List<Persona> findAll() {
 		// TODO Auto-generated method stub
-		//return em.createQuery("from Persona").getResultList();
+		// return em.createQuery("from Persona").getResultList();
 		return null;
 	}
 
@@ -39,10 +39,11 @@ public class PersonaDaoImplement implements InterfacePersonaDao {
 		// TODO Auto-generated method stub
 		em.persist(persona);
 	}
-	
-	public Persona porCorreo(String correo) {
-		List<Persona> results = em.createQuery("SELECT w FROM Persona w WHERE w.username = :correo",Persona.class).setParameter("correo", correo).getResultList();
-		return results.isEmpty() ? null : results.get(0);}
 
-	
+	public Persona porCorreo(String correo) {
+		List<Persona> results = em.createQuery("SELECT w FROM Persona w WHERE w.username = :correo", Persona.class)
+				.setParameter("correo", correo).getResultList();
+		return results.isEmpty() ? null : results.get(0);
+	}
+
 }
