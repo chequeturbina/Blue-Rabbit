@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -25,6 +26,7 @@ public class Persona implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="PERSONA_ID")
 	private long id;
 	
 	private String nombre;
@@ -38,8 +40,13 @@ public class Persona implements Serializable{
 	
 	private Boolean enabled;
 
-	@JoinTable
 	@OneToMany
+	  @JoinTable
+	  (
+	      name="PERSONA_ROLES",
+	      joinColumns={ @JoinColumn(name="PERSONA_ID", referencedColumnName="PERSONA_ID") },
+	      inverseJoinColumns={ @JoinColumn(name="ROLES_ID", referencedColumnName="ID", unique=true) }
+	  )
 	private List<Role> roles;
 	
 	public Boolean getEnabled() {

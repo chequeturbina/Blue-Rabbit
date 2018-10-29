@@ -17,6 +17,7 @@
 <!-- Custom styles for our template -->
 <link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
 <link rel="stylesheet" href="/css/style.css">
+
 </head>
 
 <body>
@@ -39,31 +40,11 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-					<li><a href="<c:url value="/"/>">Tutorias</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Registro <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="<c:url value="/registroA"/>">Alumno</a></li>
-							<li><a href="<c:url value="/registroP"/>">Profesor</a></li>
-						</ul></li>
-
-					<!-- chorizote para iniciar sesion-->
-
-					<li>
-						<form action="/loginpage">
-							<input type="submit" class="btn btn-two btn-blue"
-								value="Iniciar Sesion"></input>
-						</form>
-					</li>
-
-
-					<li><button type="button" class="btn btn-danger">Denuncia</button></li>
-
-
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
 		</div>
+
 	</div>
 	<!-- /.navbar -->
 
@@ -71,12 +52,19 @@
 		<div class="row">
 			<div class="col">
 				<header id="head" class="secondary">
-					<h1>Registrate</h1>
+					<h1>Iniciar Sesion</h1>
 				</header>
 			</div>
 		</div>
+
 		<c:if test="${error != null}">
 			<div class="alert alert-danger">${error}</div>
+		</c:if>
+		<c:if test="${info != null}">
+			<div class="alert alert-danger">${info}</div>
+		</c:if>
+		<c:if test="${success != null}">
+			<div class="alert alert-info">${success}</div>
 		</c:if>
 	</div>
 
@@ -87,65 +75,21 @@
 			<div class="col-md-8">
 				<h3 class="section-title"></h3>
 
-				<form method="POST" action="/registro/alumno"
-					class="form-light mt-20" role="form" modelAttribute="message">
+				<form method="POST" action="/login" class="form-light mt-20"
+					role="form" modelAttribute="message">
 					<div class="form-group">
-						<label> Nombre </label> <input name="nombre" type="text" required
-							autocomplete="off" class="form-control" placeholder="Nombre"
-							required>
-					</div>
-					<div class="form-group">
-						<label> Apellido </label> <input name="apellido" type="text"
-							required autocomplete="off" class="form-control"
-							placeholder="Apellido" required>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Correo</label> <input type="email" name="correo" required
-									autocomplete="off" class="form-control"
-									placeholder="Correo electronico">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Password </label> <input type="Password" name="password"
-									required autocomplete="off" class="form-control" minlength="8"
-									maxlength="16" placeholder="Password" required>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<div class="form-group"></div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group">
-								<label>Confirma Password </label> <input type="Password"
-									name="ConfirmPass" required autocomplete="off"
-									class="form-control" minlength="8" maxlength="16"
-									placeholder="Password" required>
-							</div>
-						</div>
+						<label> Email </label> <input name="username" id="username"
+							type="email" required autocomplete="off" class="form-control"
+							placeholder="Email" autofocus required>
 					</div>
 					<div class="form-group">
-						<label> Fecha de Nacimiento </label> <input type="date"
-							name="Fecha_nacimiento" class="form-control" required>
+						<label> Password </label> <input name="password" id="password"
+							type="password" required autocomplete="off" class="form-control"
+							placeholder="Password" autofocus required>
 					</div>
 
-					<div class="form-group">
-						<label>Nivel Academico</label>
-						<div class="dropdown">
-							<select name="nivelEdu" class="form-control"
-								id="exampleFormControlSelect1">
-								<c:forEach var="nivel" items="${niveles}">
-									<option value="${nivel.ID_NIVEL}">${nivel.NIVEL}</option>
-								</c:forEach>
-							</select>
-						</div>
-					</div>
 					<input type="submit" class="btn btn-two btn-blue"
-						value="Registrarse"></input>
+						value="Inicar Sesion"></input>
 					<p>
 						<br />
 					</p>
@@ -200,13 +144,7 @@
 	<script
 		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="/js/custom.js"></script>
-	<script type="text/javascript">
-		$(function() {
-			$('.multiselect-ui').multiselect({
-				includeSelectAllOption : true
-			});
-		});
-	</script>
+
 
 </body>
 </html>
