@@ -62,4 +62,9 @@ public class RutasController {
 		return "alertusuario";		
 	}
 	
+	@RequestMapping("/crearCurso")
+	public String CrearCurso(Model model) {
+		return "createCourse";		
+	} 
+	
 }

@@ -12,8 +12,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="PROFESOR")
 public class Profesor implements Serializable{
+
+	
 
 	/**
 	 * 
@@ -34,6 +36,8 @@ public class Profesor implements Serializable{
 	  @JoinColumn(name="ID_PERSONA")
 	private Persona ID_PERSONA;
 
+	
+	
 	public String getRFC() {
 		return RFC;
 	}

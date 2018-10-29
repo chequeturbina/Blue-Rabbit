@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +24,9 @@ import com.brabbit.springboot.app.models.entity.Profesor;
 import java.io.*;
 
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
 @Controller
 public class ProfesorController {
 	 @Autowired	
@@ -46,7 +50,7 @@ public class ProfesorController {
 			 @RequestParam("Fecha_nacimiento")@DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
 			 ModelMap modelMap) 		 
 	 {
-		
+		/*
 		Persona persona = new Persona();
 		persona.setCORREO(correo);
 		persona.setNOMBRE(nombre); 
@@ -58,6 +62,7 @@ public class ProfesorController {
 		Profesor profesor = new Profesor();
 		profesor.setCURP(curp);
 		profesor.setRFC(rfc);
+		profesor.setID_PERSONA(persona);
 		try {
 			profesor.setINE(ine.getBytes());
 		} catch (IOException e) {
@@ -116,4 +121,21 @@ public class ProfesorController {
 	    modelMap.addAttribute("cv", cv);
 		return "mostrando";
 	}
+	
+	
+	@RequestMapping(value = "/nuevo/curso", method = RequestMethod.POST)
+	 public String crearCurso(@RequestParam MultiValueMap<String, String> parameters) {
+		 final Iterator<Entry<String, List<String>>> it = parameters.entrySet().iterator();
+		 
+		 while(it.hasNext()) {
+		        final String k = it.next().getKey();
+		        System.out.println(k);
+		        System.out.println(it.next().getValue());
+		        final List<String> values = it.next().getValue();
+		    }
+		 
+		return "index";
+	}
+	
+	
 }

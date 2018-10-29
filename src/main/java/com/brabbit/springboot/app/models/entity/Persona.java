@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 @Table(name="PERSONA")
 public class Persona implements Serializable{
 
+	
 	/**
 	 * 
 	 */
@@ -36,6 +37,10 @@ public class Persona implements Serializable{
 	private Date FECHA_REGISTRO;
 	
 	//Este se ejecuta antes de crear la instancia y asigna la fecha al objeto bebe :)
+	
+	
+	
+	
 	public void prePersist() {
 		FECHA_REGISTRO = new Date();
 	}
