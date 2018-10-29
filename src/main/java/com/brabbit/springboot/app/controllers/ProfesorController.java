@@ -2,6 +2,7 @@ package com.brabbit.springboot.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -15,10 +16,12 @@ import com.brabbit.springboot.app.models.entity.Alumno;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
 import com.brabbit.springboot.app.models.entity.Persona;
 import com.brabbit.springboot.app.models.entity.Profesor;
+import com.brabbit.springboot.app.models.entity.Role;
 import com.brabbit.springboot.app.models.service.AlumnoDaoImplement;
 import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
 import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
+import com.brabbit.springboot.app.models.service.RoleDaoImplement;
 
 import java.io.*;
 
@@ -31,6 +34,12 @@ public class ProfesorController {
 
 	@Autowired
 	private PersonaDaoImplement personDao;
+	
+	@Autowired
+	private RoleDaoImplement roleDao;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@RequestMapping(value = "/registro/profesor", method = RequestMethod.POST)
 	public String formularioPersona(@RequestParam("cv") MultipartFile cv, @RequestParam("ine") MultipartFile ine,
@@ -41,13 +50,18 @@ public class ProfesorController {
 			ModelMap modelMap, @RequestParam(value = "error", required = false) String error, RedirectAttributes ra) {
 
 		Persona persona = new Persona();
+		Role role = new Role();
+		role.setRoles("ROLE_PROFESOR");
+		roleDao.save(role);
 
 		if (password.contentEquals(confirm) /* & (validoC & validar == null) */) {
 			persona.setUsername(correo);
 			persona.setNombre(nombre);
 			persona.setApellido(apellido);
-			persona.setPassword(password);
+			persona.setPassword(passwordEncoder.encode(password));
 			persona.setfNacimiento(Fecha_nacimiento);
+			persona.addRole(role);
+			persona.setEnabled(true);
 			personDao.save(persona);
 
 			Profesor profesor = new Profesor();

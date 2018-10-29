@@ -11,7 +11,10 @@ import org.apache.commons.logging.Log;
 import org.apache.logging.log4j.spi.LoggerContextFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -25,6 +28,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.brabbit.springboot.app.models.entity.Alumno;
@@ -50,14 +54,19 @@ public class AlumnoController {
 
 	@Autowired
 	private NivelEducativoDaoImplement nivelEduDao;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@RequestMapping(value = "/registro/alumno", method = RequestMethod.POST)
-	public String formularioPersona(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,
+	public @ResponseBody String formularioPersona(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,
 			@RequestParam("correo") String correo, @RequestParam("password") String password,
 			@RequestParam("nivelEdu") long nivel,
 			@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
 			@RequestParam("ConfirmPass") String confirm, Model model,
-			@RequestParam(value = "error", required = false) String error, RedirectAttributes ra) {
+			@RequestParam(value = "error", required = false) String error, 
+			RedirectAttributes ra) {
+		
 		Persona persona = new Persona();
 		boolean validoC = false;
 		ValidarCorreo vc = new ValidarCorreo();
@@ -70,19 +79,21 @@ public class AlumnoController {
 
 			Alumno alumno = new Alumno();
 			Role role = new Role();
+			role.setRoles("ROLE_ALUMNO");
+			roleDao.save(role);
+			persona.setPassword(passwordEncoder.encode(password));
 			persona.setNombre(nombre);
-
 			persona.setApellido(apellido);
-
-			persona.setPassword(password);
+			persona.setEnabled(true);
+			
 			persona.setfNacimiento(Fecha_nacimiento);
+			persona.addRole(role);
+			
 			System.out.println("******************" + persona.getId());
 			System.out.println("******************PERSONA CREADA");
 			System.out.println(persona.getId());
 
-			role.setRoles("ROLE_USER");
-			roleDao.save(role);
-			persona.addRole(role);
+			
 			personDao.save(persona);
 			NivelEducativo niv = nivelEduDao.findOne(nivel);
 			alumno.setID_NIVEL(niv);
@@ -91,8 +102,7 @@ public class AlumnoController {
 			alumNoDao.save(alumno);
 			System.out.println(persona.getId());
 
-			String alerta = "Exito al registrar se te enviara un correo";
-			ra.addAttribute("Confirm", alerta);
+			ra.addFlashAttribute("Confirm", "Exito al registrar se te enviara un correo");
 			return "redirect:/alerta";
 		} else {
 			ra.addFlashAttribute("error", "Contraseña no coincide o el Correo no es valido");
@@ -105,4 +115,5 @@ public class AlumnoController {
 	public String RegistroAlumno(Model model) {
 		return "ConfirmStudent";
 	}
+	
 }

@@ -13,6 +13,9 @@ import javax.persistence.TypedQuery;
 import java.io.IOException;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,5 +48,5 @@ public class PersonaDaoImplement implements InterfacePersonaDao {
 				.setParameter("correo", correo).getResultList();
 		return results.isEmpty() ? null : results.get(0);
 	}
-
+	
 }

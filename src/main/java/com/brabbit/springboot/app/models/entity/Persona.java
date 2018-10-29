@@ -1,6 +1,7 @@
 package com.brabbit.springboot.app.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -26,7 +28,6 @@ public class Persona implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="PERSONA_ID")
 	private long id;
 	
 	private String nombre;
@@ -40,14 +41,8 @@ public class Persona implements Serializable{
 	
 	private Boolean enabled;
 
-	@OneToMany
-	  @JoinTable
-	  (
-	      name="PERSONA_ROLES",
-	      joinColumns={ @JoinColumn(name="PERSONA_ID", referencedColumnName="PERSONA_ID") },
-	      inverseJoinColumns={ @JoinColumn(name="ROLES_ID", referencedColumnName="ID", unique=true) }
-	  )
-	private List<Role> roles;
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private List<Role> roles = new ArrayList<>();
 	
 	public Boolean getEnabled() {
 		return enabled;
@@ -57,6 +52,7 @@ public class Persona implements Serializable{
 		this.enabled = enabled;
 	}
 
+	
 	public List<Role> getRoles() {
 		return roles;
 	}
@@ -69,7 +65,7 @@ public class Persona implements Serializable{
 	public void prePersist() {
 		fRegistro = new Date();
 	}
-		
+	
 	public long getId() {
 		return id;
 	}
@@ -136,7 +132,8 @@ public class Persona implements Serializable{
 	
 	/*Metodo para agregar los roles de cada tipo de usuario*/
 	public void addRole(Role role) {
-	    this.roles.add(role);
+	    roles.add(role);
+	    role.getPersonas().add(this);
 	}
 	
 	/**
