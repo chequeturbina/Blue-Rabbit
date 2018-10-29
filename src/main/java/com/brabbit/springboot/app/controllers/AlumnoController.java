@@ -59,7 +59,7 @@ public class AlumnoController {
 	private BCryptPasswordEncoder passwordEncoder;
 
 	@RequestMapping(value = "/registro/alumno", method = RequestMethod.POST)
-	public @ResponseBody String formularioPersona(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,
+	public String formularioPersona(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,
 			@RequestParam("correo") String correo, @RequestParam("password") String password,
 			@RequestParam("nivelEdu") long nivel,
 			@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
