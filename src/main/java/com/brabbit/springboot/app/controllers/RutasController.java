@@ -31,6 +31,10 @@ public class RutasController {
 		return "teacher";		
 	}
 	
+	@RequestMapping("/crearCurso")
+	public String CrearCurso(Model model) {
+		return "createCourse";		
+	} 
 	@RequestMapping("/alumno")
 	public String Alumno(Model model) {
 		List<NivelEducativo> um = nivelEduDao.findAll();
