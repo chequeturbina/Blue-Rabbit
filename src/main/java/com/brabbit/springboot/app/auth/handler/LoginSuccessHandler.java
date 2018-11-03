@@ -12,6 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.FlashMap;
@@ -32,18 +34,41 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         boolean isAlumno = false;
         boolean isProfesor = false;
         boolean isAdmin = false;
+        
+        FlashMap flashMap = new FlashMap();
 
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-
+		
+		
 		 for (GrantedAuthority grantedAuthority : authorities) {
 	            if (grantedAuthority.getAuthority().equals("ROLE_ALUMNO")) {
+	            	if (authentication != null) {
+	            		logger.info("El usuario "+ authentication.getName() +"ha iniciado sesion con exito");
+	            	}
+	            	//Mostrar que el usuario tal inicio sesion Esto lo jalaa para usarlo en el controlador
+	        		flashMap.put("success","Hola " + authentication.getName() + "Haz iniciado Sesion");
+	        		
+
 	                isAlumno = true;
 	                break;
 	            } else if (grantedAuthority.getAuthority().equals("ROLE_PROFESOR")) {
-	                isProfesor = true;
+	            	if (authentication != null) {
+	            		logger.info("El usuario "+ authentication.getName() +"ha iniciado sesion con exito");
+	            	}
+	            	//Mostrar que el usuario tal inicio sesion Esto lo jalaa para usarlo en el controlador
+	        		flashMap.put("success","Hola " + authentication.getName() + "Haz iniciado Sesion");
+
+	            	isProfesor = true;
 	                break;
 	            }else if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
-	                isAdmin = true;
+	            	//Esta linea imprime en consola el mensaje y jala el que haya iniciado sesion
+	            	if (authentication != null) {
+	            		logger.info("El usuario "+ authentication.getName() +"ha iniciado sesion con exito");
+	            	}
+	            	//Mostrar que el usuario tal inicio sesion Esto lo jalaa para usarlo en el controlador
+	        		flashMap.put("success","Hola " + authentication.getName() + "Haz iniciado Sesion");
+
+	            	isAdmin = true;
 	                break;
 	            }
 	        }
@@ -58,4 +83,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 	        	response.sendRedirect("/index");
 	        }
 	}
+	
+
+
 }

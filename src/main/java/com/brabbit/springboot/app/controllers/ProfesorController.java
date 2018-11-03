@@ -6,11 +6,15 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map.Entry;
 
 import com.brabbit.springboot.app.models.entity.Alumno;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
@@ -26,6 +30,8 @@ import com.brabbit.springboot.app.models.service.RoleDaoImplement;
 import java.io.*;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map.Entry;
 
 @Controller
 public class ProfesorController {
@@ -90,5 +96,24 @@ public class ProfesorController {
 			return "redirect:/registroP";
 
 		}
+	}
+	
+	@RequestMapping("/curso")
+	public String Curso(Model model) {
+		return "createCourse";
+	}
+	
+	@RequestMapping(value = "/nuevo/curso", method = RequestMethod.POST)
+	 public String crearCurso(@RequestParam MultiValueMap<String, String> parameters) {
+		 final Iterator<Entry<String, List<String>>> it = parameters.entrySet().iterator();
+		 
+		 while(it.hasNext()) {
+		        final String k = it.next().getKey();
+		        System.out.println(k);
+		        System.out.println(it.next().getValue());
+		        final List<String> values = it.next().getValue();
+		    }
+		 
+		return "redirect:/profesor";
 	}
 }

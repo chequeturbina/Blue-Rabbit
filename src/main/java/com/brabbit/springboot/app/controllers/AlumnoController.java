@@ -1,5 +1,6 @@
 package com.brabbit.springboot.app.controllers;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -60,7 +61,7 @@ public class AlumnoController {
 
 	@RequestMapping(value = "/registro/alumno", method = RequestMethod.POST)
 	public String formularioPersona(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,
-			@RequestParam("correo") String correo, @RequestParam("password") String password,
+			@RequestParam("username") String username, @RequestParam("password") String password,
 			@RequestParam("nivelEdu") long nivel,
 			@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
 			@RequestParam("ConfirmPass") String confirm, Model model,
@@ -70,9 +71,9 @@ public class AlumnoController {
 		Persona persona = new Persona();
 		boolean validoC = false;
 		ValidarCorreo vc = new ValidarCorreo();
-		persona.setUsername(correo);
-		validoC = vc.validar(correo);
-		Persona validar = personDao.porCorreo(correo);
+		persona.setUsername(username);
+		validoC = vc.validar(username);
+		Persona validar = personDao.porCorreo(username);
 
 		/* No importara ahorita la verificacion del correo, hasta depsues */
 		if (password.contentEquals(confirm) /* & (validoC & validar == null) */) {
@@ -102,6 +103,7 @@ public class AlumnoController {
 			alumNoDao.save(alumno);
 			System.out.println(persona.getId());
 
+			
 			ra.addFlashAttribute("Confirm", "Exito al registrar se te enviara un correo");
 			return "redirect:/alerta";
 		} else {
@@ -115,5 +117,6 @@ public class AlumnoController {
 	public String RegistroAlumno(Model model) {
 		return "ConfirmStudent";
 	}
+	
 	
 }
