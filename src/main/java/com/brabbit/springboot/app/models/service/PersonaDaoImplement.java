@@ -1,5 +1,6 @@
 package com.brabbit.springboot.app.models.service;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -48,5 +49,13 @@ public class PersonaDaoImplement implements InterfacePersonaDao {
 				.setParameter("correo", correo).getResultList();
 		return results.isEmpty() ? null : results.get(0);
 	}
+	
+	public Persona porNombre(String username) {
+		List<Persona> results = em.createQuery("SELECT w FROM Persona w WHERE w.username = :username", Persona.class)
+				.setParameter("username", username).getResultList();
+		System.out.println(results);
+		return results.isEmpty() ? null : results.get(0);
+	}
+	
 	
 }

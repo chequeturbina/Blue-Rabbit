@@ -4,6 +4,8 @@ import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.Query;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.brabbit.springboot.app.models.dao.IUsuarioDao;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
+import com.brabbit.springboot.app.models.entity.Persona;
 import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
+import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
 
 //AQUI SE DEFINIRAN LAS RUTAS HACIA LAS VISTAS.
 @Controller
@@ -25,6 +29,9 @@ import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 public class RutasController {
 
 	protected final Log logger = LogFactory.getLog(this.getClass());
+	
+	@Autowired
+	private PersonaDaoImplement personDao;
 	
 	@Autowired
 	private NivelEducativoDaoImplement nivelEduDao;
@@ -72,7 +79,10 @@ public class RutasController {
 			logger.info("Hola ".concat(authentication.getName()));
 		}
 		
-	      
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		
 		List<NivelEducativo> um = nivelEduDao.findAll();
 		model.addAttribute("niveles", um);
 		return "admin";
