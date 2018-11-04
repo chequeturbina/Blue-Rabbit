@@ -4,6 +4,8 @@ import java.security.Principal;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.Query;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ import java.security.Principal;
 public class RutasController {
 
 	protected final Log logger = LogFactory.getLog(this.getClass());
+	
+	@Autowired
+	private PersonaDaoImplement personDao;
 	
 	@Autowired
 	private NivelEducativoDaoImplement nivelEduDao;
@@ -84,7 +89,10 @@ public class RutasController {
 			logger.info("Hola ".concat(authentication.getName()));
 		}
 		
-	      
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		
 		List<NivelEducativo> um = nivelEduDao.findAll();
 		model.addAttribute("niveles", um);
 		return "admin";
