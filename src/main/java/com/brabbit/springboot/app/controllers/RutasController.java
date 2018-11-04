@@ -1,14 +1,21 @@
 package com.brabbit.springboot.app.controllers;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.brabbit.springboot.app.models.dao.IUsuarioDao;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
 import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 
@@ -17,6 +24,8 @@ import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 
 public class RutasController {
 
+	protected final Log logger = LogFactory.getLog(this.getClass());
+	
 	@Autowired
 	private NivelEducativoDaoImplement nivelEduDao;
 
@@ -57,7 +66,13 @@ public class RutasController {
 	}
 
 	@RequestMapping("/admin")
-	public String Administrador(Model model) {
+	public String Administrador(Model model, Authentication authentication, Principal principal) {
+		
+		if(authentication != null) {
+			logger.info("Hola ".concat(authentication.getName()));
+		}
+		
+	      
 		List<NivelEducativo> um = nivelEduDao.findAll();
 		model.addAttribute("niveles", um);
 		return "admin";

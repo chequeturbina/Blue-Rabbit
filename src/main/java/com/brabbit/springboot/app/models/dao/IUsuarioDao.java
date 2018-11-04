@@ -7,4 +7,6 @@ import com.brabbit.springboot.app.models.entity.Persona;
 public interface IUsuarioDao extends CrudRepository<Persona, Long>{
 
 	public Persona findByUsername(String username);
+	
+	
 }

@@ -48,9 +48,14 @@
 					<li><a href="<c:url value="profesor"/>">Estadisticas</a></li>
 					<li><a href="<c:url value="profesor"/>">Ingresos</a></li>
 
-					<li><a class="btn btn-two btn-blue"
-						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
 					<li><button type="button" class="btn btn-danger">Denuncia</button></li>
+					<li class="dropdown"><a class="dropdown-toggle" href="#"
+						data-toggle="dropdown"> <sec:authentication var="principal"
+								property="principal" /> ${principal.username}
+							<ul class="dropdown-menu">
+								<li><a class="btn btn-two btn-blue"
+									href="<c:url value="/logout" />">Cerrar Sesion</a></li>
+							</ul></li>
 
 				</ul>
 			</div>
@@ -93,9 +98,12 @@
 					value="Editar Perfil" />
 			</div>
 			<div class="col-md-2">
-				<input type="submit" class="profile-edit-btn" name="btnAddMore"
-					value="Crear Curso" />
+			<form action="/curso">
+				<input type="submit" class="btn btn-two btn-success"
+								value="Crear Curso">
+			</form>
 			</div>
+			
 		</div>
 		<div class="row">
 			<div class="col-md-4">
@@ -224,6 +232,17 @@
 
 				<div class="col-md-6 panel">
 					<div class="panel-body">
+					<p class="text">
+							<sec:authorize access="isAuthenticated()">
+			Usuario logeado: <sec:authentication var="principal"
+									property="principal" /> ${principal.username} 
+			| Roles: <sec:authentication property="principal.authorities"
+									var="authorities" />
+								<c:forEach items="${authorities}" var="authority" varStatus="vs">
+								${authority.authority}
+							</c:forEach>
+							</sec:authorize>
+						</p>
 						<p class="text-right">
 							Copyright &copy; 2014. Template by <a href="BlueRabbit"
 								rel="develop">Blue Rabbit International</a>

@@ -112,14 +112,14 @@
 							<div class="form-group">
 								<label>Correo</label> <input type="email" name="correo" required
 									autocomplete="off" class="form-control"
-									placeholder="Correo electronico">
+									placeholder="Correo electronico" autofocus required>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Password </label> <input type="Password" name="password"
 									required autocomplete="off" class="form-control" minlength="8"
-									maxlength="16" placeholder="Password" required>
+									maxlength="16" placeholder="Password" autofocus required>
 							</div>
 						</div>
 					</div>

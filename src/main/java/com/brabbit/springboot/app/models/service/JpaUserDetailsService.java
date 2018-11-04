@@ -54,5 +54,5 @@ public class JpaUserDetailsService implements UserDetailsService {
 		return new User(persona.getUsername(), persona.getPassword(), persona.getEnabled(), true, true, true,
 				authorities);
 	}
-
+	
 }
