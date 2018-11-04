@@ -1,4 +1,4 @@
-package com.brabbit.springboot.app.models.dao;
+package com.brabbit.springboot.app.models.service;
 
 import java.util.List;
 
@@ -17,14 +17,14 @@ public class ProfesorDaoImplement implements InterfaceProfesorDao {
 
 	@PersistenceContext
 	private EntityManager em;
-	
-	@Transactional(readOnly=true)
+
+	@Transactional(readOnly = true)
 	@Override
 	public List<Profesor> findAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Transactional
 	@Override
 	public void save(Profesor profesor) {

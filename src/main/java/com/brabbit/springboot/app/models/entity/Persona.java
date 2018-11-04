@@ -1,101 +1,150 @@
 package com.brabbit.springboot.app.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
+
 
 @Entity
 @Table(name="PERSONA")
 public class Persona implements Serializable{
 
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long ID_PERSONA;
+	private long id;
 	
-	@NotNull(message = "Name cannot be null")
-	private String NOMBRE;
-	private String APELLIDO;
-	private char SEXO;
-	private Date FECHA_NACIMIENTO;
-	private String CORREO;
-	private String PASSWORD;
+	private String nombre;
+	private String apellido;
+	private char sexo;
+	private Date fNacimiento;
+	private String username;
+	private String password;
 	@Temporal(TemporalType.DATE)
-	private Date FECHA_REGISTRO;
+	private Date fRegistro;
 	
+	private Boolean enabled;
+
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private List<Role> roles = new ArrayList<>();
+	
+	public Boolean getEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+
 	//Este se ejecuta antes de crear la instancia y asigna la fecha al objeto bebe :)
 	
 	
 	
 	
 	public void prePersist() {
-		FECHA_REGISTRO = new Date();
+		fRegistro = new Date();
 	}
 	
-	public long getID_PERSONA() {
-		return ID_PERSONA;
+	public long getId() {
+		return id;
 	}
-	public void setID_PERSONA(long iD_PERSONA) {
-		ID_PERSONA = iD_PERSONA;
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public char getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(char sexo) {
+		this.sexo = sexo;
+	}
+
+	public Date getfNacimiento() {
+		return fNacimiento;
+	}
+
+	public void setfNacimiento(Date fNacimiento) {
+		this.fNacimiento = fNacimiento;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Date getfRegistro() {
+		return fRegistro;
+	}
+
+	public void setfRegistro(Date fRegistro) {
+		this.fRegistro = fRegistro;
 	}
 	
-	public String getNOMBRE() {
-		return NOMBRE;
-	}
-	public void setNOMBRE(String aNOMBRE) {
-		NOMBRE = aNOMBRE;
-	}
-	
-	public String getPASSWORD() {
-		return PASSWORD;
-	}
-	public void setPASSWORD(String pASSWORD) {
-		PASSWORD = pASSWORD;
+	/*Metodo para agregar los roles de cada tipo de usuario*/
+	public void addRole(Role role) {
+	    roles.add(role);
+	    role.getPersonas().add(this);
 	}
 	
-	public String getAPELLIDO() {
-		return APELLIDO;
-	}
-	public void setAPELLIDO(String aPELLIDO) {
-		APELLIDO = aPELLIDO;
-	}
-	public char getSEXO() {
-		return SEXO;
-	}
-	public void setSEXO(char sEXO) {
-		SEXO = sEXO;
-	}
-	public Date getFECHA_NACIMIENTO() {
-		return FECHA_NACIMIENTO;
-	}
-	public void setFECHA_NACIMIENTO(Date fECHA_NACIMIENTO) {
-		FECHA_NACIMIENTO = fECHA_NACIMIENTO;
-	}
-	public Date getFECHA_REGISTRO() {
-		return FECHA_REGISTRO;
-	}
-	public void setFECHA_REGISTRO(Date fECHA_REGISTRO) {
-		FECHA_REGISTRO = fECHA_REGISTRO;
-	}
-	public String getCORREO() {
-		return CORREO;
-	}
-	public void setCORREO(String cORREO) {
-		CORREO = cORREO;
-	}
-	//mappedBy
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	
 }

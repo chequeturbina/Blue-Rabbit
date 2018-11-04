@@ -4,18 +4,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="Blue-Rabbit">
-	<meta name="author" content="webThemez.com">
-	<title>"Blue-Rabbit"</title>
-	<link rel="favicon" href="/img/favicon.png">
-	<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-	<link rel="stylesheet" href="/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/font-awesome.min.css">
-	<!-- Custom styles for our template -->
-	<link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
-	<link rel="stylesheet" href="/css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Blue-Rabbit">
+<meta name="author" content="webThemez.com">
+<title>"Blue-Rabbit"</title>
+<link rel="favicon" href="/img/favicon.png">
+<link rel="stylesheet" media="screen"
+	href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<!-- Custom styles for our template -->
+<link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
+<link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -25,79 +26,40 @@
 		<div class="container">
 			<div class="navbar-header">
 				<!-- Button for smallest screens -->
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-				<a class="img-responsive" href="<c:url value="/"/>">
-				<a class="img-responsive" href="<c:url value="/"/>">
-					<img src="/img/logo.png" width="200" height="90" alt="Techro HTML5 template"></a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span><span class="icon-bar"></span><span
+						class="icon-bar"></span>
+				</button>
+				<a class="img-responsive" href="<c:url value="/"/>"> <a
+					class="img-responsive" href="<c:url value="/"/>"> <img
+						src="/img/logo.png" width="200" height="90"
+						alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
 					<li><a href="<c:url value="/"/>">Tutorias</a></li>
-				    <li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro <b class="caret"></b></a>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Registro <b class="caret"></b></a>
 						<ul class="dropdown-menu">
-							<li><a href="<c:url value="/registro/alumno"/>">Alumno</a></li>
-							<li><a href="<c:url value="/registro/profesor"/>">Profesor</a></li>
-						</ul>
+							<li><a href="<c:url value="/registroA"/>">Alumno</a></li>
+							<li><a href="<c:url value="/registroP"/>">Profesor</a></li>
+						</ul></li>
+
+					<!-- chorizote para iniciar sesion-->
+
+					<li>
+						<form action="/loginpage">
+							<input type="submit" class="btn btn-two btn-blue"
+								value="Iniciar Sesion"></input>
+						</form>
 					</li>
-					
-					 <!-- chorizote para iniciar sesion-->
 
-            <li>
-              <button class="btn btn-primary btn-blue" data-toggle="modal" data-target="#myModal">
-    Iniciar Sesion</button>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    X</button>
-               
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="Login">
-                            
-                                <form  name="form1" role="form" class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="email" class="col-sm-2 control-label">
-                                        Correo</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" name="txt" class="form-control" path="correo" id="email1" placeholder="Correo electronico" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1" class="col-sm-2 control-label">
-                                        Password</label>
-                                    <div class="col-sm-10">
-                                        <input type="password" name="num" path="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <input type="button" class="btn btn-primary btn-sm" onclick="administrador()" value="Iniciar Sesion">
-                                        <a href="javascript:;">Forgot your password?</a>
-                                    </div>
-                                </div>
-                                </form>
-                            </div>
-                            
-    </div>
-            </li>
-            
-            <!--Hasta aqui acaba el puto chorizote-->
-            
-            
-            <li><button type="button" class="btn btn-danger">Denuncia</button></li>
 
-            
+					<li><button type="button" class="btn btn-danger">Denuncia</button></li>
+
+
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -105,101 +67,104 @@
 	</div>
 	<!-- /.navbar -->
 
-			<div class="container">
-            	<div class="row">
-            		<div class="col col-lg-8">
-            			<header id="head" class="secondary">
-						    <h1>
-		                    	Registrate
-		                    </h1>
-						</header>
-					</div>
-				</div>
-            </div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<header id="head" class="secondary">
+					<h1>Registrate</h1>
+				</header>
+			</div>
+		</div>
+		<c:if test="${error != null}">
+			<div class="alert alert-danger">${error}</div>
+		</c:if>
+	</div>
 
 
 	<!-- container -->
 	<div class="container">
-				<div class="row">
-					<div class="col-md-8">
-						<h3 class="section-title">
-						Registro
-					</h3>
-						
-						<form method="POST" action="/registro/alumno" class="form-light mt-20" role="form" modelAttribute="message">
-							<div class="form-group">
-								<label>
-								Nombre
-							</label>
-								<input name="nombre" type="text" required autocomplete="off" class="form-control" placeholder="Nombre" required>
-							</div>
-							<div class="form-group">
-								<label>
-								Apellido
-							</label>
-								<input name="apellido" type="text" required autocomplete="off" class="form-control" placeholder="Apellido" required>
-							</div>
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>Correo</label>
-										<input type="email" name="correo"  required autocomplete="off" class="form-control" placeholder="Correo electronico">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>Password
-										</label>
-										<input type="Password" name="password" required autocomplete="off" class="form-control"  minlength="8" maxlength="16" placeholder="Password" required>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-							<div class="col-md-6">
-									<div class="form-group">
-									</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-										<label>Confirma Password
-										</label>
-										<input type="Password" name="ConfirmPass" required autocomplete="off" class="form-control"  minlength="8" maxlength="16" placeholder="Password" required>
-									</div>
-								</div></div>
-							<div class="form-group">
-								<label>
-								Fecha de Nacimiento
-							</label>
-									<input type="date" name="Fecha_nacimiento" class="form-control" required>
-							</div>
+		<div class="row">
+			<div class="col-md-8">
+				<h3 class="section-title"></h3>
 
-							<div class="form-group">
-								<label>Nivel Academico</label>
-								<div class="dropdown">
-									<select name="nivelEdu" class="form-control" id="exampleFormControlSelect1">
-										<c:forEach var="nivel" items="${niveles}">
-				                         <option value="${nivel.ID_NIVEL}"> ${nivel.NIVEL} </option>
-			                              </c:forEach>
-									</select>
-								</div>
-							</div>
-						<input type="submit" class="btn btn-two btn-blue" value="Registrarse"></input><p><br/></p>
-						</form>
+				<form method="POST" action="/registro/alumno"
+					class="form-light mt-20" role="form" modelAttribute="message">
+					<div class="form-group">
+						<label> Nombre </label> <input name="nombre" type="text" required
+							autocomplete="off" class="form-control" placeholder="Nombre"
+							required>
 					</div>
-					
-				</div>
+					<div class="form-group">
+						<label> Apellido </label> <input name="apellido" type="text"
+							required autocomplete="off" class="form-control"
+							placeholder="Apellido" required>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Correo</label> <input type="email" name="correo" required
+									autocomplete="off" class="form-control"
+									placeholder="Correo electronico">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Password </label> <input type="Password" name="password"
+									required autocomplete="off" class="form-control" minlength="8"
+									maxlength="16" placeholder="Password" required>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group"></div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label>Confirma Password </label> <input type="Password"
+									name="ConfirmPass" required autocomplete="off"
+									class="form-control" minlength="8" maxlength="16"
+									placeholder="Password" required>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label> Fecha de Nacimiento </label> <input type="date"
+							name="Fecha_nacimiento" class="form-control" required>
+					</div>
+
+					<div class="form-group">
+						<label>Nivel Academico</label>
+						<div class="dropdown">
+							<select name="nivelEdu" class="form-control"
+								id="exampleFormControlSelect1">
+								<c:forEach var="nivel" items="${niveles}">
+									<option value="${nivel.ID_NIVEL}">${nivel.NIVEL}</option>
+								</c:forEach>
+							</select>
+						</div>
+					</div>
+					<input type="submit" class="btn btn-two btn-blue"
+						value="Registrarse"></input>
+					<p>
+						<br />
+					</p>
+				</form>
 			</div>
+
+		</div>
+	</div>
 	<!-- /container -->
 
-	 <footer id="footer">
- 
-			<div class="social text-center">
-				<a href="#"><i class="fa fa-twitter"></i></a>
-				<a href="#"><i class="fa fa-facebook"></i></a>
-			</div>
+	<footer id="footer">
 
-			<div class="clear"></div>
-			<!--CLEAR FLOATS-->
+		<div class="social text-center">
+			<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
+				class="fa fa-facebook"></i></a>
+		</div>
+
+		<div class="clear"></div>
+		<!--CLEAR FLOATS-->
 		</div>
 		<div class="footer2">
 			<div class="container">
@@ -216,7 +181,8 @@
 					<div class="col-md-6 panel">
 						<div class="panel-body">
 							<p class="text-right">
-								Copyright &copy; 2014. Template by <a href="http://webthemez.com/" rel="develop">WebThemez.com</a>
+								Copyright &copy; 2014. Template by <a
+									href="http://webthemez.com/" rel="develop">WebThemez.com</a>
 							</p>
 						</div>
 					</div>
@@ -229,28 +195,18 @@
 
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script
+		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script
+		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="/js/custom.js"></script>
-	<script type="text/javascript"> 
+	<script type="text/javascript">
 		$(function() {
 			$('.multiselect-ui').multiselect({
-				includeSelectAllOption: true
+				includeSelectAllOption : true
 			});
 		});
 	</script>
-	
-	
-	<!--  Script para validar admin en inicar sesion -->
-	<script>
-	function administrador(){
-		if (document.form1.txt.value=="admin@admin" && document.form1.num.value=="1234"){window.location.href="<c:url value="/admin"/>";return}
-		else {alert("Error en Usuario o Contraseña. Intenta de nuevo.")}
-		}
-	document.oncontextmenu=new Function("return false");
-	</script>
-
-	
 
 </body>
 </html>

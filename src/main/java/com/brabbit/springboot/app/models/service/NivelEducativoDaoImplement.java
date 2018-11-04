@@ -1,5 +1,4 @@
-package com.brabbit.springboot.app.models.dao;
-
+package com.brabbit.springboot.app.models.service;
 
 import java.util.List;
 
@@ -16,8 +15,8 @@ import com.brabbit.springboot.app.models.entity.NivelEducativo;
 public class NivelEducativoDaoImplement implements InterfaceNivelEducativoDao {
 
 	@PersistenceContext
-	private EntityManager em; 
-	
+	private EntityManager em;
+
 	@Transactional
 	@Override
 	public void save(NivelEducativo nivelEducativo) {
@@ -25,24 +24,18 @@ public class NivelEducativoDaoImplement implements InterfaceNivelEducativoDao {
 
 	}
 
-
 	@SuppressWarnings("unchecked")
-	@Transactional(readOnly=true)
+	@Transactional(readOnly = true)
 	@Override
 	public List<NivelEducativo> findAll() {
 		List niveles = null;
 		Query query = em.createQuery("from NivelEducativo");
-	    niveles= query.getResultList();
-	    return niveles;
+		niveles = query.getResultList();
+		return niveles;
 	}
 
-	
 	public NivelEducativo findOne(long id) {
 		return em.find(NivelEducativo.class, id);
 	}
 
-
-	
-	
-	
 }

@@ -1,4 +1,4 @@
-package com.brabbit.springboot.app.models.dao;
+package com.brabbit.springboot.app.models.service;
 
 import java.util.List;
 
@@ -13,6 +13,9 @@ import javax.persistence.TypedQuery;
 import java.io.IOException;
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,12 +27,12 @@ public class PersonaDaoImplement implements InterfacePersonaDao {
 
 	@PersistenceContext
 	private EntityManager em;
-	
-	@Transactional(readOnly=true)
+
+	@Transactional(readOnly = true)
 	@Override
 	public List<Persona> findAll() {
 		// TODO Auto-generated method stub
-		//return em.createQuery("from Persona").getResultList();
+		// return em.createQuery("from Persona").getResultList();
 		return null;
 	}
 
@@ -39,10 +42,11 @@ public class PersonaDaoImplement implements InterfacePersonaDao {
 		// TODO Auto-generated method stub
 		em.persist(persona);
 	}
-	
-	public Persona porCorreo(String correo) {
-		List<Persona> results = em.createQuery("SELECT w FROM Persona w WHERE w.CORREO = :correo",Persona.class).setParameter("correo", correo).getResultList();
-		return results.isEmpty() ? null : results.get(0);}
 
+	public Persona porCorreo(String correo) {
+		List<Persona> results = em.createQuery("SELECT w FROM Persona w WHERE w.username = :correo", Persona.class)
+				.setParameter("correo", correo).getResultList();
+		return results.isEmpty() ? null : results.get(0);
+	}
 	
 }
