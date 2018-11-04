@@ -141,17 +141,17 @@
 							name="Fecha_nacimiento" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>CV</label>
-						<div class="form-group">
-							<input type="file" name="cv" id="ejemplo_archivo_1">
-						</div>
+								<label>CV</label>
+								<div class="form-group">
+								<input type="file" name="cv" id="ejemplo_archivo_1">
+								</div>
 					</div>
 					<div class="form-group">
-						<label>INE/IDE</label>
-						<div class="form-group">
-							<input type="file" name="ine" id="ejemplo_archivo_1">
-						</div>
-					</div>
+								<label>INE/IDE</label>
+								<div class="form-group">
+									<input type="file" name="ine" id="ejemplo_archivo_1">
+								</div>
+							</div>
 					<button type="submit" class="btn btn-two btn-blue">Registrarse</button>
 					<p>
 						<br />

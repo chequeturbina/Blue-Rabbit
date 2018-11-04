@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.brabbit.springboot.app.models.dao.IUsuarioDao;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
+import com.brabbit.springboot.app.models.entity.Persona;
 import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
+import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
 
+import java.security.Principal;
 //AQUI SE DEFINIRAN LAS RUTAS HACIA LAS VISTAS.
 @Controller
 
@@ -43,6 +46,15 @@ public class RutasController {
 
 	@RequestMapping("/profesor")
 	public String Profesor(Model model) {
+		PersonaDaoImplement personaDao = new PersonaDaoImplement();
+		Persona persona;
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName();
+		persona = personaDao.porCorreo(name);
+		System.out.println("******************************************************************");
+		System.out.println(name);
+		System.out.println(persona.getNombre());
+		
 		return "teacher";
 	}
 

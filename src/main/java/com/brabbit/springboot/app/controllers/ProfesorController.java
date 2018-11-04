@@ -77,6 +77,7 @@ public class ProfesorController {
 			Profesor profesor = new Profesor();
 			profesor.setCURP(curp);
 			profesor.setRFC(rfc);
+			profesor.setID_PERSONA(persona);
 			try {
 				profesor.setINE(ine.getBytes());
 			} catch (IOException e) {
@@ -89,12 +90,11 @@ public class ProfesorController {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
+			
 			profesorDao.save(profesor);
 
-			modelMap.addAttribute("ine", ine);
-			modelMap.addAttribute("cv", cv);
-			return "mostrando";
+			
+			return "redirect:/profesor";
 		} else {
 			ra.addFlashAttribute("error", "Contraseña no coincide o el Correo no es valido");
 			return "redirect:/registroP";
