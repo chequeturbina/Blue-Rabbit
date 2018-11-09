@@ -57,5 +57,10 @@ public class PersonaDaoImplement implements InterfacePersonaDao {
 		return results.isEmpty() ? null : results.get(0);
 	}
 	
+	public Persona findPersona(String username) {
+		  Object obj = em.createNativeQuery("SELECT * FROM Persona WHERE USERNAME = " + username).getSingleResult();
+		    Persona user = (Persona)obj;
+		    return user;        
+	}
 	
 }

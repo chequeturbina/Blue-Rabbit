@@ -2,6 +2,8 @@ package com.brabbit.springboot.app.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,20 +17,23 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import com.brabbit.springboot.app.models.entity.Alumno;
+import com.brabbit.springboot.app.models.entity.Curso;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
 import com.brabbit.springboot.app.models.entity.Persona;
 import com.brabbit.springboot.app.models.entity.Profesor;
 import com.brabbit.springboot.app.models.entity.Role;
 import com.brabbit.springboot.app.models.service.AlumnoDaoImplement;
+import com.brabbit.springboot.app.models.service.CursoDaoImplement;
 import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
 import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
 import com.brabbit.springboot.app.models.service.RoleDaoImplement;
 
 import java.io.*;
-
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map.Entry;
@@ -51,6 +56,13 @@ public class ProfesorController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
+	@Autowired
+	private NivelEducativoDaoImplement nivelDao;
+	
+	@Autowired
+	private CursoDaoImplement cursoDao;
+	
+	
 	@RequestMapping(value = "/registro/profesor", method = RequestMethod.POST)
 	public String formularioPersona(@RequestParam("cv") MultipartFile cv, @RequestParam("ine") MultipartFile ine,
 			@RequestParam("name") String nombre, @RequestParam("lastname") String apellido,
@@ -105,16 +117,110 @@ public class ProfesorController {
 
 	
 	@RequestMapping(value = "/nuevo/curso", method = RequestMethod.POST)
-	 public String crearCurso(@RequestParam MultiValueMap<String, String> parameters) {
-		 final Iterator<Entry<String, List<String>>> it = parameters.entrySet().iterator();
+	 public String crearCurso(
+			 @RequestParam("titulo")String titulo,
+			 @RequestParam("descripcion")String descripcion,
+			 @RequestParam(value="primaria",required=false) String primaria,
+			 @RequestParam(value="secundaria",required=false) String secundaria,
+			 @RequestParam(value="bachillerato",required=false) String bachillerato,
+			 @RequestParam(value="universidad",required=false) String universidad,
+			 @RequestParam(value="maestria",required=false) String maestria,
+			 @RequestParam(value="doctorado",required=false) String doctorado,
+			 @RequestParam MultiValueMap<String, String> horarios) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName();
+		Persona persona = personDao.porNombre(name);
+
+		System.out.println("******************************************************************");
+		System.out.println(persona.getNombre()+" NOMBRE");
+		System.out.println("******************************************************************");
+		Profesor profesor = profesorDao.porId(persona.getId());
+		System.out.println("******************************************************************");
+		System.out.println(profesor.getRFC()+" RFC");
+		List<NivelEducativo> nivel = new ArrayList<>();
+
+		Curso curso = new Curso();
+		
+		curso.setTITULO(titulo);
+		curso.setDESCRIPCION(descripcion);
+		curso.setRFC(profesor);
+		
+		if( primaria!= null)
+		  {
+			NivelEducativo pri = nivelDao.findOne(1);
+			nivel.add(pri);
+		    System.out.println("primaria is checked");
+		  }
+		  else
+		  {
+		    System.out.println("primaria is not checked");
+		  }
+		
+		if(secundaria != null)
+		  {
+			NivelEducativo secu = nivelDao.findOne(2);
+			nivel.add(secu);
+			System.out.println("secundaria is checked");
+		  }
+		  else
+		  {
+		    System.out.println("secundaria is not checked");
+		  }
+		
+		if(bachillerato != null)
+		  {
+			NivelEducativo bachi = nivelDao.findOne(3);
+			nivel.add(bachi);
+			System.out.println("bachillerato is checked");
+		  }
+		  else
+		  {
+		    System.out.println("bachillerato is not checked");
+		  }
+		
+		if(universidad != null)
+		  {
+			NivelEducativo uni = nivelDao.findOne(4);
+			nivel.add(uni);
+		  }
+		  else
+		  {
+		    System.out.println("universidad is not checked");
+		  }
+		
+		if(maestria != null)
+		  {
+			NivelEducativo maes = nivelDao.findOne(5);
+			nivel.add(maes);
+			System.out.println("maestria is checked");
+		  }
+		  else
+		  {
+		    System.out.println("maestria is not checked");
+		  }
+		if(doctorado != null)
+		  {
+			NivelEducativo doc = nivelDao.findOne(6);
+			nivel.add(doc);
+			System.out.println("doctorado is checked");
+		  }
+		  else
+		  {
+		    System.out.println("doctorado is not checked");
+		  }
+		
+		 curso.setNiveles(nivel);
+		 cursoDao.save(curso);
+		 Set<String> keys = horarios.keySet();
+		
+		 for (String key : keys) {
+			 	if(key!=null) {
+	            System.out.println("Key = " + key);
+	            System.out.println("Values = " + horarios.get(key) + "n");
+			 	}
+	        }
 		 
-		 while(it.hasNext()) {
-		        final String k = it.next().getKey();
-		        System.out.println(k);
-		        System.out.println(it.next().getValue());
-		        final List<String> values = it.next().getValue();
-		    }
-		 
-		return "redirect:/profesor";
+		return "index	";
 	}
 }

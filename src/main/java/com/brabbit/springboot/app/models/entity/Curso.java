@@ -1,8 +1,10 @@
 package com.brabbit.springboot.app.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -36,21 +39,29 @@ public class Curso implements Serializable{
     
     private String DESCRIPCION;
     
-    private int VISIBLE;
+    private String HORARIO;
     
-    @JoinTable
-    @OneToMany
-    private List<NivelEducativo> NIVELESOS;
-    
-    
-
-
-	public List<NivelEducativo> getNIVELES() {
-		return NIVELESOS;
+    public String getHORARIO() {
+		return HORARIO;
 	}
 
-	public void setNIVELES(List<NivelEducativo> nIVELES) {
-		NIVELESOS = nIVELES;
+	public void setHORARIO(String hORARIO) {
+		HORARIO = hORARIO;
+	}
+
+	private int VISIBLE;
+    
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<NivelEducativo> niveles = new ArrayList<>();
+
+	
+
+	public List<NivelEducativo> getNiveles() {
+		return niveles;
+	}
+
+	public void setNiveles(List<NivelEducativo> niveles) {
+		this.niveles = niveles;
 	}
 
 	public long getID_CURSO() {

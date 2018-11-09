@@ -98,10 +98,7 @@
 					value="Editar Perfil" />
 			</div>
 			<div class="col-md-2">
-			<form action="/curso">
-				<input type="submit" class="btn btn-two btn-success"
-								value="Crear Curso">
-			</form>
+			<a class="btn btn-two btn-success" href="/profesor/crearCurso">Crear Curso</a>
 			</div>
 			
 		</div>
@@ -120,10 +117,10 @@
 						aria-labelledby="home-tab">
 						<div class="row">
 							<div class="col-md-6">
-								<label>User Id</label>
+								<label>Nombre</label>
 							</div>
 							<div class="col-md-6">
-								<p>Usuario123</p>
+								<p>${persona.nombre}</p>
 							</div>
 						</div>
 						<div class="row">
@@ -131,7 +128,7 @@
 								<label>Nombre</label>
 							</div>
 							<div class="col-md-6">
-								<p>nombre usuario</p>
+								<p>${persona.apellido}</p>
 							</div>
 						</div>
 						<div class="row">
@@ -139,23 +136,7 @@
 								<label>Email</label>
 							</div>
 							<div class="col-md-6">
-								<p>usuario123@gmail.com</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>Numero Celular</label>
-							</div>
-							<div class="col-md-6">
-								<p>123 456 789</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>Profesion</label>
-							</div>
-							<div class="col-md-6">
-								<p>nombre profesion</p>
+								<p>${persona.username}</p>
 							</div>
 						</div>
 					</div>

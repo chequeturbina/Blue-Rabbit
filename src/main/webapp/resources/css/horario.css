@@ -7,3 +7,17 @@
 .horario{
 	width:50px !important;
 }
+
+.che-ho{
+	display: inline-block;
+}
+
+
+.new-select{
+    float: right;
+    color: green;
+}
+
+.odi{
+	color: green;
+}

@@ -22,7 +22,8 @@ import com.brabbit.springboot.app.models.entity.NivelEducativo;
 import com.brabbit.springboot.app.models.entity.Persona;
 import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
-
+import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
+import com.brabbit.springboot.app.models.entity.Profesor;
 import java.security.Principal;
 //AQUI SE DEFINIRAN LAS RUTAS HACIA LAS VISTAS.
 @Controller
@@ -36,6 +37,9 @@ public class RutasController {
 	
 	@Autowired
 	private NivelEducativoDaoImplement nivelEduDao;
+	
+	@Autowired
+	private ProfesorDaoImplement profesorDao;
 
 	@GetMapping("/")
 	public String inicio(Model model) {
@@ -51,15 +55,22 @@ public class RutasController {
 
 	@RequestMapping("/profesor")
 	public String Profesor(Model model) {
-		PersonaDaoImplement personaDao = new PersonaDaoImplement();
-		Persona persona;
+
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
-		persona = personaDao.porCorreo(name);
+		Persona validar = personDao.porNombre(name);
+
 		System.out.println("******************************************************************");
-		System.out.println(name);
-		System.out.println(persona.getNombre());
+		System.out.println(name+"lamflmaf");
+		System.out.println(validar.getApellido());
+
+		System.out.println("******************************************************************");
+		System.out.println(validar.getId());
+		Profesor validaPro = profesorDao.porId(validar.getId());
+		System.out.println(validaPro.getRFC());
 		
+		model.addAttribute("persona",validar);
+		model.addAttribute("profesor",validaPro);
 		return "teacher";
 	}
 
@@ -103,10 +114,11 @@ public class RutasController {
 		return "alertusuario";		
 	}
 	
-	@RequestMapping("/crearCurso")
+	@RequestMapping("/profesor/crearCurso")
 	public String CrearCurso(Model model) {
 		return "createCourse";		
 	} 
+	
 	
 
 }

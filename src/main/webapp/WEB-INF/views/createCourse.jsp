@@ -128,13 +128,13 @@
 								<label>
 								Titulo
 							</label>
-								<input type="text" name="title" class="form-control" placeholder="Titulo">
+								<input type="text" name="titulo" class="form-control" placeholder="Titulo">
 							</div>
 							<div class="form-group ">
 								<label>
 								Descripcion
 							</label>
-								<input type="text" name="description" class="form-control" placeholder="Descripcion">
+								<input type="text" name="descripcion" class="form-control" placeholder="Descripcion">
 							</div>
 							
 							
@@ -142,16 +142,22 @@
 								<label>Nivel Academico</label>
 							
 									<div class="checkbox">
-                                        <label><input type="checkbox" name="p" value="primaria">Primaria</label>
+                                        <label><input type="checkbox" name="primaria" value="primaria">Primaria</label>
                                     </div>
                                    <div class="checkbox">
-                                       <label><input type="checkbox" name="s" value="secundaria">Secundaria</label>
+                                       <label><input type="checkbox" name="secundaria" value="secundaria">Secundaria</label>
                                     </div>
-                                   <div class="checkbox disabled">
-                                     <label><input type="checkbox" name="b" value="bachillerato" >Bachillerato</label>
+                                   <div class="checkbox">
+                                     <label><input type="checkbox" name="bachillerato" value="bachillerato" >Bachillerato</label>
                                    </div>
-                                   <div class="checkbox disabled">
-                                     <label><input type="checkbox" name="u" value="universidad" >Universidad</label>
+                                   <div class="checkbox ">
+                                     <label><input type="checkbox" name="universidad" value="universidad" >Universidad</label>
+                                   </div>
+                                   <div class="checkbox ">
+                                     <label><input type="checkbox" name="maestria" value="maestria" >Maestria</label>
+                                   </div>
+                                   <div class="checkbox ">
+                                     <label><input type="checkbox" name="doctorado" value="doctorado" >Doctorado</label>
                                    </div>
 							</div>
 							
@@ -162,20 +168,15 @@
 								<label>
 								<h4>Horarios</h4> 
 								
-							</label>
-								<span id="toAdd"></span>  
-								<div class="horario">																																									
-								<input name="fecha-0" type="text"  class="form-control datepicker" placeholder="Fecha">
-								<input name="inicio-0" type="text"  class="form-control basicExample horI" placeholder="horario">
-								<input  name="fin" type="text"  class="form-control basicExample horI" placeholder="horario">	
-								</div>
-								
-								<div id="horarioAdd">
-								<a id="add" class="btn btn-success">agregar otro horario</a>
-								<a id="remove" class="btn btn-warning">eliminar horario</a>
-								</div>
-								
-								
+							</label>  
+								<div class="form-group">
+								  <label for="sel1">Seleccione un horario:</label>
+								  <select class="form-control" id="sel1">
+								    <option value="matutino">Matutino</option>
+								    <option value="vespertino">Vespertino</option>
+								    <option vale="mixto">Mixto</option>
+								  </select>
+								</div>	
 							</div>	
 						
 						<button type="submit" class="btn btn-two btn-blue" >Crear</button><p><br/></p>
@@ -196,24 +197,6 @@
 	
 			
 			
-			var i =1;
-			$("#add").click(function(){
-		        $("#toAdd").prepend("<div id=\"H-"+i+"\" class=\"horario\">\n"																																									
-						+"<input type=\"text\" name=\"fecha-"+i+"\" class=\"form-control datepicker\"  placeholder=\"Fecha\">\n"
-						+"<input  type=\"text\" name=\"inicio-"+i+"\" class=\"form-control basicExample horI\" placeholder=\"horario\">\n"
-						+"<input  type=\"text\" name=\"fin-"+i+"\" class=\"form-control basicExample horI\" placeholder=\"horario\">\n"	
-				+"</div>");
-		        i++;
-		        $(".datepicker").datepicker();
-				   
-				
-			      $('.basicExample').timepicker();
-			
-		    });
-			
-			$("#remove").click(function(){
-				$("#H-"+(i-1)+"").remove();
-				i--;});
 			
 
 		      	
