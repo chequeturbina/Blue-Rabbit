@@ -50,13 +50,13 @@
 
 					<li><button type="button" class="btn btn-danger">Denuncia</button></li>
 
-					<li class="dropdown"><a class="dropdown-toggle" href="#"
-						data-toggle="dropdown"> <sec:authentication var="principal"
-								property="principal" /> ${principal.username}
-							<ul class="dropdown-menu">
-								<li><a class="btn btn-two btn-blue"
-									href="<c:url value="/logout" />">Cerrar Sesion</a></li>
-							</ul></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
+						  ${nombre} </a>
+						<ul class="dropdown-menu">
+							<li><a class="btn btn-two btn"
+						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
+						</ul></li>
 					<!--Hasta aqui acaba el puto chorizote-->
 
 				</ul>

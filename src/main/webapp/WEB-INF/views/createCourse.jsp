@@ -42,63 +42,21 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
+					<li class="active"><a href="<c:url value="/profesor"/>">Inicio</a></li>
 					<li><a href="<c:url value="/"/>">Tutorias</a></li>
-				    <li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="<c:url value="/registro/alumno"/>">Alumno</a></li>
-							<li><a href="<c:url value="/registro/profesor"/>">Profesor</a></li>
-						</ul>
-					</li>
-            <li>
-              <button class="btn btn-primary btn-blue" data-toggle="modal" data-target="#myModal">
-    Iniciar Sesion</button>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    �</button>
-               
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="Login">
-                            
-                                <form  name="form1" role="form" class="form-horizontal">
-                                <div class="form-group">
-                                    <label for="email" class="col-sm-2 control-label">
-                                        Correo</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" name="txt" class="form-control" path="correo" id="email1" placeholder="Correo electronico" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1" class="col-sm-2 control-label">
-                                        Password</label>
-                                    <div class="col-sm-10">
-                                        <input type="password" name="num" path="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-2">
-                                    </div>
-                                    <div class="col-sm-10">
-                                        <input type="button" class="btn btn-primary btn-sm" onclick="administrador()" value="Iniciar Sesion">
-                                        <a href="javascript:;">Forgot your password?</a>
-                                    </div>
-                                </div>
-                                </form>
-                            </div>
-                            
-    </div>
-            </li>
+				   
+
             <li><button type="button" class="btn btn-danger">Denuncia</button></li>
+            
+            <li class="dropdown">
+						<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
+						  ${nombre} </a>
+						<ul class="dropdown-menu">
+							<li><a class="btn btn-two btn"
+						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
+						</ul></li>
+            
+            
              <!--Hasta aqui acaba el puto chorizote-->
 				</ul>
 			</div>

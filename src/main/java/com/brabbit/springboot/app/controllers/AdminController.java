@@ -25,11 +25,10 @@ import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
 import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
 import com.brabbit.springboot.app.models.entity.Profesor;
 import java.security.Principal;
-//AQUI SE DEFINIRAN LAS RUTAS HACIA LAS VISTAS.
+
 @Controller
-
-public class RutasController {
-
+public class AdminController {
+	
 	protected final Log logger = LogFactory.getLog(this.getClass());
 	
 	@Autowired
@@ -38,40 +37,19 @@ public class RutasController {
 	@Autowired
 	private NivelEducativoDaoImplement nivelEduDao;
 	
-	@Autowired
-	private ProfesorDaoImplement profesorDao;
-
-	@GetMapping("/")
-	public String inicio(Model model) {
-		return "index";
-	}
-
-	// Cargar la pagina de inicio de sesion desde index y cualquier ruta disponible
-	// para iniciar sesion
-	@RequestMapping("/loginpage")
-	public String Loginpage(Model model) {
-		return "login";
-	}
-
-
-	@GetMapping("/registroP")
-	public String RegistroProfesor(Model model) {
-		return "regestryTeacher";
-	}
-
-	@RequestMapping("/registroA")
-	public String RegistroAlumno(Model model) {
-		List<NivelEducativo> um = nivelEduDao.findAll();
-		model.addAttribute("niveles", um);
-		return "resgestryStudent";
-	}
-
-
-	@GetMapping("/alerta")
-	public String alertusuario(Model model) {
-		return "ConfirmStudent";		
+	@RequestMapping("/admin")
+	public String Administrador(Model model, Authentication authentication, Principal principal) {
+		
+		if(authentication != null) {
+			logger.info("Hola ".concat(authentication.getName()));
+		}
+		
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		
+		
+		return "admin";
 	}
 	
-	
-
 }

@@ -20,11 +20,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel='stylesheet' id='camera-css' href='css/camera.css'
 	type='text/css' media='all'>
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-	<script src="assets/js/html5shiv.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
+
 </head>
 <body>
 	<!-- Fixed navbar -->
@@ -46,16 +42,20 @@
 					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
 					<li><a href="<c:url value="profesor"/>">Mis Cursos</a></li>
 					<li><a href="<c:url value="profesor"/>">Estadisticas</a></li>
-					<li><a href="<c:url value="profesor"/>">Ingresos</a></li>
+					<li>
+			<div class="col-md-2">
+			<a class="btn btn-two btn-success" href="/profesor/crearCurso">Crear Curso</a>
+			</div></li>
 
 					<li><button type="button" class="btn btn-danger">Denuncia</button></li>
-					<li class="dropdown"><a class="dropdown-toggle" href="#"
-						data-toggle="dropdown"> <sec:authentication var="principal"
-								property="principal" /> ${principal.username}
-							<ul class="dropdown-menu">
-								<li><a class="btn btn-two btn-blue"
-									href="<c:url value="/logout" />">Cerrar Sesion</a></li>
-							</ul></li>
+					
+					<li class="dropdown">
+						<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
+						  ${nombre} </a>
+						<ul class="dropdown-menu">
+							<li><a class="btn btn-two btn"
+						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
+						</ul></li>
 
 				</ul>
 			</div>
