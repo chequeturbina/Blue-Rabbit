@@ -13,4 +13,9 @@ public interface InterfacePersonaDao {
 
 	public void save(Persona persona);
 
+	public void delete(Long id);
+
+	public Persona findOne(Long id);
+
+
 }

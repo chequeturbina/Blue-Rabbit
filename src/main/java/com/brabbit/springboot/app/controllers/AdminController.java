@@ -15,7 +15,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.brabbit.springboot.app.models.dao.IUsuarioDao;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
@@ -50,6 +52,38 @@ public class AdminController {
 		
 		
 		return "admin";
+	}
+	
+	@RequestMapping("/eliminarUsuario")
+	public String eliminarUsuario(Model model, Authentication authentication, Principal principal) {
+		
+		if(authentication != null) {
+			logger.info("Hola ".concat(authentication.getName()));
+		}
+		
+		List<Persona> clientes = personDao.findAll();
+		
+		
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		model.addAttribute("clientees",clientes);
+		
+		
+		return "eliminarUsuario";
+	}
+	
+	@RequestMapping(value = "/eliminar/{id}")
+	public String eliminar(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
+
+		if (id > 0) {
+			Persona cliente = personDao.findOne(id);
+
+			personDao.delete(id);
+			flash.addFlashAttribute("success", "Usuario eliminado con éxito!");
+
+		}
+		return "redirect:/eliminarUsuario";
 	}
 	
 }
