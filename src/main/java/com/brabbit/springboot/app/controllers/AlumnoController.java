@@ -31,6 +31,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -147,34 +148,16 @@ public class AlumnoController {
 		return "ConfirmStudent";
 	}
 	
-	@RequestMapping(value = "/nueva/denuncia", method = RequestMethod.POST)
-	 public String crearDenuncia(
-			 @RequestParam("comentarioDenuncia")String comentarioDenuncia,
-			 Model model, Authentication authentication, Principal principal) {
-		ProfesorDaoImplement profesorDao=new ProfesorDaoImplement();
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName();
-		Persona persona = personDao.porNombre(name);
+	@RequestMapping(value = "/denunciar/{id}")
+	public String eliminar(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
 
-		System.out.println("******************************************************************");
-		System.out.println(persona.getNombre()+" NOMBRE");
-		System.out.println("******************************************************************");
-		Profesor profesor = profesorDao.porId(persona.getId());
-		System.out.println("******************************************************************");
-		System.out.println(profesor.getRFC()+" RFC");
+		if (id > 0) {
+			Persona cliente = personDao.findOne(id);
 
-		Denuncia denuncia = new Denuncia();
-		
-		denuncia.setComentarioDenuncia(comentarioDenuncia);
-		denuncia.setRFC(profesor);
-		
-		 if(authentication != null) {
-				logger.info("Hola ".concat(authentication.getName()));
-			}
-			
-			
-			model.addAttribute("nombre", persona.getNombre());
-			
-		return "redirect:/profesor";
+			personDao.delete(id);
+			flash.addFlashAttribute("success", "Usuario eliminado con éxito!");
+
+		}
+		return "redirect:/eliminarUsuario";
 	}
 }
