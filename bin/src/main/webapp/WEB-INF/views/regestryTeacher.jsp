@@ -112,14 +112,14 @@
 							<div class="form-group">
 								<label>Correo</label> <input type="email" name="correo" required
 									autocomplete="off" class="form-control"
-									placeholder="Correo electronico">
+									placeholder="Correo electronico" autofocus required>
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Password </label> <input type="Password" name="password"
 									required autocomplete="off" class="form-control" minlength="8"
-									maxlength="16" placeholder="Password" required>
+									maxlength="16" placeholder="Password" autofocus required>
 							</div>
 						</div>
 					</div>
@@ -141,17 +141,17 @@
 							name="Fecha_nacimiento" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label>CV</label>
-						<div class="form-group">
-							<input type="file" name="cv" id="ejemplo_archivo_1">
-						</div>
+								<label>CV</label>
+								<div class="form-group">
+								<input type="file" name="cv" id="ejemplo_archivo_1">
+								</div>
 					</div>
 					<div class="form-group">
-						<label>INE/IDE</label>
-						<div class="form-group">
-							<input type="file" name="ine" id="ejemplo_archivo_1">
-						</div>
-					</div>
+								<label>INE/IDE</label>
+								<div class="form-group">
+									<input type="file" name="ine" id="ejemplo_archivo_1">
+								</div>
+							</div>
 					<button type="submit" class="btn btn-two btn-blue">Registrarse</button>
 					<p>
 						<br />

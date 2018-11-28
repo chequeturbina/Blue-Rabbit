@@ -48,7 +48,7 @@
 					<li><a href="<c:url value="alumno"/>">Carrito de Compra</a></li>
 					<!-- chorizote para iniciar sesion-->
 
-					<li><button type="button" class="btn btn-danger">Denuncia</button></li>
+					<li><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#charger-manual">Denuncia</button></li>
 
 					<li class="dropdown">
 						<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
@@ -282,4 +282,33 @@
 </script>
 
 </body>
-</html>
+<div class="modal fade" id="charger-manual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- Empieza Formulario --> 
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Denuncia</h4>
+			</div>
+			<div class="modal-body">
+				<form method="POST" action="/nuevo/curso" class="form-light mt-20" role="form">
+					<div class="form-group">
+						<label>Profesor a denunciar</label>
+						<input type="text" name="comentarioDenuncia" class="form-control" placeholder="nombre profesor">
+					</div>	
+					<div class="form-group">
+						<label>Comentario Denuncia</label>
+						<input type="text" name="comentarioDenuncia" class="form-control" placeholder="comentario">
+					</div>		
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+				<button class="btn btn-blue" type="submit">Denunciar</button>
+			</div>
+		</div>
+		<!-- Termina Formulario -->
+		<!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+ </html>

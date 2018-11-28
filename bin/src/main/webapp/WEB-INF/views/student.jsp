@@ -47,9 +47,16 @@
 					<li><a href="<c:url value="alumno"/>">Lista de Deseos</a></li>
 					<li><a href="<c:url value="alumno"/>">Carrito de Compra</a></li>
 					<!-- chorizote para iniciar sesion-->
-					<li><a class="btn btn-two btn-blue"
-						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
+
 					<li><button type="button" class="btn btn-danger">Denuncia</button></li>
+
+					<li class="dropdown">
+						<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
+						  ${nombre} </a>
+						<ul class="dropdown-menu">
+							<li><a class="btn btn-two btn"
+						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
+						</ul></li>
 					<!--Hasta aqui acaba el puto chorizote-->
 
 				</ul>
@@ -98,8 +105,8 @@
 				<div class="profile-work">
 					<p>CV</p>
 					<p>Habilidades</p>
-					<a href="">Habilidad 1</a><br /> <a href="">Habilidad 2</a><br /> <a
-						href="">Habilidad 3</a><br />
+					<a href="">Habilidad 1</a><br /> <a href="">Habilidad 2</a><br />
+					<a href="">Habilidad 3</a><br />
 				</div>
 			</div>
 			<div class="col-md-8">
@@ -220,6 +227,17 @@
 
 				<div class="col-md-6 panel">
 					<div class="panel-body">
+						<p class="text">
+							<sec:authorize access="isAuthenticated()">
+			Usuario logeado: <sec:authentication var="principal"
+									property="principal" /> ${principal.username} 
+			| Roles: <sec:authentication property="principal.authorities"
+									var="authorities" />
+								<c:forEach items="${authorities}" var="authority" varStatus="vs">
+								${authority.authority}
+							</c:forEach>
+							</sec:authorize>
+						</p>
 						<p class="text-right">
 							Copyright &copy; 2014. Template by <a href="BlueRabbit"
 								rel="develop">Blue Rabbit International</a>
