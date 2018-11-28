@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.persistence.Query;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -42,7 +43,13 @@ public class RutasController {
 	private ProfesorDaoImplement profesorDao;
 
 	@GetMapping("/")
-	public String inicio(Model model) {
+	public String inicio(Model model,Authentication authentication,
+			HttpServletRequest request) {
+		if(authentication != null) {
+			logger.info("Hola usuario autenticado, tu username es: ".concat(authentication.getName()));
+		}
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		return "index";
 	}
 

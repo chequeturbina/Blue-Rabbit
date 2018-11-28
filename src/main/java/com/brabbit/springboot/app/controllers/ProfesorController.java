@@ -95,7 +95,7 @@ public class ProfesorController {
 			@RequestParam("name") String nombre, @RequestParam("lastname") String apellido,
 			@RequestParam("rfc") String rfc, @RequestParam("curp") String curp, @RequestParam("correo") String correo,
 			@RequestParam("password") String password, @RequestParam("ConfirmPass") String confirm,
-			@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
+			/*@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,*/
 			ModelMap modelMap, @RequestParam(value = "error", required = false) String error, RedirectAttributes ra,
 			@RequestParam(value = "registro", required = false) String registro,
 			Model model) {
@@ -104,13 +104,17 @@ public class ProfesorController {
 		Role role = new Role();
 		role.setRoles("ROLE_PROFESOR");
 		roleDao.save(role);
+		boolean validoC = false;
+		ValidarCorreo vc = new ValidarCorreo();
+		persona.setUsername(correo);
+		validoC = vc.validar(correo);
+		Persona validar = personDao.porCorreo(correo);
 
-		if (password.contentEquals(confirm) /* & (validoC & validar == null) */) {
-			persona.setUsername(correo);
+		if (password.contentEquals(confirm)  & (validar == null) ) {
 			persona.setNombre(nombre);
 			persona.setApellido(apellido);
 			persona.setPassword(passwordEncoder.encode(password));
-			persona.setfNacimiento(Fecha_nacimiento);
+			//persona.setfNacimiento(Fecha_nacimiento);
 			persona.addRole(role);
 			persona.setEnabled(true);
 			personDao.save(persona);

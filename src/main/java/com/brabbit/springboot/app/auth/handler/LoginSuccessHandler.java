@@ -34,12 +34,12 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
         boolean isAlumno = false;
         boolean isProfesor = false;
         boolean isAdmin = false;
-        
+        SessionFlashMapManager flashMapManager = new SessionFlashMapManager();
         FlashMap flashMap = new FlashMap();
 
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 		
-		
+		flashMapManager.saveOutputFlashMap(flashMap, request, response);
 		 for (GrantedAuthority grantedAuthority : authorities) {
 	            if (grantedAuthority.getAuthority().equals("ROLE_ALUMNO")) {
 	            	if (authentication != null) {
@@ -82,6 +82,8 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 	        }else{
 	        	response.sendRedirect("/index");
 	        }
+	        
+	        super.onAuthenticationSuccess(request, response, authentication);
 	}
 	
 
