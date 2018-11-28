@@ -119,6 +119,9 @@ public class RutasController {
 		return "createCourse";		
 	} 
 	
-	
+	@RequestMapping("/profesor/MisCursos")
+	public String MisCursos(Model model) {
+		return "miscursos";		
+	} 
 
 }
