@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.persistence.Query;
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -16,7 +15,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.brabbit.springboot.app.models.dao.IUsuarioDao;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
@@ -26,11 +27,10 @@ import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
 import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
 import com.brabbit.springboot.app.models.entity.Profesor;
 import java.security.Principal;
-//AQUI SE DEFINIRAN LAS RUTAS HACIA LAS VISTAS.
+
 @Controller
-
-public class RutasController {
-
+public class AdminController {
+	
 	protected final Log logger = LogFactory.getLog(this.getClass());
 	
 	@Autowired
@@ -39,52 +39,51 @@ public class RutasController {
 	@Autowired
 	private NivelEducativoDaoImplement nivelEduDao;
 	
-	@Autowired
-	private ProfesorDaoImplement profesorDao;
-
-	@GetMapping("/")
-	public String inicio(Model model,Authentication authentication,
-			HttpServletRequest request) {
+	@RequestMapping("/admin")
+	public String Administrador(Model model, Authentication authentication, Principal principal) {
+		
 		if(authentication != null) {
-			logger.info("Hola usuario autenticado, tu username es: ".concat(authentication.getName()));
+			logger.info("Hola ".concat(authentication.getName()));
 		}
-
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		return "index";
-	}
-
-	// Cargar la pagina de inicio de sesion desde index y cualquier ruta disponible
-	// para iniciar sesion
-	@RequestMapping("/loginpage")
-	public String Loginpage(Model model) {
-		return "login";
-	}
-
-
-	@GetMapping("/registroP")
-	public String RegistroProfesor(Model model) {
-		return "regestryTeacher";
-	}
-
-	@RequestMapping("/registroA")
-	public String RegistroAlumno(Model model) {
-		List<NivelEducativo> um = nivelEduDao.findAll();
-		model.addAttribute("niveles", um);
-		return "resgestryStudent";
-	}
-
-
-	@GetMapping("/alerta")
-	public String alertusuario(Model model) {
-		return "ConfirmStudent";		
+		
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		
+		
+		return "admin";
 	}
 	
-
+	@RequestMapping("/eliminarUsuario")
+	public String eliminarUsuario(Model model, Authentication authentication, Principal principal) {
+		
+		if(authentication != null) {
+			logger.info("Hola ".concat(authentication.getName()));
+		}
+		
+		List<Persona> clientes = personDao.findAll();
+		
+		
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		model.addAttribute("clientees",clientes);
+		
+		
+		return "eliminarUsuario";
+	}
 	
-	@RequestMapping("/profesor/MisCursos")
-	public String MisCursos(Model model) {
-		return "miscursos";		
-	} 
+	@RequestMapping(value = "/eliminar/{id}")
+	public String eliminar(@PathVariable(value = "id") Long id, RedirectAttributes flash) {
 
+		if (id > 0) {
+			Persona cliente = personDao.findOne(id);
 
+			personDao.delete(id);
+			flash.addFlashAttribute("success", "Usuario eliminado con éxito!");
+
+		}
+		return "redirect:/eliminarUsuario";
+	}
+	
 }

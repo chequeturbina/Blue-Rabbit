@@ -45,80 +45,60 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="<c:url value="admin"/>">Inicio</a></li>
-					<li><a href="<c:url value="eliminarUsuario"/>">Eliminar</a></li>
+					<li><a href="<c:url value="admin"/>">Inicio</a></li>
+					<li class="active"><a href="<c:url value="eliminarUsuario"/>">Eliminar</a></li>
 					<li><a href="<c:url value="admin"/>">Peticiones Denuncia</a></li>
 					<li><a href="<c:url value="admin"/>">Cobrar</a></li>
 
-					<!-- chorizote para Cerrar Sesion-->
-
-					
-						<li class="dropdown">
-						<a class="dropdown-toggle" href="#" data-toggle="dropdown">
-						  ${nombre} 
-						<ul class="dropdown-menu">
-							<li><a class="btn btn-two btn-blue"
-						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
-						</ul></li>
+					<li class="dropdown"><a class="dropdown-toggle" href="#"
+						data-toggle="dropdown"> ${nombre}</a>
+							<ul class="dropdown-menu">
+								<li><a class="btn btn-two btn-blue"
+									href="<c:url value="/logout" />">Cerrar Sesion</a></li>
+							</ul></li>
 					<!--Hasta Aqui para Cerrar Sesion-->
 
 				</ul>
+				
 			</div>
 			<!--/.nav-collapse -->
 		</div>
 	</div>
+	<!-- /.navbar -->
 </head>
-<!DOCTYPE HTML>
-<html>
-<head>
 
+<div class="container">
 <c:if test="${success != null}">
-	<div class="alert alert-info">${success}</div>
-</c:if>
+			<div class="alert alert-info">${success}</div>
+		</c:if>
+</div>
 
-<script type="text/javascript">
-	window.onload = function() {
+<table class="table table-striped table-bordered">
+	<thead class="thead-inverse">
+		<tr>
+			<th sec:authorize="hasRole('ROLE_ALUMNO')">id</th>
+			<th>nombre</th>
+			<th>apellido</th>
+			<th>email</th>
+			<th>eliminar</th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach items="${clientees}" var="personas">
+			<tr>
 
-		var chart = new CanvasJS.Chart("chartContainer", {
-			theme : "light1", // "light2", "dark1", "dark2"
-			animationEnabled : false, // change to true		
-			title : {
-				text : "Grafico de ejemplo"
-			},
-			data : [ {
-				// Change type to "bar", "area", "spline", "pie",etc.
-				type : "column",
-				dataPoints : [ {
-					label : "apple",
-					y : 10
-				}, {
-					label : "orange",
-					y : 15
-				}, {
-					label : "banana",
-					y : 25
-				}, {
-					label : "mango",
-					y : 30
-				}, {
-					label : "grape",
-					y : 28
-				} ]
-			} ]
-		});
-		chart.render();
+				<td><c:out value="${personas.id}" /></td>
+				<td><c:out value="${personas.nombre}" /></td>
+				<td><c:out value="${personas.apellido}" /></td>
+				<td><c:out value="${personas.username}" /></td>
 
-	}
-</script>
-</head>
-<body>
-	<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-	<script src="https://canvasjs.com/assets/script/canvasjs.min.js">
-		
-	</script>
-</body>
-</html>
-<!-- /.navbar -->
+				<td><a class="btn btn-danger btn-xs"
+					href="<c:url value="eliminar/ + ${personas.id}"/>"
+					onclick="return confirm('Estas seguro que quieres eliminar?');">Eliminar</a></td>
+			</tr>
+		</c:forEach>
+	</tbody>
+</table>
 
 <footer id="footer">
 

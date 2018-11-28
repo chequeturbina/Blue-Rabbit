@@ -1,5 +1,7 @@
 package com.brabbit.springboot.app.controllers;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
@@ -33,17 +35,15 @@ import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
 import com.brabbit.springboot.app.models.service.RoleDaoImplement;
 
 import java.io.*;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Map.Entry;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map.Entry;
 
 @Controller
 public class ProfesorController {
+	
+	protected final Log logger = LogFactory.getLog(this.getClass());
+	
 	@Autowired
 	private ProfesorDaoImplement profesorDao;
 
@@ -62,26 +62,59 @@ public class ProfesorController {
 	@Autowired
 	private CursoDaoImplement cursoDao;
 	
+	@RequestMapping("/profesor")
+	public String Profesor(Model model, Authentication authentication, Principal principal) {
+
+		if(authentication != null) {
+			logger.info("Hola ".concat(authentication.getName()));
+		}
+		
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		
+		return "teacher";
+	}
+	
+	@RequestMapping("/profesor/crearCurso")
+	public String CrearCurso(Model model,  Authentication authentication, Principal principal) {
+		
+		if(authentication != null) {
+			logger.info("Hola ".concat(authentication.getName()));
+		}
+		
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		
+		return "createCourse";		
+	} 
 	
 	@RequestMapping(value = "/registro/profesor", method = RequestMethod.POST)
 	public String formularioPersona(@RequestParam("cv") MultipartFile cv, @RequestParam("ine") MultipartFile ine,
 			@RequestParam("name") String nombre, @RequestParam("lastname") String apellido,
 			@RequestParam("rfc") String rfc, @RequestParam("curp") String curp, @RequestParam("correo") String correo,
 			@RequestParam("password") String password, @RequestParam("ConfirmPass") String confirm,
-			@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
-			ModelMap modelMap, @RequestParam(value = "error", required = false) String error, RedirectAttributes ra) {
+			/*@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,*/
+			ModelMap modelMap, @RequestParam(value = "error", required = false) String error, RedirectAttributes ra,
+			@RequestParam(value = "registro", required = false) String registro,
+			Model model) {
 
 		Persona persona = new Persona();
 		Role role = new Role();
 		role.setRoles("ROLE_PROFESOR");
 		roleDao.save(role);
+		boolean validoC = false;
+		ValidarCorreo vc = new ValidarCorreo();
+		persona.setUsername(correo);
+		validoC = vc.validar(correo);
+		Persona validar = personDao.porCorreo(correo);
 
-		if (password.contentEquals(confirm) /* & (validoC & validar == null) */) {
-			persona.setUsername(correo);
+		if (password.contentEquals(confirm)  & (validar == null) ) {
 			persona.setNombre(nombre);
 			persona.setApellido(apellido);
 			persona.setPassword(passwordEncoder.encode(password));
-			persona.setfNacimiento(Fecha_nacimiento);
+			//persona.setfNacimiento(Fecha_nacimiento);
 			persona.addRole(role);
 			persona.setEnabled(true);
 			personDao.save(persona);
@@ -106,7 +139,8 @@ public class ProfesorController {
 			profesorDao.save(profesor);
 
 			
-			return "redirect:/profesor";
+			model.addAttribute("registro", "Registro Exitoso!!");
+			return "login";
 		} else {
 			ra.addFlashAttribute("error", "Contraseña no coincide o el Correo no es valido");
 			return "redirect:/registroP";
@@ -126,7 +160,8 @@ public class ProfesorController {
 			 @RequestParam(value="universidad",required=false) String universidad,
 			 @RequestParam(value="maestria",required=false) String maestria,
 			 @RequestParam(value="doctorado",required=false) String doctorado,
-			 @RequestParam MultiValueMap<String, String> horarios) {
+			 @RequestParam MultiValueMap<String, String> horarios,
+			 Model model, Authentication authentication, Principal principal) {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
@@ -221,6 +256,13 @@ public class ProfesorController {
 			 	}
 	        }
 		 
-		return "index	";
+		 if(authentication != null) {
+				logger.info("Hola ".concat(authentication.getName()));
+			}
+			
+			
+			model.addAttribute("nombre", persona.getNombre());
+			
+		return "redirect:/profesor";
 	}
 }

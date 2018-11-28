@@ -13,6 +13,7 @@ import javax.persistence.PersistenceUnit;
 import javax.persistence.TypedQuery;
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.brabbit.springboot.app.models.dao.IUsuarioDao;
 import com.brabbit.springboot.app.models.entity.Persona;
 
 @Repository
@@ -28,13 +30,30 @@ public class PersonaDaoImplement implements InterfacePersonaDao {
 
 	@PersistenceContext
 	private EntityManager em;
+	
+	@Autowired
+	private IUsuarioDao usuarioDao;
 
+	//METODO PARA LISTAR A LOS USUARIOS
 	@Transactional(readOnly = true)
 	@Override
 	public List<Persona> findAll() {
-		// TODO Auto-generated method stub
-		// return em.createQuery("from Persona").getResultList();
-		return null;
+		List<Persona> clientes = em.createQuery("SELECT e FROM Persona e", Persona.class).getResultList();
+		return clientes;
+	}
+	
+	//METODO PARA ELIMINAR
+	@Override
+	@Transactional
+	public void delete(Long id) {
+		
+		usuarioDao.deleteById(id);
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Persona findOne(Long id) {
+		return usuarioDao.findById(id).orElse(null);
 	}
 
 	@Override
@@ -44,9 +63,9 @@ public class PersonaDaoImplement implements InterfacePersonaDao {
 		em.persist(persona);
 	}
 
-	public Persona porCorreo(String correo) {
-		List<Persona> results = em.createQuery("SELECT w FROM Persona w WHERE w.username = :correo", Persona.class)
-				.setParameter("correo", correo).getResultList();
+	public Persona porCorreo(String username) {
+		List<Persona> results = em.createQuery("SELECT w FROM Persona w WHERE w.username = :username", Persona.class)
+				.setParameter("username", username).getResultList();
 		return results.isEmpty() ? null : results.get(0);
 	}
 	

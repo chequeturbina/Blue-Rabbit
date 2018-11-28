@@ -66,6 +66,9 @@
 		<c:if test="${success != null}">
 			<div class="alert alert-info">${success}</div>
 		</c:if>
+		<c:if test="${registro != null}">
+			<div class="alert alert-info">${registro}</div>
+		</c:if>
 	</div>
 
 

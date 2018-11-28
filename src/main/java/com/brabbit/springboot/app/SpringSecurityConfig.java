@@ -29,10 +29,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-		.antMatchers("/", "/css/**", "/js/**","/login/**","/img/**","/h2-console/**","/registro/alumno","/registro/profesor","/registroA","/registroP","/alerta","/error_403").permitAll()
+		.antMatchers("/", "/css/**", "/js/**","/login/**","/img/**","/h2-console/**","/registro/alumno","/registro/profesor","/registroA","/registroP","/alerta/**","/error_403").permitAll()
 		.antMatchers("/admin/**").hasRole("ADMIN")
-		.antMatchers("/student/**").hasRole("ALUMNO")
-		.antMatchers("/profesor/**","/curso/**","/nuevo/curso/**").hasRole("PROFESOR")
+		.antMatchers("/alumno/**").hasRole("ALUMNO")
+		.antMatchers("/profesor/**","/curso/**","/nuevo/curso/**,/profesor/crearCurso/**").hasRole("PROFESOR")
 		.anyRequest().authenticated()
 		.and()
         .formLogin()

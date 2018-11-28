@@ -137,10 +137,14 @@
 							</div>
 						</div>
 					</div>
+					
+					<!--  Esta madre se fue a la verga
 					<div class="form-group">
 						<label> Fecha de Nacimiento </label> <input type="date"
 							name="Fecha_nacimiento" class="form-control" required>
 					</div>
+					-->
+					
 					<div class="form-group">
 								<label>CV</label>
 								<div class="form-group">

@@ -46,16 +46,21 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li class="active"><a href="<c:url value="admin"/>">Inicio</a></li>
-					<li><a href="<c:url value="admin"/>">Eliminar</a></li>
+					<li><a href="<c:url value="eliminarUsuario"/>">Eliminar</a></li>
 					<li><a href="<c:url value="admin"/>">Peticiones Denuncia</a></li>
 					<li><a href="<c:url value="admin"/>">Cobrar</a></li>
 
-					<!-- chorizote para iniciar sesion-->
+					<!-- chorizote para Cerrar Sesion-->
 
-					<li><a class="btn btn-two btn-blue"
+					
+						<li class="dropdown">
+						<a class="dropdown-toggle" href="#" data-toggle="dropdown">
+						  ${nombre} 
+						<ul class="dropdown-menu">
+							<li><a class="btn btn-two btn-blue"
 						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
-
-					<!--Hasta aqui acaba el puto chorizote-->
+						</ul></li>
+					<!--Hasta Aqui para Cerrar Sesion-->
 
 				</ul>
 			</div>
@@ -66,6 +71,11 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+
+<c:if test="${success != null}">
+	<div class="alert alert-info">${success}</div>
+</c:if>
+
 <script type="text/javascript">
 	window.onload = function() {
 
@@ -129,7 +139,18 @@
 
 				<div class="col-md-6 panel">
 					<div class="panel-body">
-						<p class="text-right">
+						<p class="text">
+							<sec:authorize access="isAuthenticated()">
+			Usuario logeado: <sec:authentication var="principal"
+									property="principal" /> ${principal.username} 
+			| Roles: <sec:authentication property="principal.authorities"
+									var="authorities" />
+								<c:forEach items="${authorities}" var="authority" varStatus="vs">
+								${authority.authority}
+							</c:forEach>
+							</sec:authorize>
+						</p>
+						<p class="text">
 							Copyright &copy; 2014. Template by <a href="BlueRabbit"
 								rel="develop">Blue Rabbit International</a>
 						</p>

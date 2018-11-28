@@ -20,11 +20,7 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel='stylesheet' id='camera-css' href='css/camera.css'
 	type='text/css' media='all'>
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-	<script src="assets/js/html5shiv.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
+
 </head>
 <body>
 	<!-- Fixed navbar -->
@@ -46,11 +42,20 @@
 					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
 					<li><a href="<c:url value="profesor"/>">Mis Cursos</a></li>
 					<li><a href="<c:url value="profesor"/>">Estadisticas</a></li>
-					<li><a href="<c:url value="profesor"/>">Ingresos</a></li>
+					<li>
+			<div class="col-md-2">
+			<a class="btn btn-two btn-success" href="/profesor/crearCurso">Crear Curso</a>
+			</div></li>
 
-					<li><a class="btn btn-two btn-blue"
-						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
 					<li><button type="button" class="btn btn-danger">Denuncia</button></li>
+					
+					<li class="dropdown">
+						<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
+						  ${nombre} </a>
+						<ul class="dropdown-menu">
+							<li><a class="btn btn-two btn"
+						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
+						</ul></li>
 
 				</ul>
 			</div>
@@ -93,9 +98,9 @@
 					value="Editar Perfil" />
 			</div>
 			<div class="col-md-2">
-				<input type="submit" class="profile-edit-btn" name="btnAddMore"
-					value="Crear Curso" />
+			<a class="btn btn-two btn-success" href="/profesor/crearCurso">Crear Curso</a>
 			</div>
+			
 		</div>
 		<div class="row">
 			<div class="col-md-4">
@@ -112,10 +117,10 @@
 						aria-labelledby="home-tab">
 						<div class="row">
 							<div class="col-md-6">
-								<label>User Id</label>
+								<label>Nombre</label>
 							</div>
 							<div class="col-md-6">
-								<p>Usuario123</p>
+								<p>${persona.nombre}</p>
 							</div>
 						</div>
 						<div class="row">
@@ -123,7 +128,7 @@
 								<label>Nombre</label>
 							</div>
 							<div class="col-md-6">
-								<p>nombre usuario</p>
+								<p>${persona.apellido}</p>
 							</div>
 						</div>
 						<div class="row">
@@ -131,23 +136,7 @@
 								<label>Email</label>
 							</div>
 							<div class="col-md-6">
-								<p>usuario123@gmail.com</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>Numero Celular</label>
-							</div>
-							<div class="col-md-6">
-								<p>123 456 789</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>Profesion</label>
-							</div>
-							<div class="col-md-6">
-								<p>nombre profesion</p>
+								<p>${persona.username}</p>
 							</div>
 						</div>
 					</div>
@@ -224,6 +213,17 @@
 
 				<div class="col-md-6 panel">
 					<div class="panel-body">
+					<p class="text">
+							<sec:authorize access="isAuthenticated()">
+			Usuario logeado: <sec:authentication var="principal"
+									property="principal" /> ${principal.username} 
+			| Roles: <sec:authentication property="principal.authorities"
+									var="authorities" />
+								<c:forEach items="${authorities}" var="authority" varStatus="vs">
+								${authority.authority}
+							</c:forEach>
+							</sec:authorize>
+						</p>
 						<p class="text-right">
 							Copyright &copy; 2014. Template by <a href="BlueRabbit"
 								rel="develop">Blue Rabbit International</a>

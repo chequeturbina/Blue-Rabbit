@@ -4,21 +4,26 @@ import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Access;
 import javax.persistence.EntityManager;
 
 import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.logging.log4j.spi.LoggerContextFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
@@ -33,17 +38,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.brabbit.springboot.app.models.entity.Alumno;
+import com.brabbit.springboot.app.models.entity.Curso;
+import com.brabbit.springboot.app.models.entity.Denuncia;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
 import com.brabbit.springboot.app.models.entity.Persona;
+import com.brabbit.springboot.app.models.entity.Profesor;
 import com.brabbit.springboot.app.models.entity.Role;
 import com.brabbit.springboot.app.models.service.AlumnoDaoImplement;
 import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
+import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
 import com.brabbit.springboot.app.models.service.RoleDaoImplement;
+
+import java.security.Principal;
+
 
 @Controller
 public class AlumnoController {
 
+	protected final Log logger = LogFactory.getLog(this.getClass());
+	
 	@Autowired
 	private PersonaDaoImplement personDao;
 
@@ -58,15 +72,30 @@ public class AlumnoController {
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	@RequestMapping("/alumno")
+	public String Alumno(Model model, Authentication authentication, Principal principal) {
+		
+		if(authentication != null) {
+			logger.info("Hola ".concat(authentication.getName()));
+		}
+		
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		
+		return "student";
+	}
 
 	@RequestMapping(value = "/registro/alumno", method = RequestMethod.POST)
 	public String formularioPersona(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,
 			@RequestParam("username") String username, @RequestParam("password") String password,
 			@RequestParam("nivelEdu") long nivel,
-			@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
+			/*@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,*/
 			@RequestParam("ConfirmPass") String confirm, Model model,
 			@RequestParam(value = "error", required = false) String error, 
-			RedirectAttributes ra) {
+			RedirectAttributes ra,
+			@RequestParam(value = "registro", required = false) String registro) {
 		
 		Persona persona = new Persona();
 		boolean validoC = false;
@@ -76,7 +105,7 @@ public class AlumnoController {
 		Persona validar = personDao.porCorreo(username);
 
 		/* No importara ahorita la verificacion del correo, hasta depsues */
-		if (password.contentEquals(confirm) /* & (validoC & validar == null) */) {
+		if (password.contentEquals(confirm)  & (validar == null) ) {
 
 			Alumno alumno = new Alumno();
 			Role role = new Role();
@@ -87,7 +116,7 @@ public class AlumnoController {
 			persona.setApellido(apellido);
 			persona.setEnabled(true);
 			
-			persona.setfNacimiento(Fecha_nacimiento);
+			//persona.setfNacimiento(Fecha_nacimiento);
 			persona.addRole(role);
 			
 			System.out.println("******************" + persona.getId());
@@ -104,8 +133,8 @@ public class AlumnoController {
 			System.out.println(persona.getId());
 
 			
-			ra.addFlashAttribute("Confirm", "Exito al registrar se te enviara un correo");
-			return "redirect:/alerta";
+			model.addAttribute("registro", "Registro Exitoso!!");
+			return "login";
 		} else {
 			ra.addFlashAttribute("error", "Contraseña no coincide o el Correo no es valido");
 			return "redirect:/registroA";
@@ -118,5 +147,34 @@ public class AlumnoController {
 		return "ConfirmStudent";
 	}
 	
-	
+	@RequestMapping(value = "/nueva/denuncia", method = RequestMethod.POST)
+	 public String crearDenuncia(
+			 @RequestParam("comentarioDenuncia")String comentarioDenuncia,
+			 Model model, Authentication authentication, Principal principal) {
+		ProfesorDaoImplement profesorDao=new ProfesorDaoImplement();
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName();
+		Persona persona = personDao.porNombre(name);
+
+		System.out.println("******************************************************************");
+		System.out.println(persona.getNombre()+" NOMBRE");
+		System.out.println("******************************************************************");
+		Profesor profesor = profesorDao.porId(persona.getId());
+		System.out.println("******************************************************************");
+		System.out.println(profesor.getRFC()+" RFC");
+
+		Denuncia denuncia = new Denuncia();
+		
+		denuncia.setComentarioDenuncia(comentarioDenuncia);
+		denuncia.setRFC(profesor);
+		
+		 if(authentication != null) {
+				logger.info("Hola ".concat(authentication.getName()));
+			}
+			
+			
+			model.addAttribute("nombre", persona.getNombre());
+			
+		return "redirect:/profesor";
+	}
 }
