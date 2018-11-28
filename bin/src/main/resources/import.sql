@@ -5,8 +5,39 @@ insert into NIVEL_EDU(ID_NIVEL,NIVEL)VALUES(4,'Universidad');
 insert into NIVEL_EDU(ID_NIVEL,NIVEL)VALUES(5,'Maestria');
 insert into NIVEL_EDU(ID_NIVEL,NIVEL)VALUES(6,'Doctorado');
 
-INSERT INTO ROLE(id, roles) VALUES (1,'ROLE_ADMIN');
+INSERT INTO ROLE(roles) VALUES ('ROLE_ADMIN');
 
-INSERT INTO PERSONA(username, password,sexo, enabled) VALUES ('admin@admin','$2a$10$O9wxmH/AeyZZzIS09Wp8YOEMvFnbRVJ8B4dmAMVSGloR62lj.yqXG','m',1);
+INSERT INTO ROLE(roles) VALUES ('ROLE_ALUMNO');
+INSERT INTO ROLE(roles) VALUES ('ROLE_ALUMNO');
+INSERT INTO ROLE(roles) VALUES ('ROLE_ALUMNO');
+INSERT INTO ROLE(roles) VALUES ('ROLE_ALUMNO');
 
-INSERT INTO PERSONA_ROLES(PERSONA_ID,ROLES_ID)VALUES(1,1);
+INSERT INTO ROLE(roles) VALUES ('ROLE_PROFESOR');
+INSERT INTO ROLE(roles) VALUES ('ROLE_PROFESOR');
+INSERT INTO ROLE(roles) VALUES ('ROLE_PROFESOR');
+INSERT INTO ROLE(roles) VALUES ('ROLE_PROFESOR');
+
+INSERT INTO PERSONA(nombre,username, password,sexo, enabled) VALUES ('administrador','admin@admin','$2a$10$O9wxmH/AeyZZzIS09Wp8YOEMvFnbRVJ8B4dmAMVSGloR62lj.yqXG','m',1);
+
+INSERT INTO PERSONA(nombre,username, password,sexo,enabled) VALUES ('juan','juan@alumno','$2a$10$O9wxmH/AeyZZzIS09Wp8YOEMvFnbRVJ8B4dmAMVSGloR62lj.yqXG','h',1);
+INSERT INTO PERSONA(nombre,username, password,sexo,enabled) VALUES ('luis','luis@alumno','$2a$10$O9wxmH/AeyZZzIS09Wp8YOEMvFnbRVJ8B4dmAMVSGloR62lj.yqXG','h',1);
+INSERT INTO PERSONA(nombre,username, password,sexo,enabled) VALUES ('emmanuel','emmanuel@alumno','$2a$10$O9wxmH/AeyZZzIS09Wp8YOEMvFnbRVJ8B4dmAMVSGloR62lj.yqXG','h',1);
+INSERT INTO PERSONA(nombre,username, password,sexo,enabled) VALUES ('kevin','kevin@alumno','$2a$10$O9wxmH/AeyZZzIS09Wp8YOEMvFnbRVJ8B4dmAMVSGloR62lj.yqXG','h',1);
+
+INSERT INTO PERSONA(nombre,username, password,sexo,enabled) VALUES ('elisa','elisa@profesor','$2a$10$O9wxmH/AeyZZzIS09Wp8YOEMvFnbRVJ8B4dmAMVSGloR62lj.yqXG','m',1);
+INSERT INTO PERSONA(nombre,username, password,sexo,enabled) VALUES ('maria','maria@profesor','$2a$10$O9wxmH/AeyZZzIS09Wp8YOEMvFnbRVJ8B4dmAMVSGloR62lj.yqXG','m',1);
+INSERT INTO PERSONA(nombre,username, password,sexo,enabled) VALUES ('petra','petra@profesor','$2a$10$O9wxmH/AeyZZzIS09Wp8YOEMvFnbRVJ8B4dmAMVSGloR62lj.yqXG','m',1);
+INSERT INTO PERSONA(nombre,username, password,sexo,enabled) VALUES ('enriqueta','enriqueta@profesor','$2a$10$O9wxmH/AeyZZzIS09Wp8YOEMvFnbRVJ8B4dmAMVSGloR62lj.yqXG','m',1);
+
+INSERT INTO PERSONA_ROLES(PERSONAS_ID,ROLES_ID)VALUES(1,1);
+
+INSERT INTO PERSONA_ROLES(PERSONAS_ID,ROLES_ID)VALUES(2,2);
+INSERT INTO PERSONA_ROLES(PERSONAS_ID,ROLES_ID)VALUES(3,3);
+INSERT INTO PERSONA_ROLES(PERSONAS_ID,ROLES_ID)VALUES(4,4);
+INSERT INTO PERSONA_ROLES(PERSONAS_ID,ROLES_ID)VALUES(5,5);
+
+INSERT INTO PERSONA_ROLES(PERSONAS_ID,ROLES_ID)VALUES(6,6);
+INSERT INTO PERSONA_ROLES(PERSONAS_ID,ROLES_ID)VALUES(7,7);
+INSERT INTO PERSONA_ROLES(PERSONAS_ID,ROLES_ID)VALUES(8,8);
+INSERT INTO PERSONA_ROLES(PERSONAS_ID,ROLES_ID)VALUES(9,9);
+

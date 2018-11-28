@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.horI{
+	width: 20% !important;
+}
+
+.horario{
+	width:50px !important;
+}
+
+.che-ho{
+	display: inline-block;
+}
+
+
+.new-select{
+    float: right;
+    color: green;
+}
+
+.odi{
+	color: green;
+}

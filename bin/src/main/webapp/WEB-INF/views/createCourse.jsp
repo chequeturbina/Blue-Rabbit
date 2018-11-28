@@ -123,19 +123,21 @@
 							
 							
 							<div class="form-group">
-								<label>Horarios </label>  
+								<label>
+								<h4>Horarios</h4> 
+								
+							</label>  
 								<div class="form-group">
 								  <label for="sel1">Seleccione un horario:</label>
 								  <select class="form-control" id="sel1">
 								    <option value="matutino">Matutino</option>
 								    <option value="vespertino">Vespertino</option>
-								    <option value="mixto">Mixto</option>
+								    <option vale="mixto">Mixto</option>
 								  </select>
 								</div>	
 							</div>	
-						</form>
-						<button type="submit" class="btn btn-two btn-blue" >Crear</button><p><br/></p>
 						
+						<button type="submit" class="btn btn-two btn-blue" >Crear</button><p><br/></p>
 					</div>
 				</div>
 			</div>
