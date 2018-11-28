@@ -128,11 +128,14 @@
 							</div>
 						</div>
 					</div>
+					
+					<!-- Esto se fue a la mierda
 					<div class="form-group">
 						<label> Fecha de Nacimiento </label> <input type="date"
 							name="Fecha_nacimiento" class="form-control" required>
 					</div>
-
+					 -->
+					
 					<div class="form-group">
 						<label>Nivel Academico</label>
 						<div class="dropdown">

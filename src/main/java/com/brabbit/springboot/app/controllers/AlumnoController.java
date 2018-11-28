@@ -84,7 +84,7 @@ public class AlumnoController {
 	public String formularioPersona(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,
 			@RequestParam("username") String username, @RequestParam("password") String password,
 			@RequestParam("nivelEdu") long nivel,
-			@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,
+			/*@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,*/
 			@RequestParam("ConfirmPass") String confirm, Model model,
 			@RequestParam(value = "error", required = false) String error, 
 			RedirectAttributes ra,
@@ -98,7 +98,7 @@ public class AlumnoController {
 		Persona validar = personDao.porCorreo(username);
 
 		/* No importara ahorita la verificacion del correo, hasta depsues */
-		if (password.contentEquals(confirm) /* & (validoC & validar == null) */) {
+		if (password.contentEquals(confirm)  & (validar == null) ) {
 
 			Alumno alumno = new Alumno();
 			Role role = new Role();
@@ -109,7 +109,7 @@ public class AlumnoController {
 			persona.setApellido(apellido);
 			persona.setEnabled(true);
 			
-			persona.setfNacimiento(Fecha_nacimiento);
+			//persona.setfNacimiento(Fecha_nacimiento);
 			persona.addRole(role);
 			
 			System.out.println("******************" + persona.getId());

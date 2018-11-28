@@ -1,4 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -59,10 +61,12 @@
 					<!-- chorizote para iniciar sesion-->
 
 					<li>
+					<sec:authorize access="!isAuthenticated()">
 						<form action="/loginpage">
 							<input type="submit" class="btn btn-two btn-blue"
 								value="Iniciar Sesion"></input>
 						</form>
+						</sec:authorize>
 					</li>
 
 					<li>
@@ -124,6 +128,10 @@
 
 	<!-- Header -->
 	<header id="head">
+	
+	<c:if test="${info != null}">
+	<div class="alert alert-info">${info}</div>
+</c:if>
 		<div class="container">
 			<div class="heading-text">
 				<h1 class="animated flipInY delay1">Empieza Cursos en Linea</h1>

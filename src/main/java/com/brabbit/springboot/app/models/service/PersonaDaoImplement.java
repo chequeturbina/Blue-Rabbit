@@ -63,9 +63,9 @@ public class PersonaDaoImplement implements InterfacePersonaDao {
 		em.persist(persona);
 	}
 
-	public Persona porCorreo(String correo) {
-		List<Persona> results = em.createQuery("SELECT w FROM Persona w WHERE w.username = :correo", Persona.class)
-				.setParameter("correo", correo).getResultList();
+	public Persona porCorreo(String username) {
+		List<Persona> results = em.createQuery("SELECT w FROM Persona w WHERE w.username = :username", Persona.class)
+				.setParameter("username", username).getResultList();
 		return results.isEmpty() ? null : results.get(0);
 	}
 	
