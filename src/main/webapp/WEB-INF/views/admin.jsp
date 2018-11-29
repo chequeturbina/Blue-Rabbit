@@ -47,7 +47,7 @@
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li class="active"><a href="<c:url value="admin"/>">Inicio</a></li>
 					<li><a href="<c:url value="eliminarUsuario"/>">Eliminar</a></li>
-					<li><a href="<c:url value="admin"/>">Peticiones Denuncia</a></li>
+					<li><a href="<c:url value="verDenuncias"/>">Peticiones Denuncia</a></li>
 					<li><a href="<c:url value="admin"/>">Cobrar</a></li>
 
 					<!-- chorizote para Cerrar Sesion-->

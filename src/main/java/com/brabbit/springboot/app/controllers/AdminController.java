@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.brabbit.springboot.app.models.dao.IUsuarioDao;
+import com.brabbit.springboot.app.models.entity.Denuncia;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
 import com.brabbit.springboot.app.models.entity.Persona;
+import com.brabbit.springboot.app.models.service.DenunciaDaoImplement;
 import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
 import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
@@ -38,6 +40,9 @@ public class AdminController {
 	
 	@Autowired
 	private NivelEducativoDaoImplement nivelEduDao;
+	
+	@Autowired
+	private DenunciaDaoImplement denunciaDao;
 	
 	@RequestMapping("/admin")
 	public String Administrador(Model model, Authentication authentication, Principal principal) {
@@ -84,6 +89,25 @@ public class AdminController {
 
 		}
 		return "redirect:/eliminarUsuario";
+	}
+	
+	@RequestMapping("/verDenuncias")
+	public String Denuncias(Model model, Authentication authentication, Principal principal) {
+		
+		if(authentication != null) {
+			logger.info("Hola ".concat(authentication.getName()));
+		}
+		
+		List<Denuncia> denuncias = denunciaDao.findAll();
+		
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		
+		model.addAttribute("denunciaas",denuncias);
+		
+		
+		return "denuncias";
 	}
 	
 }
