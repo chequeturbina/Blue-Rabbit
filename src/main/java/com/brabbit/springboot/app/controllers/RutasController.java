@@ -47,8 +47,12 @@ public class RutasController {
 			HttpServletRequest request) {
 		if(authentication != null) {
 			logger.info("Hola usuario autenticado, tu username es: ".concat(authentication.getName()));
+			String username = authentication.getName();
+			Persona validar = personDao.porNombre(username);
+			model.addAttribute("nombre", validar.getNombre());
 		}
-
+		
+		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		return "index";
 	}
