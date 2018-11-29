@@ -90,6 +90,10 @@ public class ProfesorController {
 		return "createCourse";		
 	} 
 	
+	
+	
+	
+	
 	@RequestMapping(value = "/registro/profesor", method = RequestMethod.POST)
 	public String formularioPersona(@RequestParam("cv") MultipartFile cv, @RequestParam("ine") MultipartFile ine,
 			@RequestParam("name") String nombre, @RequestParam("lastname") String apellido,
@@ -263,6 +267,31 @@ public class ProfesorController {
 			
 			model.addAttribute("nombre", persona.getNombre());
 			
-		return "redirect:/profesor";
+		return "redirect:/profesor/miscursos";
 	}
+	
+	@RequestMapping("/profesor/miscursos")
+	public String profesorCursos(Model model, Authentication authentication, Principal principal) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName();
+		Persona persona = personDao.porNombre(name);
+
+		System.out.println("******************************************************************");
+		System.out.println(persona.getNombre()+" NOMBRE");
+		System.out.println("******************************************************************");
+		Profesor profesor = profesorDao.porId(persona.getId());
+		System.out.println("******************************************************************");
+		System.out.println(profesor.getRFC()+" RFC");
+		
+		List<Curso> Cursos= cursoDao.listarCursos(profesor);
+		
+		for(Curso element : Cursos) {
+			  System.out.println(element. getTITULO());
+			}
+		model.addAttribute("cursos", Cursos);	
+		return "miscursos";
+	}
+	
+	
 }

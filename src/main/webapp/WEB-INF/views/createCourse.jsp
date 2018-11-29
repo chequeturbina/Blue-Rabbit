@@ -133,9 +133,9 @@
 								  </select>
 								</div>	
 							</div>	
-						</form>
-						<button type="submit" class="btn btn-two btn-blue" >Crear</button><p><br/></p>
 						
+						<button type="submit" class="btn btn-two btn-blue" >Crear</button><p><br/></p>
+						</form>
 					</div>
 				</div>
 			</div>

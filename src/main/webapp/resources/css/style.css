@@ -6,6 +6,28 @@ Licence: Creative Commons Attribution 3.0** - http://creativecommons.org/license
 */
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
 @import url(http://fonts.googleapis.com/css?family=Lato:400,700);
+
+
+
+.padre{
+	width: 100%; 
+	 background-color:red;
+}
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color: red;
+    border-radius: 5px;
+    float:rigth;
+}
+.imgCards {
+    border-radius: 5px 5px 0 0;
+}
+
+
+
+
+
 body {
 	font-family: 'Lato', sans-serif;
 	font-weight: normal;
@@ -1047,3 +1069,6 @@ list-style: none;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
 }
+
+
+
