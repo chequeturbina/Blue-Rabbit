@@ -23,12 +23,14 @@ import java.util.Set;
 
 import com.brabbit.springboot.app.models.entity.Alumno;
 import com.brabbit.springboot.app.models.entity.Curso;
+import com.brabbit.springboot.app.models.entity.Denuncia;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
 import com.brabbit.springboot.app.models.entity.Persona;
 import com.brabbit.springboot.app.models.entity.Profesor;
 import com.brabbit.springboot.app.models.entity.Role;
 import com.brabbit.springboot.app.models.service.AlumnoDaoImplement;
 import com.brabbit.springboot.app.models.service.CursoDaoImplement;
+import com.brabbit.springboot.app.models.service.DenunciaDaoImplement;
 import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
 import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
@@ -61,6 +63,9 @@ public class ProfesorController {
 	
 	@Autowired
 	private CursoDaoImplement cursoDao;
+	
+	@Autowired
+	private DenunciaDaoImplement denunciaDao;
 	
 	@RequestMapping("/profesor")
 	public String Profesor(Model model, Authentication authentication, Principal principal) {
@@ -295,5 +300,40 @@ public class ProfesorController {
 		return "miscursos";
 	}
 	
+	@RequestMapping(value = "/denunciar/profesor")
+	public String creaDenuncia(@RequestParam("denunciado")String denunciado,
+			                   @RequestParam("problema")String problema,
+			                   RedirectAttributes ra,
+			                   Model model) {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName();
+		Persona persona = personDao.porNombre(name);
+		
+		Denuncia denuncia = new Denuncia();
+		denuncia.setDenunciado(denunciado);
+		Persona validar = personDao.porCorreo(denunciado);
+		
+		if (validar == null) {
+			
+			ra.addFlashAttribute("error", "El usuario a denunciar no existe!");
+			return "redirect:/profesor";
+			
+		}else {
+			
+			
+			denuncia.setProblema(problema);
+			
+			denuncia.setDenunciante(persona.getUsername());
+			
+			denunciaDao.save(denuncia);
+			
+			ra.addFlashAttribute("success", "Tu Denuncia se ha hecho con exito!");
+			return"redirect:/profesor";
+			
+		}
+		
+	}
+
 	
 }

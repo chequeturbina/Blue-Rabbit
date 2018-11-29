@@ -1,12 +1,16 @@
 package com.brabbit.springboot.app.models.entity;
 
 import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -21,48 +25,51 @@ public class Denuncia implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ID_DENUNCIA;
+    private long id;
 	
-    @ManyToOne
-    @JoinColumn(name="RFC")
-    private Profesor RFC;
+	private String denunciado;
     
-    private String comentarioDenuncia;
-    
-
-	private int VISIBLE;
+	private String denunciante;
 	
-	public long getID_DENUNCIA() {
-		return ID_DENUNCIA;
+	private String problema;
+
+	
+
+	public long getId() {
+		return id;
 	}
 
-	public void setID_DENUNCIA(long iD_DENUNCIA) {
-		ID_DENUNCIA = iD_DENUNCIA;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public Profesor getRFC() {
-		return RFC;
+	
+
+	public String getDenunciado() {
+		return denunciado;
 	}
 
-	public void setRFC(Profesor rFC) {
-		RFC = rFC;
+	public void setDenunciado(String denunciado) {
+		this.denunciado = denunciado;
 	}
 
-	public String getComentarioDenuncia() {
-		return comentarioDenuncia;
+	public String getDenunciante() {
+		return denunciante;
 	}
 
-	public void setComentarioDenuncia(String comentarioDenun) {
-		comentarioDenuncia = comentarioDenun;
+	public void setDenunciante(String denunciante) {
+		this.denunciante = denunciante;
 	}
 
-
-	public int getVISIBLE() {
-		return VISIBLE;
+	public String getProblema() {
+		return problema;
 	}
 
-	public void setVISIBLE(int vISIBLE) {
-		VISIBLE = vISIBLE;
+	public void setProblema(String problema) {
+		this.problema = problema;
 	}
+	
+	
+
             
 }
