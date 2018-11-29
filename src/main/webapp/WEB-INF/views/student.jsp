@@ -44,8 +44,8 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-					<li><a href="<c:url value="alumno/cursos"/>">Cursos</a></li>
+					<li class="active"><a href="<c:url value="alumno"/>">Inicio</a></li>
+					<!--  <li><a href="<c:url value="alumno/cursos"/>">Cursos</a></li>-->
 
 					<li><a href="<c:url value="alumno"/>">Lista de Deseos</a></li>
 					<li><a href="<c:url value="alumno"/>">Carrito de Compra</a></li>
@@ -79,6 +79,35 @@
 	<div class="alert alert-danger">${error}</div>
 </c:if>
 
+
+
+<!-- container -->
+	<div class="container">
+	
+		<h2 class="text">Cursos Disponibles</h2>
+        <hr/>
+	
+	<!--CARDSSS-->
+	<div class="padre">
+	
+	<c:forEach var="curso" items="${cursos}">
+  <div class="card">
+     <div class="container">
+    <h4><b><a href="<c:url value="/alumno/cursos/${curso.ID_CURSO}"/>">${curso.TITULO}</a></b></h4>
+    <label>Profesor:${curso.PROFESOR}</label>
+    <br>
+    <label>Descripción</label> 
+    <p>${curso.DESCRIPCION}</p> 
+     <label>Horario</label>
+    <p>${curso.HORARIO}</p>  
+      </div>
+  </div>
+ 	</c:forEach>
+  <!--CARDSSS-->
+  </div><!-- padre -->
+     </div>
+     
+	<!-- /container -->
 </div>	
 		
 <footer id="footer">
@@ -157,25 +186,7 @@
 <script type='text/javascript' src='js/camera.min.js'></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/custom.js"></script>
-<script>
-	jQuery(function() {
 
-		jQuery('#camera_wrap_4').camera({
-			transPeriod : 500,
-			time : 3000,
-			height : '600',
-			loader : 'false',
-			pagination : true,
-			thumbnails : false,
-			hover : false,
-			playPause : false,
-			navigation : false,
-			opacityOnGrid : false,
-			imagePath : 'assets/images/'
-		});
-
-	});
-</script>
 
 </body>
 

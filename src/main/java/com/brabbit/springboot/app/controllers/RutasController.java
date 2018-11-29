@@ -16,11 +16,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.brabbit.springboot.app.models.dao.IUsuarioDao;
+import com.brabbit.springboot.app.models.entity.Curso;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
 import com.brabbit.springboot.app.models.entity.Persona;
+import com.brabbit.springboot.app.models.service.CursoDaoImplement;
 import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
 import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
@@ -41,6 +44,9 @@ public class RutasController {
 	
 	@Autowired
 	private ProfesorDaoImplement profesorDao;
+	
+	@Autowired
+	private CursoDaoImplement cursoDao;
 
 	@GetMapping("/")
 	public String inicio(Model model,Authentication authentication,
@@ -83,7 +89,18 @@ public class RutasController {
 		return "ConfirmStudent";		
 	}
 	
-
+	@RequestMapping("/cursos")
+	public String cursosDisponibles(Model model) {
+         List<Curso> Cursos= cursoDao.listarCursosT();
+		
+		for(Curso element : Cursos) {
+			  System.out.println(element. getTITULO());
+			  System.out.println(element.getPROFESOR());
+			}
+		model.addAttribute("cursos", Cursos);
+		return "CursosDisponibles";
+	}
+	
 	
 	@RequestMapping("/profesor/MisCursos")
 	public String MisCursos(Model model) {

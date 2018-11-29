@@ -1,5 +1,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,14 +24,12 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js"></script>
 
+
 <!-- If you're using Stripe for payments -->
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-	<script src="assets/js/html5shiv.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
+
+
 </head>
 
 <body>
@@ -42,32 +43,38 @@
 					<span class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
-				<a class="img-responsive" href="<c:url value="/"/>"> <a
+				<a class="img-responsive" href="<c:url value="/"/>"></a> <a
 					class="img-responsive" href="<c:url value="/"/>"> <img
 						src="/img/logo.png" width="200" height="90"
 						alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-					<li><a href="<c:url value="/"/>">Tutorias</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Registro <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="<c:url value="/registroA"/>">Alumno</a></li>
-							<li><a href="<c:url value="/registroP"/>">Profesor</a></li>
-						</ul></li>
-					<!-- chorizote para iniciar sesion-->
-
-					<li>
-						<form action="/loginpage">
-							<input type="submit" class="btn btn-two btn-blue"
+					<li class="active"><a href="<c:url value="/alumno"/>">Inicio</a></li>
+					
+							<li>
+						<sec:authorize access="!isAuthenticated()">
+							<form action="/loginpage">
+								<input type="submit" class="btn btn-two btn-blue"
 								value="Iniciar Sesion"></input>
-						</form>
+							</form>
+						</sec:authorize>
 					</li>
-
-					<li><button type="button" class="btn btn-danger">Denuncia</button></li>
-
+					
+					<li>
+						<sec:authorize access="isAuthenticated()">
+							<form action="/loginpage">
+								<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
+						  		${nombre} </a>
+								<ul class="dropdown-menu">
+									<li><a class="btn btn-two btn"
+									href="<c:url value="/logout" />">Cerrar Sesion</a></li>
+								</ul>
+							</form>
+						</sec:authorize>
+					</li>
+						
+						
 					<!--Hasta aqui acaba el puto chorizote-->
 				</ul>
 			</div>
@@ -77,13 +84,7 @@
 	<!-- /.navbar -->
 
 	<div class="container">
-		<div class="row">
-			<div class="col">
-				<header id="head" class="secondary">
-					<h1>Registrate</h1>
-				</header>
-			</div>
-		</div>
+		
 		<c:if test="${error != null}">
 			<div class="alert alert-danger">${error}</div>
 		</c:if>
@@ -211,6 +212,7 @@
      
 	<!-- /container -->
 
+
 	<footer id="footer">
 
 		<div class="social text-center">
@@ -249,5 +251,69 @@
 	</footer>
 
 
+<div class="modal fade" id="charger-manual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		
+			<!-- Empieza Formulario --> 
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Denuncia</h4>
+			</div>
+			<div class="modal-body">
+				<form method="POST" action="/denunciar/alumno" class="form-light mt-20" role="form">
+					<div class="form-group">
+						<label>Correo del Alumno a denunciar</label>
+						<input type="email" name="denunciado" id="denunciado" class="form-control" placeholder="Correo Alumno">
+					</div>	
+					<div class="form-group">
+						<label>Denuncia</label>
+						<textarea rows="4" cols="50" name="problema" id="problema" class="form-control" placeholder="Comentario"></textarea>
+					</div>
+					<button class="btn btn-blue" type="submit">Denunciar</button>		
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			</div>
+		</div>
+		</div>
+		</div>
+		<!-- Termina Formulario -->
+
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+
+	<script src="js/modernizr-latest.js"></script>
+	<script type='text/javascript' src='js/jquery.min.js'></script>
+	<script type='text/javascript'
+		src='js/fancybox/jquery.fancybox.pack.js'></script>
+
+	<script type='text/javascript' src='js/jquery.mobile.customized.min.js'></script>
+	<script type='text/javascript' src='js/jquery.easing.1.3.js'></script>
+	<script type='text/javascript' src='js/camera.min.js'></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/custom.js"></script>
+	<script>
+		jQuery(function() {
+
+			jQuery('#camera_wrap_4').camera({
+				transPeriod : 500,
+				time : 3000,
+				height : '600',
+				loader : 'false',
+				pagination : true,
+				thumbnails : false,
+				hover : false,
+				playPause : false,
+				navigation : false,
+				opacityOnGrid : true,
+				imagePath : 'assets/images/'
+			});
+
+		});
+	</script>
+
+
 </body>
 </html>
+

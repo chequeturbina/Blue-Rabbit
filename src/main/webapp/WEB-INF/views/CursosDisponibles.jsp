@@ -41,15 +41,16 @@
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-					<li><a href="<c:url value="/"/>">Tutorias</a></li>
+					<li><a href="<c:url value="/"/>">Inicio</a></li>
+					<li class="active"><a href="<c:url value="/cursos"/>">Tutorias</a></li>
+					
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">Registro <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="<c:url value="/registroA"/>">Alumno</a></li>
 							<li><a href="<c:url value="/registroP"/>">Profesor</a></li>
 						</ul></li>
-					<!-- chorizote para iniciar sesion-->
+					
 
 					<li>
 						<form action="/loginpage">
@@ -58,7 +59,7 @@
 						</form>
 					</li>
 
-					<li><button type="button" class="btn btn-danger">Denuncia</button></li>
+			
 
 					<!--Hasta aqui acaba el puto chorizote-->
 				</ul>
@@ -69,17 +70,11 @@
 	<!-- /.navbar -->
 
 	<div class="container">
-		<div class="row">
-			<div class="col">
-				<header id="head" class="secondary">
-					<h1>Registrate</h1>
-				</header>
-			</div>
-		</div>
+		
 		<c:if test="${error != null}">
 			<div class="alert alert-danger">${error}</div>
 		</c:if>
-	</div>
+
 
 
 	<!-- container -->
@@ -110,9 +105,8 @@
      
 	<!-- /container -->
 
-	<footer id="footer">
-
-		<div class="social text-center">
+<footer id="footer">
+<div class="social text-center">
 			<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
 				class="fa fa-facebook"></i></a>
 		</div>
@@ -144,9 +138,39 @@
 				</div>
 				<!-- /row of panels -->
 			</div>
-		</div>
-	</footer>
+		</div></footer>
 
+<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+
+	<script src="js/modernizr-latest.js"></script>
+	<script type='text/javascript' src='js/jquery.min.js'></script>
+	<script type='text/javascript'
+		src='js/fancybox/jquery.fancybox.pack.js'></script>
+
+	<script type='text/javascript' src='js/jquery.mobile.customized.min.js'></script>
+	<script type='text/javascript' src='js/jquery.easing.1.3.js'></script>
+	<script type='text/javascript' src='js/camera.min.js'></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/custom.js"></script>
+	<script>
+		jQuery(function() {
+
+			jQuery('#camera_wrap_4').camera({
+				transPeriod : 500,
+				time : 3000,
+				height : '600',
+				loader : 'false',
+				pagination : true,
+				thumbnails : false,
+				hover : false,
+				playPause : false,
+				navigation : false,
+				opacityOnGrid : true,
+				imagePath : 'assets/images/'
+			});
+
+		});
+	</script>
 
 </body>
 </html>

@@ -42,7 +42,6 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li class="active"><a href="<c:url value="profesor"/>">Inicio</a></li>
-					<li><a href="<c:url value="profesor"/>">Mis Cursos</a></li>
 					<li><a href="<c:url value="profesor"/>">Estadisticas</a></li>
 					<li>
 			<div class="col-md-2">
@@ -67,6 +66,12 @@
 </head>
 <!-- /.navbar -->
 <div class="container emp-profile">
+<c:if test="${success != null}">
+	<div class="alert alert-info">${success}</div>
+</c:if>
+<c:if test="${error != null}">
+	<div class="alert alert-danger">${error}</div>
+</c:if>
 
 	<div class="row">
 		<div class="col-md-6">
@@ -100,45 +105,11 @@
      </div>
 		<!-- container CARDS -->
 </div>
-<div class="modal fade" id="charger-manual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<!-- Empieza Formulario --> 
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Denuncia</h4>
-			</div>
-			<div class="modal-body">
-				<form method="POST" action="/nuevo/curso" class="form-light mt-20" role="form">
-					<div class="form-group">
-						<label>Persona a denunciar</label>
-						<input type="text" name="comentarioDenuncia" class="form-control" placeholder="nombre profesor">
-					</div>	
-					<div class="form-group">
-						<label>Comentario Denuncia</label>
-						<input type="text" name="comentarioDenuncia" class="form-control" placeholder="comentario">
-					</div>		
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-				<button class="btn btn-blue" type="submit">Denunciar</button>
-
-
-<c:if test="${success != null}">
-	<div class="alert alert-info">${success}</div>
-</c:if>
-<c:if test="${error != null}">
-	<div class="alert alert-danger">${error}</div>
-</c:if>
-
 			</div>
 
 		<!-- Termina Formulario -->
 		
 <footer id="footer">
-
-
 	<div class="social text-center">
 		<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
 			class="fa fa-facebook"></i></a>
@@ -175,6 +146,7 @@
 	</div>
 </footer>
 
+
 <div class="modal fade" id="charger-manual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -203,7 +175,8 @@
 		</div>
 		<!-- Termina Formulario -->
 
-
+</div>
+</div>
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 <script src="js/modernizr-latest.js"></script>
 <script type='text/javascript' src='js/jquery.min.js'></script>

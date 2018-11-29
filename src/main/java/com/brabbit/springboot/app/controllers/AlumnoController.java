@@ -93,6 +93,14 @@ public class AlumnoController {
 			logger.info("Hola ".concat(authentication.getName()));
 		}
 		
+		List<Curso> Cursos= cursoDao.listarCursosT();
+		
+		for(Curso element : Cursos) {
+			  System.out.println(element. getTITULO());
+			  System.out.println(element.getPROFESOR());
+			}
+		model.addAttribute("cursos", Cursos);
+		
 		String username = authentication.getName();
 		Persona validar = personDao.porNombre(username);
 		model.addAttribute("nombre", validar.getNombre());
@@ -196,23 +204,13 @@ public class AlumnoController {
 	}
 	
 
-	@RequestMapping("/alumno/cursos")
-	public String cursos(Model model) {
-         List<Curso> Cursos= cursoDao.listarCursosT();
-		
-		for(Curso element : Cursos) {
-			  System.out.println(element. getTITULO());
-			  System.out.println(element.getPROFESOR());
-			}
-		model.addAttribute("cursos", Cursos);
-		return "CursosDisponibles";
-	}
-
-
-	@RequestMapping("/alumno/cursos/{id}")
-	public String cursoss(@PathVariable(value = "id") Long id,Model model) {
+	@RequestMapping("alumno/cursos/{id}")
+	public String cursoss(@PathVariable(value = "id") Long id,Model model,
+			              Authentication authentication, Principal principal) {
         Curso curso= cursoDao.findById(id);
-		
+        String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
 		model.addAttribute("curso", curso);
 		return "curso";
 	}
