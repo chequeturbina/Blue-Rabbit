@@ -73,6 +73,14 @@ public class ProfesorController {
 		Persona validar = personDao.porNombre(username);
 		model.addAttribute("nombre", validar.getNombre());
 		
+		Profesor profesor = profesorDao.porId(validar.getId());
+		List<Curso> Cursos= cursoDao.listarCursos(profesor);
+		
+		for(Curso element : Cursos) {
+			  System.out.println(element. getTITULO());
+			}
+		model.addAttribute("cursos", Cursos);	
+		
 		return "teacher";
 	}
 	
@@ -173,12 +181,15 @@ public class ProfesorController {
 
 		System.out.println("******************************************************************");
 		System.out.println(persona.getNombre()+" NOMBRE");
+		
 		System.out.println("******************************************************************");
 		Profesor profesor = profesorDao.porId(persona.getId());
 		System.out.println("******************************************************************");
 		System.out.println(profesor.getRFC()+" RFC");
 		List<NivelEducativo> nivel = new ArrayList<>();
 
+		String nombre = persona.getNombre()+" "+persona.getApellido();
+		
 		Curso curso = new Curso();
 		
 		curso.setTITULO(titulo);
@@ -252,6 +263,8 @@ public class ProfesorController {
 		 curso.setNiveles(nivel);
 		 curso.setHORARIO(horario);
 		 curso.setNiveles(nivel);
+		 curso.setPROFESOR(nombre);
+		 curso.setUSERNAME(persona.getUsername());
 		 cursoDao.save(curso);
 		 
 	
@@ -261,9 +274,8 @@ public class ProfesorController {
 			}
 			
 			
-			model.addAttribute("nombre", persona.getNombre());
-			
-		return "redirect:/profesor/miscursos";
+					
+		return "redirect:/profesor";
 	}
 	
 	@RequestMapping("/profesor/miscursos")
@@ -280,12 +292,6 @@ public class ProfesorController {
 		System.out.println("******************************************************************");
 		System.out.println(profesor.getRFC()+" RFC");
 		
-		List<Curso> Cursos= cursoDao.listarCursos(profesor);
-		
-		for(Curso element : Cursos) {
-			  System.out.println(element. getTITULO());
-			}
-		model.addAttribute("cursos", Cursos);	
 		return "miscursos";
 	}
 	

@@ -43,7 +43,7 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-					<li><a href="<c:url value="alumno"/>">Mis Cursos</a></li>
+					<li><a href="<c:url value="alumno/cursos"/>">Cursos</a></li>
 					<li><a href="<c:url value="alumno"/>">Lista de Deseos</a></li>
 					<li><a href="<c:url value="alumno"/>">Carrito de Compra</a></li>
 					<!-- chorizote para iniciar sesion-->

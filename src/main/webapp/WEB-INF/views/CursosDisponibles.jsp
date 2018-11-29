@@ -94,7 +94,9 @@
 	<c:forEach var="curso" items="${cursos}">
   <div class="card">
      <div class="container">
-    <h4><b>${curso.TITULO}</b></h4>
+    <h4><b><a href="<c:url value="/alumno/cursos/${curso.ID_CURSO}"/>">${curso.TITULO}</a></b></h4>
+    <label>Profesor:${curso.PROFESOR}</label>
+    <br>
     <label>Descripción</label> 
     <p>${curso.DESCRIPCION}</p> 
      <label>Horario</label>

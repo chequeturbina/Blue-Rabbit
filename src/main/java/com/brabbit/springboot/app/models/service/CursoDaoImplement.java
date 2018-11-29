@@ -35,8 +35,17 @@ public class CursoDaoImplement implements InterfaceCursoDao {
 	}
 	
 	public List<Curso> listarCursosT() {
-		List<Curso> cursos = em.createQuery("SELECT w FROM Curso",Curso.class).getResultList(); 
+		List<Curso> cursos = em.createQuery("SELECT e FROM Curso e",Curso.class).getResultList(); 
 	    return cursos; 
 	}
 
+	  public Curso findById(Long Id) {
+	        Curso curso = em.find(Curso.class, Id);
+	        if (curso == null) {
+	           return null;
+	        }
+	        return curso;
+	    }
+	
+	
 }

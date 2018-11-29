@@ -82,29 +82,7 @@
 	</div>
 
 
-	<!-- container -->
-	<div class="container">
-	
-		<h2 class="text-center">Cursos que impartes </h2>
-        <hr/>
-	
-	<!--CARDSSS-->
-	<div class="padre">
-	
-	<c:forEach var="curso" items="${cursos}">
-  <div class="card">
-     <div class="container">
-    <h4><b>${curso.TITULO}</b></h4>
-    <label>Descripción</label> 
-    <p>${curso.DESCRIPCION}</p> 
-     <label>Horario</label>
-    <p>${curso.HORARIO}</p>  
-      </div>
-  </div>
- 	</c:forEach>
-  <!--CARDSSS-->
-  </div><!-- padre -->
-     </div>
+
      
 	<!-- /container -->
 

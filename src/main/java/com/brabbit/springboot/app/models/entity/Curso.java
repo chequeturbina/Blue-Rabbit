@@ -35,7 +35,28 @@ public class Curso implements Serializable{
     @JoinColumn(name="RFC")
     private Profesor RFC;
     
-    private String TITULO;
+    
+    private String PROFESOR;
+    
+    private String USERNAME;
+    
+    public String getPROFESOR() {
+		return PROFESOR;
+	}
+
+	public void setPROFESOR(String pROFESOR) {
+		PROFESOR = pROFESOR;
+	}
+
+	public String getUSERNAME() {
+		return USERNAME;
+	}
+
+	public void setUSERNAME(String uSERNAME) {
+		USERNAME = uSERNAME;
+	}
+
+	private String TITULO;
     
     private String DESCRIPCION;
     
@@ -54,7 +75,18 @@ public class Curso implements Serializable{
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<NivelEducativo> niveles = new ArrayList<>();
 
+    
+    @ManyToMany(mappedBy = "cursos")
+    private List<Alumno> alumno = new ArrayList<>();
 	
+
+	public List<Alumno> getAlumno() {
+		return alumno;
+	}
+
+	public void setAlumno(List<Alumno> alumno) {
+		this.alumno = alumno;
+	}
 
 	public List<NivelEducativo> getNiveles() {
 		return niveles;

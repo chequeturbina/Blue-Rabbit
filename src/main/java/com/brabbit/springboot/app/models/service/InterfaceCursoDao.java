@@ -11,4 +11,6 @@ public interface InterfaceCursoDao {
 	public void save(Curso curso);
 	
 	public List<Curso> listarCursos(Profesor RFC);
+	
+	public List<Curso> listarCursosT();
 }

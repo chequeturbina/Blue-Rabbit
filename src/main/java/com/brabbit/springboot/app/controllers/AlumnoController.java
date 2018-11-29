@@ -46,6 +46,7 @@ import com.brabbit.springboot.app.models.entity.Persona;
 import com.brabbit.springboot.app.models.entity.Profesor;
 import com.brabbit.springboot.app.models.entity.Role;
 import com.brabbit.springboot.app.models.service.AlumnoDaoImplement;
+import com.brabbit.springboot.app.models.service.CursoDaoImplement;
 import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
 import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
@@ -73,6 +74,9 @@ public class AlumnoController {
 	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private CursoDaoImplement cursoDao;
 	
 	@RequestMapping("/alumno")
 	public String Alumno(Model model, Authentication authentication, Principal principal) {
@@ -162,10 +166,25 @@ public class AlumnoController {
 	}
 	
 
-	@RequestMapping("/cursos")
+	@RequestMapping("/alumno/cursos")
 	public String cursos(Model model) {
-		return "ConfirmStudent";
+         List<Curso> Cursos= cursoDao.listarCursosT();
+		
+		for(Curso element : Cursos) {
+			  System.out.println(element. getTITULO());
+			  System.out.println(element.getPROFESOR());
+			}
+		model.addAttribute("cursos", Cursos);
+		return "CursosDisponibles";
 	}
-	
+
+
+	@RequestMapping("/alumno/cursos/{id}")
+	public String cursoss(@PathVariable(value = "id") Long id,Model model) {
+        Curso curso= cursoDao.findById(id);
+		
+		model.addAttribute("curso", curso);
+		return "curso";
+	}
 	
 }

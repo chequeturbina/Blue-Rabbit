@@ -1,6 +1,8 @@
 package com.brabbit.springboot.app.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -28,7 +31,17 @@ public class Alumno implements Serializable {
 	 @JoinColumn(name="ID_NIVEL")
 	private NivelEducativo ID_NIVEL;
 
-	
+	 @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	    private List<Curso> cursos = new ArrayList<>();
+	 
+	public List<Curso> getCursos() {
+		return cursos;
+	}
+
+	public void setCursos(List<Curso> cursos) {
+		this.cursos = cursos;
+	}
+
 	public long getID_ALUMNO() {
 		return ID_ALUMNO;
 	}
@@ -44,6 +57,8 @@ public class Alumno implements Serializable {
 	public void setID_NIVEL(NivelEducativo iD_NIVEL) {
 		ID_NIVEL = iD_NIVEL;
 	} 
+	
+	
 	
 	
 
