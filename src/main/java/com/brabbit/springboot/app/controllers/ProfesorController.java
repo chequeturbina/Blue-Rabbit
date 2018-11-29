@@ -294,6 +294,40 @@ public class ProfesorController {
 		return "miscursos";
 	}
 	
+	@RequestMapping(value = "/denunciar/profesor")
+	public String creaDenuncia(@RequestParam("denunciado")String denunciado,
+			                   @RequestParam("problema")String problema,
+			                   RedirectAttributes ra,
+			                   Model model) {
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName();
+		Persona persona = personDao.porNombre(name);
+		
+		Denuncia denuncia = new Denuncia();
+		denuncia.setDenunciado(denunciado);
+		Persona validar = personDao.porCorreo(denunciado);
+		
+		if (validar == null) {
+			
+			ra.addFlashAttribute("error", "El usuario a denunciar no existe!");
+			return "redirect:/profesor";
+			
+		}else {
+			
+			
+			denuncia.setProblema(problema);
+			
+			denuncia.setDenunciante(persona.getUsername());
+			
+			denunciaDao.save(denuncia);
+			
+			ra.addFlashAttribute("success", "Tu Denuncia se ha hecho con exito!");
+			return"redirect:/profesor";
+			
+		}
+		
+	}
 
 	
 }

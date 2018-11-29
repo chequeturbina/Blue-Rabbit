@@ -78,7 +78,7 @@
 	<div class="alert alert-danger">${error}</div>
 </c:if>
 
-	
+</div>	
 		
 <footer id="footer">
 	<div class="social text-center">
@@ -116,6 +116,35 @@
 		</div>
 	</div>
 </footer>
+
+<div class="modal fade" id="charger-manual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		
+			<!-- Empieza Formulario --> 
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Denuncia</h4>
+			</div>
+			<div class="modal-body">
+				<form method="POST" action="/denunciar/alumno" class="form-light mt-20" role="form">
+					<div class="form-group">
+						<label>Correo del Alumno a denunciar</label>
+						<input type="email" name="denunciado" id="denunciado" class="form-control" placeholder="Correo Alumno">
+					</div>	
+					<div class="form-group">
+						<label>Denuncia</label>
+						<textarea rows="4" cols="50" name="problema" id="problema" class="form-control" placeholder="Comentario"></textarea>
+					</div>
+					<button class="btn btn-blue" type="submit">Denunciar</button>		
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			</div>
+		</div>
+		<!-- Termina Formulario -->
+
 
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 <script src="js/modernizr-latest.js"></script>

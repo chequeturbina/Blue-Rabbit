@@ -56,7 +56,7 @@
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li><a href="<c:url value="admin"/>">Inicio</a></li>
 					<li class="active"><a href="<c:url value="eliminarUsuario"/>">Eliminar</a></li>
-					<li><a href="<c:url value="denuncias"/>">Peticiones Denuncia</a></li>
+					<li><a href="<c:url value="verDenuncias"/>">Peticiones Denuncia</a></li>
 					<li><a href="<c:url value="admin"/>">Cobrar</a></li>
 
 					<li class="dropdown"><a class="dropdown-toggle" href="#"
