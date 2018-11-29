@@ -49,28 +49,44 @@
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
 					<li><a href="<c:url value="/"/>">Tutorias</a></li>
-
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Registro <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-
-							<li><a href="<c:url value="/registroA"/>">Alumno</a></li>
-							<li><a href="<c:url value="/registroP"/>">Profesor</a></li>
-						</ul></li>
+					<li>
+						<sec:authorize access="!isAuthenticated()">
+							<form action="/loginpage">
+								 <div class="dropdown">
+									  <button type="button" class="btn btn-blue dropdown-toggle" data-toggle="dropdown">
+									    Registro
+									  </button>
+									  <ul class="dropdown-menu">
+									    <li><a class="dropdown-item" href="<c:url value="/registroA"/>">Alumno</a></li>
+									 	<li><a class="dropdown-item" href="<c:url value="/registroP"/>">Profesor</a></li>
+									  </ul>
+									</div> 
+							</form>
+						</sec:authorize>
+					</li>
 
 					<!-- chorizote para iniciar sesion-->
 
 					<li>
-					<sec:authorize access="!isAuthenticated()">
-						<form action="/loginpage">
-							<input type="submit" class="btn btn-two btn-blue"
+						<sec:authorize access="!isAuthenticated()">
+							<form action="/loginpage">
+								<input type="submit" class="btn btn-two btn-blue"
 								value="Iniciar Sesion"></input>
-						</form>
+							</form>
 						</sec:authorize>
 					</li>
-
+					
 					<li>
-						<button type="button" class="btn btn-danger">Denuncia</button>
+						<sec:authorize access="isAuthenticated()">
+							<form action="/loginpage">
+								<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
+						  		${nombre} </a>
+								<ul class="dropdown-menu">
+									<li><a class="btn btn-two btn"
+									href="<c:url value="/logout" />">Cerrar Sesion</a></li>
+								</ul>
+							</form>
+						</sec:authorize>
 					</li>
 
 					<!-- Inicio barra de busqueda

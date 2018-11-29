@@ -95,6 +95,10 @@ public class ProfesorController {
 		return "createCourse";		
 	} 
 	
+	
+	
+	
+	
 	@RequestMapping(value = "/registro/profesor", method = RequestMethod.POST)
 	public String formularioPersona(@RequestParam("cv") MultipartFile cv, @RequestParam("ine") MultipartFile ine,
 			@RequestParam("name") String nombre, @RequestParam("lastname") String apellido,
@@ -165,7 +169,7 @@ public class ProfesorController {
 			 @RequestParam(value="universidad",required=false) String universidad,
 			 @RequestParam(value="maestria",required=false) String maestria,
 			 @RequestParam(value="doctorado",required=false) String doctorado,
-			 @RequestParam MultiValueMap<String, String> horarios,
+			 @RequestParam("horario")String horario,
 			 Model model, Authentication authentication, Principal principal) {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -251,15 +255,11 @@ public class ProfesorController {
 		  }
 		
 		 curso.setNiveles(nivel);
+		 curso.setHORARIO(horario);
+		 curso.setNiveles(nivel);
 		 cursoDao.save(curso);
-		 Set<String> keys = horarios.keySet();
-		
-		 for (String key : keys) {
-			 	if(key!=null) {
-	            System.out.println("Key = " + key);
-	            System.out.println("Values = " + horarios.get(key) + "n");
-			 	}
-	        }
+		 
+	
 		 
 		 if(authentication != null) {
 				logger.info("Hola ".concat(authentication.getName()));
@@ -268,42 +268,32 @@ public class ProfesorController {
 			
 			model.addAttribute("nombre", persona.getNombre());
 			
-		return "redirect:/profesor";
+		return "redirect:/profesor/miscursos";
 	}
 	
-	@RequestMapping(value = "/denunciar/profesor")
-	public String creaDenuncia(@RequestParam("denunciado")String denunciado,
-			                   @RequestParam("problema")String problema,
-			                   RedirectAttributes ra,
-			                   Model model) {
-
+	@RequestMapping("/profesor/miscursos")
+	public String profesorCursos(Model model, Authentication authentication, Principal principal) {
+		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
 		Persona persona = personDao.porNombre(name);
+
+		System.out.println("******************************************************************");
+		System.out.println(persona.getNombre()+" NOMBRE");
+		System.out.println("******************************************************************");
+		Profesor profesor = profesorDao.porId(persona.getId());
+		System.out.println("******************************************************************");
+		System.out.println(profesor.getRFC()+" RFC");
 		
-		Denuncia denuncia = new Denuncia();
-		denuncia.setDenunciado(denunciado);
-		Persona validar = personDao.porCorreo(denunciado);
+		List<Curso> Cursos= cursoDao.listarCursos(profesor);
 		
-		if (validar == null) {
-			
-			ra.addFlashAttribute("error", "El usuario a denunciar no existe!");
-			return "redirect:/profesor";
-			
-		}else {
-			
-			
-			denuncia.setProblema(problema);
-			
-			denuncia.setDenunciante(persona.getUsername());
-			
-			denunciaDao.save(denuncia);
-			
-			ra.addFlashAttribute("success", "Tu Denuncia se ha hecho con exito!");
-			return"redirect:/profesor";
-			
-		}
-		
+		for(Curso element : Cursos) {
+			  System.out.println(element. getTITULO());
+			}
+		model.addAttribute("cursos", Cursos);	
+		return "miscursos";
 	}
+	
+
 	
 }

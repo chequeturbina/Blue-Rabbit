@@ -68,56 +68,17 @@
 		</div>
 	</div>
 </head>
-<!DOCTYPE HTML>
-<html>
-<head>
-
-<c:if test="${success != null}">
-	<div class="alert alert-info">${success}</div>
-</c:if>
-
-<script type="text/javascript">
-	window.onload = function() {
-
-		var chart = new CanvasJS.Chart("chartContainer", {
-			theme : "light1", // "light2", "dark1", "dark2"
-			animationEnabled : false, // change to true		
-			title : {
-				text : "Grafico de ejemplo"
-			},
-			data : [ {
-				// Change type to "bar", "area", "spline", "pie",etc.
-				type : "column",
-				dataPoints : [ {
-					label : "apple",
-					y : 10
-				}, {
-					label : "orange",
-					y : 15
-				}, {
-					label : "banana",
-					y : 25
-				}, {
-					label : "mango",
-					y : 30
-				}, {
-					label : "grape",
-					y : 28
-				} ]
-			} ]
-		});
-		chart.render();
-
-	}
-</script>
-</head>
 <body>
-	<div id="chartContainer" style="height: 370px; width: 100%;"></div>
-	<script src="https://canvasjs.com/assets/script/canvasjs.min.js">
-		
-	</script>
+	<div class="container emp-profile">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="profile-head" >
+					<h1>Administrador</h1>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
-</html>
 <!-- /.navbar -->
 
 <footer id="footer">
@@ -167,31 +128,11 @@
 <script src="js/modernizr-latest.js"></script>
 <script type='text/javascript' src='js/jquery.min.js'></script>
 <script type='text/javascript' src='js/fancybox/jquery.fancybox.pack.js'></script>
-
 <script type='text/javascript' src='js/jquery.mobile.customized.min.js'></script>
 <script type='text/javascript' src='js/jquery.easing.1.3.js'></script>
 <script type='text/javascript' src='js/camera.min.js'></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/custom.js"></script>
-<script>
-	jQuery(function() {
-
-		jQuery('#camera_wrap_4').camera({
-			transPeriod : 500,
-			time : 3000,
-			height : '600',
-			loader : 'false',
-			pagination : true,
-			thumbnails : false,
-			hover : false,
-			playPause : false,
-			navigation : false,
-			opacityOnGrid : false,
-			imagePath : 'assets/images/'
-		});
-
-	});
-</script>
 
 </body>
 </html>
