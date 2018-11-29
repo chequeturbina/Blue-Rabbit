@@ -164,7 +164,7 @@ public class ProfesorController {
 			 @RequestParam(value="universidad",required=false) String universidad,
 			 @RequestParam(value="maestria",required=false) String maestria,
 			 @RequestParam(value="doctorado",required=false) String doctorado,
-			 @RequestParam MultiValueMap<String, String> horarios,
+			 @RequestParam("horario")String horario,
 			 Model model, Authentication authentication, Principal principal) {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -250,15 +250,11 @@ public class ProfesorController {
 		  }
 		
 		 curso.setNiveles(nivel);
+		 curso.setHORARIO(horario);
+		 curso.setNiveles(nivel);
 		 cursoDao.save(curso);
-		 Set<String> keys = horarios.keySet();
-		
-		 for (String key : keys) {
-			 	if(key!=null) {
-	            System.out.println("Key = " + key);
-	            System.out.println("Values = " + horarios.get(key) + "n");
-			 	}
-	        }
+		 
+	
 		 
 		 if(authentication != null) {
 				logger.info("Hola ".concat(authentication.getName()));

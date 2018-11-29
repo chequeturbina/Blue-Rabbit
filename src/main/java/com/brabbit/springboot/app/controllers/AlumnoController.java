@@ -177,4 +177,12 @@ public class AlumnoController {
 			
 		return "redirect:/profesor";
 	}
+	
+
+	@RequestMapping("/cursos")
+	public String cursos(Model model) {
+		return "ConfirmStudent";
+	}
+	
+	
 }

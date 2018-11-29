@@ -33,5 +33,10 @@ public class CursoDaoImplement implements InterfaceCursoDao {
 	List<Curso> cursos = em.createQuery("SELECT w FROM Curso w WHERE w.RFC = :RFC",Curso.class).setParameter("RFC",RFC).getResultList(); 
     return cursos; 
 	}
+	
+	public List<Curso> listarCursosT() {
+		List<Curso> cursos = em.createQuery("SELECT w FROM Curso",Curso.class).getResultList(); 
+	    return cursos; 
+	}
 
 }

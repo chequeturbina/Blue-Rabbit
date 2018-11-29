@@ -126,7 +126,7 @@
 								<label>Horarios </label>  
 								<div class="form-group">
 								  <label for="sel1">Seleccione un horario:</label>
-								  <select class="form-control" id="sel1">
+								  <select name="horario" class="form-control" id="sel1">
 								    <option value="matutino">Matutino</option>
 								    <option value="vespertino">Vespertino</option>
 								    <option value="mixto">Mixto</option>

@@ -85,7 +85,7 @@
 	<!-- container -->
 	<div class="container">
 	
-		<h2 class="text-center">Cursos que impartes </h2>
+		<h2 class="text-center">Cursos Disponibles</h2>
         <hr/>
 	
 	<!--CARDSSS-->
