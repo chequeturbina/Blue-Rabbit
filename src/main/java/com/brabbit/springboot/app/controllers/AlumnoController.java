@@ -217,4 +217,25 @@ public class AlumnoController {
 		return "curso";
 	}
 	
+	@RequestMapping("/alumno/comprar/{id}")
+	public String comprar(@PathVariable(value = "id") Long id,Model model) {
+		
+
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName();
+		Persona persona = personDao.porNombre(name);
+
+		System.out.println("******************************************************************");
+		System.out.println(persona.getNombre()+" NOMBRE");
+		System.out.println("******************************************************************");
+		Alumno alumno = alumNoDao.porId(persona.getId());
+		System.out.println("******************************************************************");
+		System.out.println(alumno.getID_ALUMNO());
+        Curso curso= cursoDao.findById(id);
+        alumno.getCursos().add(curso);
+		return "redirect:/alumno";
+	}
+	
+	
+	
 }

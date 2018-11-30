@@ -192,11 +192,12 @@ public class ProfesorController {
 		System.out.println("******************************************************************");
 		System.out.println(profesor.getRFC()+" RFC");
 		List<NivelEducativo> nivel = new ArrayList<>();
+		
 
 		String nombre = persona.getNombre()+" "+persona.getApellido();
 		
 		Curso curso = new Curso();
-		
+		curso.setNiveles(nivel);
 		curso.setTITULO(titulo);
 		curso.setDESCRIPCION(descripcion);
 		curso.setRFC(profesor);
@@ -204,7 +205,7 @@ public class ProfesorController {
 		if( primaria!= null)
 		  {
 			NivelEducativo pri = nivelDao.findOne(1);
-			nivel.add(pri);
+			curso.getNiveles().add(pri);
 		    System.out.println("primaria is checked");
 		  }
 		  else
@@ -215,7 +216,7 @@ public class ProfesorController {
 		if(secundaria != null)
 		  {
 			NivelEducativo secu = nivelDao.findOne(2);
-			nivel.add(secu);
+			curso.getNiveles().add(secu);
 			System.out.println("secundaria is checked");
 		  }
 		  else
@@ -226,7 +227,7 @@ public class ProfesorController {
 		if(bachillerato != null)
 		  {
 			NivelEducativo bachi = nivelDao.findOne(3);
-			nivel.add(bachi);
+			curso.getNiveles().add(bachi);
 			System.out.println("bachillerato is checked");
 		  }
 		  else
@@ -237,7 +238,7 @@ public class ProfesorController {
 		if(universidad != null)
 		  {
 			NivelEducativo uni = nivelDao.findOne(4);
-			nivel.add(uni);
+			curso.getNiveles().add(uni);
 		  }
 		  else
 		  {
@@ -247,7 +248,7 @@ public class ProfesorController {
 		if(maestria != null)
 		  {
 			NivelEducativo maes = nivelDao.findOne(5);
-			nivel.add(maes);
+			curso.getNiveles().add(maes);
 			System.out.println("maestria is checked");
 		  }
 		  else
@@ -257,7 +258,7 @@ public class ProfesorController {
 		if(doctorado != null)
 		  {
 			NivelEducativo doc = nivelDao.findOne(6);
-			nivel.add(doc);
+			curso.getNiveles().add(doc);
 			System.out.println("doctorado is checked");
 		  }
 		  else
@@ -265,9 +266,8 @@ public class ProfesorController {
 		    System.out.println("doctorado is not checked");
 		  }
 		
-		 curso.setNiveles(nivel);
+		
 		 curso.setHORARIO(horario);
-		 curso.setNiveles(nivel);
 		 curso.setPROFESOR(nombre);
 		 curso.setUSERNAME(persona.getUsername());
 		 cursoDao.save(curso);

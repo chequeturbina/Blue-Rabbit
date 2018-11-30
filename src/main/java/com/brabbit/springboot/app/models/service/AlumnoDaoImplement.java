@@ -26,12 +26,11 @@ public class AlumnoDaoImplement implements InterfaceAlumnoDao {
 	}
 	
      public Alumno porId(long id) {
-		
-		List<Alumno> results = em.createQuery("SELECT w FROM Alumno w WHERE w.ID_PERSONA = "+id, Alumno.class)
-				.getResultList();
-		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		System.out.println(results);
-		return results.isEmpty() ? null : results.get(0);
+    	 List<Alumno> results = em.createQuery("SELECT w FROM Alumno w WHERE w.ID_ALUMNO = "+id, Alumno.class)
+ 				.getResultList();
+ 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+ 		System.out.println(results);
+ 		return results.isEmpty() ? null : results.get(0);
 	}
 
 }
