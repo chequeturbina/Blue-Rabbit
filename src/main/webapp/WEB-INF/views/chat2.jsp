@@ -17,6 +17,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <link rel="stylesheet" href="/css/chat.css">
+<link rel="stylesheet" href="/css/style.css">
 
 
 
@@ -24,8 +25,33 @@
 
 <body>
 	
+	<div class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<!-- Button for smallest screens -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span><span class="icon-bar"></span><span
+						class="icon-bar"></span>
+				</button>
+				<a class="img-responsive" href="<c:url value="/alumno"/>"> <img
+					src="/img/logo.png" width="200" height="90"
+					alt="Techro HTML5 template"></a>
+			</div>
+			<br>
+			<div  class="row">
+					<div class="col-lg-12">
+			<a class="btn btn-blue btn-two float-right" href="<c:url value="/profesor" />">Volver</a>  
+			</div></div>
+			<!--/.nav-collapse -->
+		</div>
+	</div>
 	
-<div class="container">
+	
+	<br>
+	<br>
+	<br>
+<section class="container">
     <div class="row form-group">
         <div class="col-xs-12 col-md-offset-2 col-md-8 col-lg-8 col-lg-offset-2">
             <div class="panel panel-primary">
@@ -95,7 +121,7 @@
             </div>
         </div>
     </div>
-   </div>
+   </section>
  <input id="nombre" value="${profesor.nombre}" type="hidden">
  <input id="idA" value="${idAlumno}" type="hidden">
  <input id="idP" value="${idProfesor}" type="hidden">
@@ -146,6 +172,43 @@
 
   });
 </script>	
+
+<footer id="footer2">
+	<div class="social text-center">
+		<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
+			class="fa fa-facebook"></i></a>
+	</div>
+
+	<div class="clear"></div>
+	<!--CLEAR FLOATS-->
+	<div class="footer2">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 panel">
+					<div class="panel-body">
+						<p class="text">
+							<sec:authorize access="isAuthenticated()">
+			Usuario logeado: <sec:authentication var="principal"
+									property="principal" /> ${principal.username} 
+			| Roles: <sec:authentication property="principal.authorities"
+									var="authorities" />
+								<c:forEach items="${authorities}" var="authority" varStatus="vs">
+								${authority.authority}
+							</c:forEach>
+							</sec:authorize>
+						</p>
+						<p class="text-right">
+							Copyright &copy; 2014. Template by <a href="BlueRabbit"
+								rel="develop">Blue Rabbit International</a>
+						</p>
+					</div>
+				</div>
+
+			</div>
+			<!-- /row of panels -->
+		</div>
+	</div>
+</footer>
 
 </body>
 </html>

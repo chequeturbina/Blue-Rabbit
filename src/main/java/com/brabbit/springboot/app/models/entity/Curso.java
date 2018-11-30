@@ -40,7 +40,17 @@ public class Curso implements Serializable{
     
     private String USERNAME;
     
-    public String getPROFESOR() {
+    private Integer COSTO;
+    
+    public Integer getCOSTO() {
+		return COSTO;
+	}
+
+	public void setCOSTO(Integer cOSTO) {
+		COSTO = cOSTO;
+	}
+
+	public String getPROFESOR() {
 		return PROFESOR;
 	}
 

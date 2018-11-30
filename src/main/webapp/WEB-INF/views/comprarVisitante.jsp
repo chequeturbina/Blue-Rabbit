@@ -91,6 +91,8 @@
 		<br>
 		
 		<h3>Descripcion:${curso.DESCRIPCION} </h3>
+		
+		<h2>$ ${curso.COSTO}</h2>
 	
 			
 		</div>

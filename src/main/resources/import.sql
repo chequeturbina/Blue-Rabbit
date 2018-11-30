@@ -51,9 +51,9 @@ INSERT INTO ALUMNO(ID_ALUMNO,ID_NIVEL,ID_PERSONA)VALUES(3,4,3);
 INSERT INTO ALUMNO(ID_ALUMNO,ID_NIVEL,ID_PERSONA)VALUES(4,5,4);
 INSERT INTO ALUMNO(ID_ALUMNO,ID_NIVEL,ID_PERSONA)VALUES(5,6,5);                                                                                    
 
-INSERT INTO CURSO(ID_CURSO,DESCRIPCION,HORARIO,PROFESOR,TITULO,USERNAME,VISIBLE,RFC)VALUES(1,'curso para aprender ingles basico','matutino','elisa','Curso Ingles','elisa@profesor',0,'1234567890');
+INSERT INTO CURSO(ID_CURSO,DESCRIPCION,HORARIO,PROFESOR,TITULO,USERNAME,VISIBLE,RFC,COSTO)VALUES(1,'curso para aprender ingles basico','matutino','elisa','Curso Ingles','elisa@profesor',0,'1234567890',350);
 
-INSERT INTO CURSO(ID_CURSO,DESCRIPCION,HORARIO,PROFESOR,TITULO,USERNAME,VISIBLE,RFC)VALUES(2,'curso para aprender aleman basico','matutino','elisa','Curso aleman','elisa@profesor',0,'1234567890');
+INSERT INTO CURSO(ID_CURSO,DESCRIPCION,HORARIO,PROFESOR,TITULO,USERNAME,VISIBLE,RFC,COSTO)VALUES(2,'curso para aprender aleman basico','matutino','elisa','Curso aleman','elisa@profesor',0,'1234567890',400);
 
-INSERT INTO CURSO(ID_CURSO,DESCRIPCION,HORARIO,PROFESOR,TITULO,USERNAME,VISIBLE,RFC)VALUES(3,'Matematicas para universitarios','matutino','elisa','Curso Matematicas','elisa@profesor',0,'1234567890');
+INSERT INTO CURSO(ID_CURSO,DESCRIPCION,HORARIO,PROFESOR,TITULO,USERNAME,VISIBLE,RFC,COSTO)VALUES(3,'Matematicas para universitarios','matutino','elisa','Curso Matematicas','elisa@profesor',0,'1234567890',450);
 

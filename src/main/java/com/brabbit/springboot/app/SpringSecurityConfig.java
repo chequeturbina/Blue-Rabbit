@@ -32,7 +32,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/", "/css/**", "/js/**","/login/**","/img/**","/h2-console/**","/registroA","/registroP","/alerta/**","/error_403","/cursosVisitante/**","/registro/alumno/**","/registro/profesor/**","/comprarVisitante/{id}/**").permitAll()
 		.antMatchers("/admin/**", "/eliminarUsuario/**", "/eliminar/{id}/**", "/verDenuncias/**").hasRole("ADMIN")
 		.antMatchers("/alumno/**","/denunciar/alumno/**","/alumno/vercursos/{id}/**","/alumno/comprar/{id}/**","/alumno/cursos/chat/{id}/**","/alumno/curso/chat/{id}/**","/alumno/cursos/**").hasRole("ALUMNO")
-		.antMatchers("/profesor/**","/curso/**","/nuevo/curso/**,/profesor/crearCurso/**","/denunciar/profesor/**","/profesor/asesorias/{id}/**","/denunciar/profesor/**","/verCursosProfesores/**").hasRole("PROFESOR")
+		.antMatchers("/profesor/**","/curso/**","/nuevo/curso/**,/profesor/crearCurso/**","/denunciar/profesor/**","/profesor/asesorias/{id}/**","/denunciar/profesor/**","/verCursosProfesores/**","/profesor/cursoT/chat/{id}/**","/profesor/cursos/chat/{id}/**").hasRole("PROFESOR")
 		.anyRequest().authenticated()
 		.and()
         .formLogin()

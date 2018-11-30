@@ -82,7 +82,8 @@
     <label>Descripción</label> 
     <p>${curso.DESCRIPCION}</p> 
      <label>Horario</label>
-    <p>${curso.HORARIO}</p>  
+    <p>${curso.HORARIO}</p>
+    <p>$ ${curso.COSTO}</p>
       </div>
   </div>
  	</c:forEach>

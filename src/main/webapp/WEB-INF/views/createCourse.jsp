@@ -106,7 +106,12 @@
                                    </div>
 							</div>
 							
-							
+							<div class="form-group ">
+								<label>
+								Costo
+							</label>
+								<input type="number" min="0" max="10000" name="costo" class="form-control" placeholder="Costo" autofocus required>
+							</div>
 							
 							
 							<div class="form-group">

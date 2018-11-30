@@ -202,6 +202,7 @@ public class ProfesorController {
 			 @RequestParam(value="maestria",required=false) String maestria,
 			 @RequestParam(value="doctorado",required=false) String doctorado,
 			 @RequestParam("horario")String horario,
+			 @RequestParam("costo")Integer costo,
 			 Model model, Authentication authentication, Principal principal,RedirectAttributes ra) {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -225,6 +226,7 @@ public class ProfesorController {
 		curso.setTITULO(titulo);
 		curso.setDESCRIPCION(descripcion);
 		curso.setRFC(profesor);
+		curso.setCOSTO(costo);
 		
 		if( primaria!= null)
 		  {
@@ -460,7 +462,10 @@ public class ProfesorController {
 		
 		model.addAttribute("alumnos", alumnos);
 		model.addAttribute("curso", curso);
-		return "cursosUsuario";
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		return "CursoUsers";
 	}
 
 	

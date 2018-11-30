@@ -99,6 +99,7 @@
   	</ul>
      <label>Horario</label>
     <p>${curso.HORARIO}</p>  
+    <p>$ ${curso.COSTO}</p>
       </div>
   </div>
  	</c:forEach>

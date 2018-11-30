@@ -13,14 +13,14 @@
 	content="free-educational-responsive-web-template-webEdu">
 <meta name="author" content="webThemez.com">
 <title>Blue-Rabbit</title>
-<link rel="favicon" href="img/favicon.png">
+<link rel="favicon" href="/img/favicon.png">
 <link rel="stylesheet" media="screen"
 	href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/bootstrap-theme.css" media="screen">
-<link rel="stylesheet" href="css/style.css">
-<link rel='stylesheet' id='camera-css' href='css/camera.css'
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
+<link rel="stylesheet" href="/css/style.css">
+<link rel='stylesheet' id='camera-css' href='/css/camera.css'
 	type='text/css' media='all'>
 
 <script src="/js/back.js"></script>
