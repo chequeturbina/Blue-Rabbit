@@ -2,6 +2,8 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+ pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 
@@ -22,7 +24,10 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel='stylesheet' id='camera-css' href='css/camera.css'
 	type='text/css' media='all'>
+	
+	  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
 
+<script src="/js/back.js"></script>
 </head>
 <body>
 	<!-- Fixed navbar -->
@@ -35,20 +40,13 @@
 					<span class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
-				<a class="img-responsive" href="<c:url value="/"/>"> <img
+				<a class="img-responsive" href="<c:url value="/profesor"/>"> <img
 					src="img/logo.png" width="200" height="90"
 					alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="<c:url value="profesor"/>">Inicio</a></li>
-					<li><a href="<c:url value="profesor"/>">Estadisticas</a></li>
-					<li>
-			<div class="col-md-2">
-			<a class="btn btn-two btn-success" href="/profesor/crearCurso">Crear Curso</a>
-			</div></li>
-
-					<li><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#charger-manual">Denuncia</button></li>
+					<li class="active"><a href="<c:url value="/profesor"/>">Inicio</a></li>
 					
 					<li class="dropdown">
 						<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
@@ -65,6 +63,7 @@
 	</div>
 </head>
 <!-- /.navbar -->
+
 <div class="container emp-profile">
 <c:if test="${success != null}">
 	<div class="alert alert-info">${success}</div>
@@ -95,7 +94,7 @@
      <div class="container">
      <h3>${curso.TITULO}</h3>
      <h4><b><a href="#" onclick="document.getElementById('aa').submit();">${alumno.ID_PERSONA.nombre}</a></b></h4>      
-    <label>Descripción</label> 
+    <label>DescripciÃ³n</label> 
     <p>${curso.DESCRIPCION}</p>
     <label>Nivel educativo</label>
     <ul>
@@ -106,16 +105,16 @@
      <label>Horario</label>
     <p>${curso.HORARIO}</p>  
       </div>
-  </div>
+  
   <input type="hidden" value="${alumno.ID_ALUMNO}" name="idAlumno" >
   </form>
+  </div>
  	</c:forEach>
   <!--CARDSSS-->
   </div><!-- padre -->
      </div>
 		<!-- container CARDS -->
 </div>
-			</div>
 
 		<!-- Termina Formulario -->
 		
@@ -157,36 +156,7 @@
 </footer>
 
 
-<div class="modal fade" id="charger-manual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog">
-		<div class="modal-content">
-		
-			<!-- Empieza Formulario --> 
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title">Denuncia</h4>
-			</div>
-			<div class="modal-body">
-				<form method="POST" action="/denunciar/profesor" class="form-light mt-20" role="form">
-					<div class="form-group">
-						<label>Correo del Alumno a denunciar</label>
-						<input type="email" name="denunciado" id="denunciado" class="form-control" placeholder="Correo Alumno">
-					</div>	
-					<div class="form-group">
-						<label>Denuncia</label>
-						<textarea rows="4" cols="50" name="problema" id="problema" class="form-control" placeholder="Comentario"></textarea>
-					</div>
-					<button class="btn btn-blue" type="submit">Denunciar</button>		
-				</form>
-			</div>
-			<div class="modal-footer">
-				<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-			</div>
-		</div>
-		<!-- Termina Formulario -->
 
-</div>
-</div>
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 <script src="js/modernizr-latest.js"></script>
 <script type='text/javascript' src='js/jquery.min.js'></script>
@@ -197,25 +167,7 @@
 <script type='text/javascript' src='js/camera.min.js'></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/custom.js"></script>
-<script>
-	jQuery(function() {
 
-		jQuery('#camera_wrap_4').camera({
-			transPeriod : 500,
-			time : 3000,
-			height : '600',
-			loader : 'false',
-			pagination : true,
-			thumbnails : false,
-			hover : false,
-			playPause : false,
-			navigation : false,
-			opacityOnGrid : false,
-			imagePath : 'assets/images/'
-		});
-
-	});
-</script>
 
 </body>
 </html>

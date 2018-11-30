@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.Iterator;
@@ -44,6 +46,7 @@ import java.io.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Date;
+
 
 @Controller
 public class ProfesorController {
@@ -100,12 +103,12 @@ public class ProfesorController {
 			  System.out.println(element. getTITULO());
 			}
 		
-		//List<Alumno> ids = alumNoDao.findAll();
+		List<Alumno> ids = alumNoDao.findAll();
 		
 		model.addAttribute("username", validar.getUsername());
 		model.addAttribute("apellido", validar.getApellido());
 		model.addAttribute("cursos", Cursos);
-		//model.addAttribute("clientees", ids);	
+		model.addAttribute("clientees", ids);	
 		
 		return "teacher";
 	}
@@ -304,25 +307,7 @@ public class ProfesorController {
 		return "redirect:/profesor";
 	}
 	
-	@RequestMapping(value="/profesor/asesorias/{id}", method = RequestMethod.GET)
-	public String profesorCursos(Model model, Authentication authentication, Principal principal,@PathVariable(value = "id") Long id) {
-		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName();
-		Persona persona = personDao.porNombre(name);
-		//obetndo el profesor
-		System.out.println("******************************************************************");
-		System.out.println(persona.getNombre()+" NOMBRE");
-		System.out.println("******************************************************************");
-		Profesor profesor = profesorDao.porId(persona.getId());
-		System.out.println("******************************************************************");
-		System.out.println(profesor.getRFC()+" RFC");
-		Curso curso = cursoDao.findById(id);
-		List<Alumno> alumnos=curso.getAlumno();
-		model.addAttribute("alumnos", alumnos);
-		model.addAttribute("curso", curso);
-		return "CursoUsers";
-	}
+
 	
 	@RequestMapping(value = "/denunciar/profesor")
 	public String creaDenuncia(@RequestParam("denunciado")String denunciado,
@@ -443,6 +428,29 @@ public class ProfesorController {
 		
 	}
 
+	@RequestMapping(value="/profesor/asesorias/{id}")
+	public String profesorasesoria(@PathVariable (value = "id") Long id, Model model, Authentication authentication, 
+			                     Principal principal) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name = auth.getName();
+		Persona persona = personDao.porNombre(name);
+		
+		
+		System.out.println("******************************************************************");
+		System.out.println(persona.getNombre()+" NOMBRE");
+		System.out.println("******************************************************************");
+		Profesor profesor = profesorDao.porId(persona.getId());
+		System.out.println("******************************************************************");
+		System.out.println(profesor.getRFC()+" RFC");
+		
+		Curso curso = cursoDao.findById(id);
+		List<Alumno> alumnos=curso.getAlumno();
+		
+		model.addAttribute("alumnos", alumnos);
+		model.addAttribute("curso", curso);
+		return "CursoUsuario";
+	}
 
 	
 }
