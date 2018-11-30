@@ -93,17 +93,26 @@ public class AlumnoController {
 			logger.info("Hola ".concat(authentication.getName()));
 		}
 		
-		List<Curso> Cursos= cursoDao.listarCursosT();
 		
-		for(Curso element : Cursos) {
-			  System.out.println(element. getTITULO());
-			  System.out.println(element.getPROFESOR());
-			}
-		model.addAttribute("cursos", Cursos);
 		
 		String username = authentication.getName();
 		Persona validar = personDao.porNombre(username);
 		model.addAttribute("nombre", validar.getNombre());
+		
+
+		System.out.println("******************************************************************");
+		System.out.println(validar.getNombre()+" NOMBRE");
+		System.out.println("******************************************************************");
+		Alumno alumno = alumNoDao.porId(validar.getId());
+		System.out.println("******************************************************************");
+		System.out.println(alumno.getID_ALUMNO());
+        List<Curso> cursos = alumno.getCursos();
+        
+    	for(Curso element : cursos) {
+			  System.out.println(element. getTITULO());	
+			}
+    	
+        model.addAttribute("cursos", cursos);
 		
 		return "student";
 	}
@@ -230,7 +239,9 @@ public class AlumnoController {
 		System.out.println("******************************************************************");
 		System.out.println(alumno.getID_ALUMNO());
         Curso curso= cursoDao.findById(id);
+        System.out.println(curso.getTITULO());		
         alumno.getCursos().add(curso);
+        alumNoDao.save(alumno);
 		return "redirect:/alumno";
 	}
 	

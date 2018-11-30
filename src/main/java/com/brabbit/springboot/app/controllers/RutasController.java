@@ -89,7 +89,7 @@ public class RutasController {
 		return "ConfirmStudent";		
 	}
 	
-	@RequestMapping("/cursos")
+	@RequestMapping("/alumno/cursos")
 	public String cursosDisponibles(Model model) {
          List<Curso> Cursos= cursoDao.listarCursosT();
 		
