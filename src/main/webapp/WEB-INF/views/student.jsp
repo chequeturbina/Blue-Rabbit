@@ -22,13 +22,12 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel='stylesheet' id='camera-css' href='css/camera.css'
 	type='text/css' media='all'>
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-	<script src="assets/js/html5shiv.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
+
+ <script src="/assets/js/custom.js"></script>
+
 </head>
-<body>
+<body onload="nobackbutton();">
+
 	<div class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
@@ -47,8 +46,7 @@
 					<li class="active"><a href="<c:url value="alumno"/>">Inicio</a></li>
 					<!--  <li><a href="<c:url value="alumno/cursos"/>">Cursos</a></li>-->
 
-					<li><a href="<c:url value="alumno"/>">Lista de Deseos</a></li>
-					<li><a href="<c:url value="alumno"/>">Carrito de Compra</a></li>
+				
 					<!-- chorizote para iniciar sesion-->
 
 					<li><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#charger-manual">Denuncia</button></li>
@@ -186,6 +184,7 @@
 <script type='text/javascript' src='js/camera.min.js'></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/custom.js"></script>
+
 
 
 </body>

@@ -45,24 +45,15 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-					<li><a href="<c:url value="/cursos"/>">Tutorias</a></li>
-					<li>
-						<sec:authorize access="!isAuthenticated()">
-							<form action="/loginpage">
-								 <div class="dropdown">
-									  <button type="button" class="btn btn-blue dropdown-toggle" data-toggle="dropdown">
-									    Registro
-									  </button>
-									  <ul class="dropdown-menu">
-									    <li><a class="dropdown-item" href="<c:url value="/registroA"/>">Alumno</a></li>
-									 	<li><a class="dropdown-item" href="<c:url value="/registroP"/>">Profesor</a></li>
-									  </ul>
-									</div> 
-							</form>
-						</sec:authorize>
+					<li><a href="<c:url value="/cursosVisitante"/>">Tutorias</a></li>
+					<li class="dropdown">
+					     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro<b class="caret"></b></a>
+						    <ul class="dropdown-menu">
+						        <li><a  href="<c:url value="/registroA"/>">Alumno</a></li>
+								<li><a  href="<c:url value="/registroP"/>">Profesor</a></li>
+							</ul>	
 					</li>
-
-					<!-- chorizote para iniciar sesion-->
+					
 
 					<li>
 						<sec:authorize access="!isAuthenticated()">
@@ -72,66 +63,6 @@
 							</form>
 						</sec:authorize>
 					</li>
-					
-					<li>
-						<sec:authorize access="isAuthenticated()">
-							<form action="/loginpage">
-								<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
-						  		${nombre} </a>
-								<ul class="dropdown-menu">
-									<li><a class="btn btn-two btn"
-									href="<c:url value="/logout" />">Cerrar Sesion</a></li>
-								</ul>
-							</form>
-						</sec:authorize>
-					</li>
-
-					<!-- Inicio barra de busqueda
-            <form class="busqueda" action="">
-  				<input type="text" placeholder="Buscar..." name="search">
-  				<button type="submit"><i class="fa fa-search"></i></button>
-  				
-  				<style>
-  					* {
-  						box-sizing: border-box;
-					}	
-
-					/* Estilo del campo de busqueda */
-					form.busqueda input[type=text] {
-  						padding: 10px;
-  						font-size: 17px;
-  						border: 1px solid grey;
-  						float: left;
-  						width: 80%;
-  						background: #f1f1f1;
-					}
-
-					/* Estilo del boton */
-					form.busqueda button {
-  						float: left;
-  						width: 20%;
-  						padding: 10px;
-  						background: #2196F3;
-  						color: white;
-  						font-size: 17px;
-  						border: 1px solid grey;
-  						border-left: none; /* Evita doble borde */
-  						cursor: pointer;
-					}
-
-					form.busqueda button:hover {
-  						background: #0b7dda;
-					}
-
-					/* Limpia flotantes */
-					form.busqueda::after {
-  						content: "";
-  						clear: both;
-  						display: table;
-					}
-  				</style>
-		</form> 
-		<!-- Final barra de busqueda-->
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -237,6 +168,7 @@
 											<h5>Desarrollador</h5>
 											</p>
 											<p>Descripcion del curso</p>
+											<a href="<c:url value="/"/>">Leer mas...</a>
 										</div>
 									</div>
 								</div>
@@ -257,6 +189,7 @@
 											<h5>Fotografia</h5>
 											</p>
 											<p>Descripcion del curso.</p>
+											<a href="<c:url value="/"/>">Leer mas...</a>
 										</div>
 									</div>
 								</div>
@@ -276,6 +209,7 @@
 											<h5>Edicion de Audio</h5>
 											</p>
 											<p>Descripcion Del curso.</p>
+											<a href="<c:url value="/"/>">Leer mas...</a>
 										</div>
 									</div>
 								</div>
@@ -298,8 +232,6 @@
 						<span>ClassMates es una plataforma de conocimiento
 							compartido, desarrollada con fines educativos.</span>
 					</p>
-					<a href="#" title="read more" class="btn-inline " target="_self">leer
-						mas</a>
 				</div>
 
 
@@ -311,22 +243,22 @@
 						<ul>
 							<li><a
 								title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus."
-								href="#">Matematicas y Ciencias de la Computacion</a></li>
+								>Matematicas y Ciencias de la Computacion</a></li>
 							<li><a
 								title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus."
-								href="#">Matematicas y filosofia</a></li>
+								>Matematicas y filosofia</a></li>
 							<li><a
 								title="Penatibus et magnis dis parturient montes ascetur ridiculus mus."
-								href="#">Filosofia</a></li>
+								>Filosofia</a></li>
 							<li><a
 								title="Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci."
-								href="#">Historia</a></li>
+								>Historia</a></li>
 							<li><a
 								title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus."
-								href="#">Arquelogia</a></li>
+								>Arquelogia</a></li>
 							<li><a
 								title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus."
-								href="#">Fisica</a></li>
+								>Fisica</a></li>
 						</ul>
 					</div>
 				</div>

@@ -83,13 +83,8 @@ public class RutasController {
 		return "resgestryStudent";
 	}
 
-
-	@GetMapping("/alerta")
-	public String alertusuario(Model model) {
-		return "ConfirmStudent";		
-	}
 	
-	@RequestMapping("/cursos")
+	@RequestMapping("/cursosVisitante")
 	public String cursosDisponibles(Model model) {
          List<Curso> Cursos= cursoDao.listarCursosT();
 		
@@ -98,7 +93,7 @@ public class RutasController {
 			  System.out.println(element.getPROFESOR());
 			}
 		model.addAttribute("cursos", Cursos);
-		return "CursosDisponibles";
+		return "cursosVisitante";
 	}
 	
 	

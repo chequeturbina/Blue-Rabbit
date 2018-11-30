@@ -24,6 +24,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js"></script>
 
+<script src="/assets/js/custom.js"></script>
 
 <!-- If you're using Stripe for payments -->
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
@@ -32,7 +33,7 @@
 
 </head>
 
-<body>
+<body  onload="nobackbutton();">
 	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse">
 		<div class="container">
@@ -51,6 +52,7 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li class="active"><a href="<c:url value="/alumno"/>">Inicio</a></li>
+					<li><a href="<c:url value="/alumno"/>">Volver</a></li>
 					
 							<li>
 						<sec:authorize access="!isAuthenticated()">
@@ -64,10 +66,10 @@
 					<li>
 						<sec:authorize access="isAuthenticated()">
 							<form action="/loginpage">
-								<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
+								<a class="dropdown-toggle btn" href="#" data-toggle="dropdown">
 						  		${nombre} </a>
 								<ul class="dropdown-menu">
-									<li><a class="btn btn-two btn"
+									<li><a class="btn-blue"
 									href="<c:url value="/logout" />">Cerrar Sesion</a></li>
 								</ul>
 							</form>
