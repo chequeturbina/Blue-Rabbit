@@ -72,8 +72,7 @@ public class ProfesorController {
 	@Autowired
 	private DenunciaDaoImplement denunciaDao;
 	
-	@Autowired
-	private AlumnoDaoImplement alumNoDao;
+
 	
 	@RequestMapping("/profesor")
 	public String Profesor(Model model, Authentication authentication, Principal principal) {
@@ -192,7 +191,7 @@ public class ProfesorController {
 			 @RequestParam(value="maestria",required=false) String maestria,
 			 @RequestParam(value="doctorado",required=false) String doctorado,
 			 @RequestParam("horario")String horario,
-			 Model model, Authentication authentication, Principal principal) {
+			 Model model, Authentication authentication, Principal principal,RedirectAttributes ra) {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
@@ -292,7 +291,7 @@ public class ProfesorController {
 				logger.info("Hola ".concat(authentication.getName()));
 			}
 			
-			
+		 ra.addFlashAttribute("success", "Curso Creado con exito!!");
 					
 		return "redirect:/profesor";
 	}
@@ -352,7 +351,78 @@ public class ProfesorController {
 		
 	}
 	
+	//METODO PARA ESPIAR LO QUE ENSEÑAN LOS DEMAS
+	@RequestMapping("/verCursosProfesores")
 
+	public String cursosDeOtros(Model model) {
+         List<Curso> Cursos= cursoDao.listarCursosT();
+		
+		for(Curso element : Cursos) {
+			  System.out.println(element. getTITULO());
+			  System.out.println(element.getPROFESOR());
+			}
+		model.addAttribute("cursos", Cursos);
+		return "cursosDeOtros";
+	}
+	
+	/*
+	 * METODO TE REDIRECCIONA AL CHAT
+	 * */	
+	@RequestMapping(value="/profesor/chat/{id}", method = RequestMethod.POST)
+	public String comprar(Model model, Authentication authentication, Principal principal,@PathVariable(value = "id") Long id,
+			@RequestParam("idAlumno") Long idAlumno) {
+		
+		//OBTENEMOS AL USUARIO LOGUEADO EN ESTE CASO ALUMNO = VALIDAR
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		
+		//SEGUIMIENTO
+		System.out.println("******************************************************************");
+		System.out.println(validar.getNombre()+" NOMBRE");
+		System.out.println("******************************************************************");
+		//CASAMOS EL ALUMNO
+		Alumno alumno = alumNoDao.porId(idAlumno);
+		System.out.println("******************************************************************");
+		System.out.println(alumno.getID_ALUMNO());
+		//SACAMOS LOS CURSOS DEL ALUMNO PARA VERIFICAR QUE HAYA COMPRADO EL CURSO ANTES
+		Profesor profesor = profesorDao.porId(validar.getId());
+       /* profesor.get
+        boolean flag = false;
+    	for(Curso element : cursos) {
+    		
+    			if(element.getID_CURSO()==id) {
+    				flag=true;
+    			}
+			  System.out.println(element.getID_CURSO());
+			  System.out.println(element.getTITULO());
+			}
+    	
+    	if(flag==false) {
+    		
+    		//REDIRECCIONA A LA VISTA DE COMPRA DEL CURSO
+    		
+    		return "redirect:/alumno/cursos/"+id;
+    	}
+    	//ENCUENTRA EL CURSO POR EL ID
+    	Curso curso = cursoDao.findById(id); 
+    	
+    	//ENCONTRAMOS EL PROFESOR OBTENIENDOLO DEL MISMO CURSO
+        String pr=curso.getUSERNAME().trim();
+        Persona profesor = personDao.porNombre(pr);
+        System.out.println(profesor.getId()+"nomames");
+        
+        //IDE DEL PROFESOR Y DEL ALUMNO IMPORTANTE PARA EL CHAT
+    	Long idProfesor =profesor.getId();
+    	Long idAlumno = alumno.getID_ALUMNO();
+    	
+    	 model.addAttribute("alumno",validar);
+    	 model.addAttribute("idProfesor",idProfesor);
+    	 model.addAttribute("idAlumno",idAlumno);
+    	 model.addAttribute("curso", curso);
+		return "chat";*/
+		return username;
+	}
 
 	
 }

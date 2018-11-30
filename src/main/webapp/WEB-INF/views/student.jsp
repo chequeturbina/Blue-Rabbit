@@ -90,7 +90,7 @@
     <h4><b><a href="<c:url value="/alumno/cursos/chat/${curso.ID_CURSO}"/>">${curso.TITULO}</a></b></h4>
     <label>Profesor:${curso.PROFESOR}</label>
     <br>
-    <label>Descripción</label> 
+    <label>Descripcion</label> 
     <p>${curso.DESCRIPCION}</p> 
      <label>Horario</label>
     <p>${curso.HORARIO}</p>  

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.brabbit.springboot.app.models.entity.Alumno;
@@ -111,7 +112,7 @@ public class AlumnoController {
 			  System.out.println(element. getTITULO());	
 			}
     	
-
+    	 model.addAttribute("clientees", ids);
         model.addAttribute("cursos", cursos);
 		
 		return "student";
@@ -273,7 +274,7 @@ public class AlumnoController {
         System.out.println(curso.getTITULO());		
         alumno.getCursos().add(curso);
         alumNoDao.save(alumno);
-
+        ra.addFlashAttribute("success", "Felicidades! Has comprado un curso");
 		return "redirect:/alumno";
 	}
 	
@@ -364,5 +365,29 @@ public class AlumnoController {
 		
 	}
 	
+	//METODO PARA QUE EL ALUMNO VEA LOS CURSOS DISPONIBLES
+	@RequestMapping("/alumno/cursos")
+
+	public String cursos(Model model, Authentication authentication, Principal principal) {
+         List<Curso> Cursos= cursoDao.listarCursosT();
+		
+		for(Curso element : Cursos) {
+			  System.out.println(element. getTITULO());
+			  System.out.println(element.getPROFESOR());
+			}
+		
+		if(authentication != null) {
+			logger.info("Hola ".concat(authentication.getName()));
+		}
+		
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		model.addAttribute("username", validar.getUsername());
+		
+		
+		model.addAttribute("cursos", Cursos);
+		return "CursosDisponibles";
+	}
 	
 }

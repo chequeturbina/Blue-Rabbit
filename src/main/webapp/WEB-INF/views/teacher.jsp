@@ -163,7 +163,7 @@
 						<br></br>
   <select class="form-control selectpicker" data-live-search="true" name="denunciado" id="denunciado">
     <c:forEach items="${clientees}" var="alumno">
-    <option><c:out value="${alumno.ID_ALUMNO}" /></option>
+    <option><c:out value="${alumno.ID_PERSONA.username}" /></option>
     </c:forEach>
     </select>
 					</div>	

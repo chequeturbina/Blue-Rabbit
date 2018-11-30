@@ -88,7 +88,7 @@ public class RutasController {
 			  System.out.println(element.getPROFESOR());
 			}
 		model.addAttribute("cursos", Cursos);
-		return "CursosDisponibles";
+		return "cursosVisitante";
 	}
 	
 	@RequestMapping("/comprarVisitante/{id}")
