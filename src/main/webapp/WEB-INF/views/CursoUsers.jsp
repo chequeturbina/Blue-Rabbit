@@ -91,7 +91,7 @@
 	
 	<c:forEach var="alumno" items="${alumnos}">
   <div class="card">
-  <form  id="aa" method="POST" action="/profesor/chat/${curso.ID_CURSO}" class="form-light mt-20" role="form">
+  <form  id="aa" method="POST" action="/profesor/cursos/chat/${curso.ID_CURSO}" class="form-light mt-20" role="form">
      <div class="container">
      <h3>${curso.TITULO}</h3>
      <h4><b><a href="#" onclick="document.getElementById('aa').submit();">${alumno.ID_PERSONA.nombre}</a></b></h4>      

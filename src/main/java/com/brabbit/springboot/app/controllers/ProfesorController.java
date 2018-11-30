@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.Iterator;
@@ -25,6 +26,7 @@ import java.util.Set;
 import com.brabbit.springboot.app.models.entity.Alumno;
 import com.brabbit.springboot.app.models.entity.Curso;
 import com.brabbit.springboot.app.models.entity.Denuncia;
+import com.brabbit.springboot.app.models.entity.Mensajes;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
 import com.brabbit.springboot.app.models.entity.Persona;
 import com.brabbit.springboot.app.models.entity.Profesor;
@@ -32,6 +34,7 @@ import com.brabbit.springboot.app.models.entity.Role;
 import com.brabbit.springboot.app.models.service.AlumnoDaoImplement;
 import com.brabbit.springboot.app.models.service.CursoDaoImplement;
 import com.brabbit.springboot.app.models.service.DenunciaDaoImplement;
+import com.brabbit.springboot.app.models.service.MensajesDaoImplement;
 import com.brabbit.springboot.app.models.service.NivelEducativoDaoImplement;
 import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
 import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
@@ -70,6 +73,11 @@ public class ProfesorController {
 	
 	@Autowired
 	private AlumnoDaoImplement alumNoDao;
+	
+	//MENSAJES
+	@Autowired
+	private MensajesDaoImplement mensajesDao;
+
 	
 	@RequestMapping("/profesor")
 	public String Profesor(Model model, Authentication authentication, Principal principal) {
@@ -347,9 +355,9 @@ public class ProfesorController {
 	/*
 	 * METODO TE REDIRECCIONA AL CHAT
 	 * */	
-	@RequestMapping(value="/profesor/chat/{id}", method = RequestMethod.POST)
+	@RequestMapping(value="/profesor/cursos/chat/{id}", method = RequestMethod.POST)
 	public String comprar(Model model, Authentication authentication, Principal principal,@PathVariable(value = "id") Long id,
-			@RequestParam("idAlumno") Long idAlumno) {
+			@RequestParam("idAlumno") Long idAlumn) {
 		
 		//OBTENEMOS AL USUARIO LOGUEADO EN ESTE CASO ALUMNO = VALIDAR
 		String username = authentication.getName();
@@ -361,47 +369,58 @@ public class ProfesorController {
 		System.out.println(validar.getNombre()+" NOMBRE");
 		System.out.println("******************************************************************");
 		//CASAMOS EL ALUMNO
-		Alumno alumno = alumNoDao.porId(idAlumno);
+		Alumno alumno = alumNoDao.porId(idAlumn);
+		Persona alumnop = alumno.getID_PERSONA();
 		System.out.println("******************************************************************");
 		System.out.println(alumno.getID_ALUMNO());
 		//SACAMOS LOS CURSOS DEL ALUMNO PARA VERIFICAR QUE HAYA COMPRADO EL CURSO ANTES
 		Profesor profesor = profesorDao.porId(validar.getId());
-       /* profesor.get
-        boolean flag = false;
-    	for(Curso element : cursos) {
-    		
-    			if(element.getID_CURSO()==id) {
-    				flag=true;
-    			}
-			  System.out.println(element.getID_CURSO());
-			  System.out.println(element.getTITULO());
-			}
-    	
-    	if(flag==false) {
-    		
-    		//REDIRECCIONA A LA VISTA DE COMPRA DEL CURSO
-    		
-    		return "redirect:/alumno/cursos/"+id;
-    	}
+		
     	//ENCUENTRA EL CURSO POR EL ID
     	Curso curso = cursoDao.findById(id); 
     	
     	//ENCONTRAMOS EL PROFESOR OBTENIENDOLO DEL MISMO CURSO
-        String pr=curso.getUSERNAME().trim();
-        Persona profesor = personDao.porNombre(pr);
-        System.out.println(profesor.getId()+"nomames");
+      
         
         //IDE DEL PROFESOR Y DEL ALUMNO IMPORTANTE PARA EL CHAT
-    	Long idProfesor =profesor.getId();
-    	Long idAlumno = alumno.getID_ALUMNO();
+    	Long idProfesor =validar.getId();
+    	Long idAlumno = alumno.getID_PERSONA().getId();
     	
-    	 model.addAttribute("alumno",validar);
+   	     model.addAttribute("profesor",validar);
+    	 model.addAttribute("alumno",alumnop);
     	 model.addAttribute("idProfesor",idProfesor);
     	 model.addAttribute("idAlumno",idAlumno);
     	 model.addAttribute("curso", curso);
-		return "chat";*/
+		return "chat2";
 	}
 	
+	
+	/*
+	 * METODO QUE GUARDA LAS COSAS DESDE EL POST DE JAX ASI BIENN CHULO NO TOQUE NADA DE AQUI ES MUY FRAGIL :d
+	 * */
+	 
+	@RequestMapping(value = "/profesor/cursoT/chat/{id}", method = RequestMethod.POST)
+	@ResponseBody
+	 public void savemensje(@RequestParam String mensaje,@RequestParam Long idAlumno,@RequestParam Long idProfesor,@RequestParam Long idCurso) {
+		System.out.println(mensaje);
+		
+		System.out.println("guardando mensaje");
+		System.out.println("alumno"+idAlumno);
+		System.out.println("profesor"+idProfesor);
+		System.out.println("curso"+idCurso);
+		
+		Curso curso = cursoDao.findById(idCurso);
+		Mensajes mensajeNuevo = new Mensajes();
+		mensajeNuevo.setMENSAJE(mensaje);
+		mensajeNuevo.setPROFESOR(idProfesor);
+		mensajeNuevo.setALUMNO(idAlumno);
+		mensajeNuevo.setPROPIEDAD(1);
+		mensajesDao.save(mensajeNuevo);
+		curso.getMensajes().add(mensajeNuevo);
+		cursoDao.save(curso);
+		System.out.println("mensaje exitoso");
+		
+	}
 
 	
 

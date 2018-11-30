@@ -269,7 +269,7 @@ public class AlumnoController {
         Mensajes bienvenida = new Mensajes();
 		bienvenida.setMENSAJE(" Muchas gracias por adquirir mi "+curso.getTITULO()+" por favor mandame un mensaje para ponernos en contaco :)");
 		bienvenida.setPROFESOR(profesor.getId());
-		bienvenida.setALUMNO(alumno.getID_ALUMNO());
+		bienvenida.setALUMNO(alumno.getID_PERSONA().getId());
 		bienvenida.setPROPIEDAD(1);
 		//LA PROPIEDAD 1 ES PARA EL PROFESOR Y  LA 2 PARA EL ALUMNO
 		//TERMINAIMOS Y MOSTRAMOS LO GUARDADO
@@ -337,7 +337,7 @@ public class AlumnoController {
         
         //IDE DEL PROFESOR Y DEL ALUMNO IMPORTANTE PARA EL CHAT
     	Long idProfesor =profesor.getId();
-    	Long idAlumno = alumno.getID_ALUMNO();
+    	Long idAlumno = alumno.getID_PERSONA().getId();
     	
     	 model.addAttribute("alumno",validar);
     	 model.addAttribute("idProfesor",idProfesor);
