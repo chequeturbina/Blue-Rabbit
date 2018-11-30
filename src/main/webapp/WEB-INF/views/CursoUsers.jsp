@@ -91,10 +91,13 @@
 	
 	<c:forEach var="alumno" items="${alumnos}">
   <div class="card">
-  <form  id="aa" method="POST" action="/profesor/cursos/chat/${curso.ID_CURSO}" class="form-light mt-20" role="form">
+
+  <form  id="${alumno.ID_ALUMNO}" method="POST" action="/profesor/cursos/chat/${curso.ID_CURSO}" class="form-light mt-20" role="form">
      <div class="container">
      <h3>${curso.TITULO}</h3>
-     <h4><b><a href="#" onclick="document.getElementById('aa').submit();">${alumno.ID_PERSONA.nombre}</a></b></h4>      
+     <h4><b><a href="#" onclick="document.getElementById('${alumno.ID_ALUMNO}').submit();">${alumno.ID_PERSONA.nombre}</a></b></h4> 
+      <input type="hidden" value="${alumno.ID_ALUMNO}" name="idAlumno" > ${alumno.ID_ALUMNO}
+     </form>     
     <label>Descripción</label> 
     <p>${curso.DESCRIPCION}</p>
     <label>Nivel educativo</label>
@@ -106,9 +109,8 @@
      <label>Horario</label>
     <p>${curso.HORARIO}</p>  
       </div>
-  </div>
-  <input type="hidden" value="${alumno.ID_ALUMNO}" name="idAlumno" >
-  </form>
+  </div> 
+ 
  	</c:forEach>
   <!--CARDSSS-->
   </div><!-- padre -->

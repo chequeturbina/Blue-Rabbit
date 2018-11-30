@@ -121,7 +121,7 @@
                           <small class=\"text-muted\"><span class=\"glyphicon glyphicon-time\"></span>13 mins ago</small>\
                           <strong class=\"pull-right primary-font\">"+nombre+"</strong>\
                       </div>\
-                      <p>"+mensaje.MENSAJE+"</p>\
+                      <p>"+mensaje+"</p>\
                   </div>\
               </li>");
 

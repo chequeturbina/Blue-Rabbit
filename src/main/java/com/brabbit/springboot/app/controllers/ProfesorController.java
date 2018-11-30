@@ -380,6 +380,10 @@ public class ProfesorController {
 	public String comprar(Model model, Authentication authentication, Principal principal,@PathVariable(value = "id") Long id,
 			@RequestParam("idAlumno") Long idAlumn) {
 		
+		System.out.println("******************************************************************");
+		System.out.println(idAlumn+" id long CHAT");
+		
+		
 		//OBTENEMOS AL USUARIO LOGUEADO EN ESTE CASO ALUMNO = VALIDAR
 		String username = authentication.getName();
 		Persona validar = personDao.porNombre(username);
@@ -392,7 +396,7 @@ public class ProfesorController {
 		//CASAMOS EL ALUMNO
 		Alumno alumno = alumNoDao.porId(idAlumn);
 		Persona alumnop = alumno.getID_PERSONA();
-		System.out.println("******************************************************************");
+		System.out.println("********************ID DE ALUMNO**********************************************");
 		System.out.println(alumno.getID_ALUMNO());
 		//SACAMOS LOS CURSOS DEL ALUMNO PARA VERIFICAR QUE HAYA COMPRADO EL CURSO ANTES
 		Profesor profesor = profesorDao.porId(validar.getId());
@@ -407,6 +411,13 @@ public class ProfesorController {
     	Long idProfesor =validar.getId();
     	Long idAlumno = alumno.getID_PERSONA().getId();
     	
+
+		System.out.println("guardando mensaje");
+		System.out.println("alumno"+idAlumno);
+		System.out.println("profesor"+idProfesor);
+		System.out.println("*************ENVIANDO AL CHAT");
+		System.out.println(validar.getNombre()+" NOMBRE");
+		System.out.println(alumnop.getNombre()+" NOMBRE");
    	     model.addAttribute("profesor",validar);
     	 model.addAttribute("alumno",alumnop);
     	 model.addAttribute("idProfesor",idProfesor);
