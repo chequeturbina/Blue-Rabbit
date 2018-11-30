@@ -1,4 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -7,8 +9,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description"
-	content="free-educational-responsive-web-template-webEdu">
+<meta name="description" content="Blue-Rabbit">
 <meta name="author" content="webThemez.com">
 <title>Blue-Rabbit</title>
 <link rel="favicon" href="img/favicon.png">
@@ -22,13 +23,12 @@
 	type='text/css' media='all'>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-	<script src="assets/js/html5shiv.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
+
+<script src="/js/back.js"></script>
+
 </head>
-<body>
+<body onload="nobackbutton();">
+	
 	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse">
 		<div class="container">
@@ -46,75 +46,21 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-					<li><a href="<c:url value="/"/>">Tutorias</a></li>
-
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Registro <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-
-							<li><a href="<c:url value="/registroA"/>">Alumno</a></li>
-							<li><a href="<c:url value="/registroP"/>">Profesor</a></li>
-						</ul></li>
-
-					<!-- chorizote para iniciar sesion-->
-
+					<li><a href="<c:url value="/cursosVisitante"/>">Tutorias</a></li>
+					<li class="dropdown">
+					     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro<b class="caret"></b></a>
+						    <ul class="dropdown-menu">
+						        <li><a  href="<c:url value="/registroA"/>">Alumno</a></li>
+								<li><a  href="<c:url value="/registroP"/>">Profesor</a></li>
+							</ul>	
+					</li>
+					
 					<li>
-						<form action="/loginpage">
-							<input type="submit" class="btn btn-two btn-blue"
+							<form action="/loginpage">
+								<input type="submit" class="btn btn-two btn-warning"
 								value="Iniciar Sesion"></input>
-						</form>
-					</li>
-
-					<li>
-						<button type="button" class="btn btn-danger">Denuncia</button>
-					</li>
-
-					<!-- Inicio barra de busqueda
-            <form class="busqueda" action="">
-  				<input type="text" placeholder="Buscar..." name="search">
-  				<button type="submit"><i class="fa fa-search"></i></button>
-  				
-  				<style>
-  					* {
-  						box-sizing: border-box;
-					}	
-
-					/* Estilo del campo de busqueda */
-					form.busqueda input[type=text] {
-  						padding: 10px;
-  						font-size: 17px;
-  						border: 1px solid grey;
-  						float: left;
-  						width: 80%;
-  						background: #f1f1f1;
-					}
-
-					/* Estilo del boton */
-					form.busqueda button {
-  						float: left;
-  						width: 20%;
-  						padding: 10px;
-  						background: #2196F3;
-  						color: white;
-  						font-size: 17px;
-  						border: 1px solid grey;
-  						border-left: none; /* Evita doble borde */
-  						cursor: pointer;
-					}
-
-					form.busqueda button:hover {
-  						background: #0b7dda;
-					}
-
-					/* Limpia flotantes */
-					form.busqueda::after {
-  						content: "";
-  						clear: both;
-  						display: table;
-					}
-  				</style>
-		</form> 
-		<!-- Final barra de busqueda-->
+							</form>
+    				</li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -124,6 +70,10 @@
 
 	<!-- Header -->
 	<header id="head">
+	
+	<c:if test="${info != null}">
+	<div class="alert alert-info">${info}</div>
+</c:if>
 		<div class="container">
 			<div class="heading-text">
 				<h1 class="animated flipInY delay1">Empieza Cursos en Linea</h1>
@@ -159,7 +109,6 @@
 					<h4>Cursos en Linea</h4>
 					<p>Descripcion.</p>
 					<p>
-						<a href="#"><em>Leer mas</em></a>
 					</p>
 				</div>
 				<!--grey box -->
@@ -174,7 +123,6 @@
 					<h4>Tendencias</h4>
 					<p>Descripcion.</p>
 					<p>
-						<a href="#"><em>Leer mas</em></a>
 					</p>
 				</div>
 				<!--grey box -->
@@ -189,7 +137,6 @@
 					<h4>Destacado</h4>
 					<p>Descripcion.</p>
 					<p>
-						<a href="#"><em>Leer mas</em></a>
 					</p>
 				</div>
 				<!--grey box -->
@@ -216,12 +163,14 @@
 											<h5>Desarrollador</h5>
 											</p>
 											<p>Descripcion del curso</p>
+											<a href="<c:url value="/cursosVisitante"/>">Leer mas...</a>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					
 					<div class="col-lg-4 col-md-4 col-sm-12">
 						<div class="newsBox">
 							<div class="thumbnail">
@@ -235,6 +184,7 @@
 											<h5>Fotografia</h5>
 											</p>
 											<p>Descripcion del curso.</p>
+											<a href="<c:url value="/cursosVisitante"/>">Leer mas...</a>
 										</div>
 									</div>
 								</div>
@@ -254,6 +204,7 @@
 											<h5>Edicion de Audio</h5>
 											</p>
 											<p>Descripcion Del curso.</p>
+											<a href="<c:url value="/cursosVisitante"/>">Leer mas...</a>
 										</div>
 									</div>
 								</div>
@@ -276,8 +227,6 @@
 						<span>ClassMates es una plataforma de conocimiento
 							compartido, desarrollada con fines educativos.</span>
 					</p>
-					<a href="#" title="read more" class="btn-inline " target="_self">leer
-						mas</a>
 				</div>
 
 
@@ -289,59 +238,61 @@
 						<ul>
 							<li><a
 								title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus."
-								href="#">Matematicas y Ciencias de la Computacion</a></li>
+								>Matematicas y Ciencias de la Computacion</a></li>
 							<li><a
 								title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus."
-								href="#">Matematicas y filosofia</a></li>
+								>Matematicas y filosofia</a></li>
 							<li><a
 								title="Penatibus et magnis dis parturient montes ascetur ridiculus mus."
-								href="#">Filosofia</a></li>
+								>Filosofia</a></li>
 							<li><a
 								title="Morbi nunc odio gravida at cursus nec luctus a lorem. Maecenas tristique orci."
-								href="#">Historia</a></li>
+								>Historia</a></li>
 							<li><a
 								title="Snatoque penatibus et magnis dis partu rient montes ascetur ridiculus mus."
-								href="#">Arquelogia</a></li>
+								>Arquelogia</a></li>
 							<li><a
 								title="Fusce feugiat malesuada odio. Morbi nunc odio gravida at cursus nec luctus."
-								href="#">Fisica</a></li>
+								>Fisica</a></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 		</section>
 
+</div>
 
 		<footer id="footer">
-
-
-			<div class="social text-center">
-				<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
-					class="fa fa-facebook"></i></a>
-			</div>
-
-			<div class="clear"></div>
-			<!--CLEAR FLOATS-->
-	</div>
-	<div class="footer2">
-		<div class="container">
-			<div class="row">
-
-
-
-				<div class="col-md-6 panel">
-					<div class="panel-body">
-						<p class="text-right">
-							Copyright &copy; 2014. Template by <a href="BlueRabbit"
-								rel="develop">Blue Rabbit International</a>
-						</p>
-					</div>
-				</div>
-
-			</div>
-			<!-- /row of panels -->
+		<div class="social text-center">
+			<a href="#"><i class="fa fa-twitter"></i></a> 
+			<a href="#"><i class="fa fa-facebook"></i></a>
 		</div>
-	</div>
+		<div class="footer2">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-6 panel">
+						<div class="panel-body">
+							<p class="simplenav">
+								<a href="<c:url value="/"/>">Inicio</a>
+							</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 panel">
+						<div class="panel-body">
+							<p class="text-right">
+								Copyright &copy; 2014. Template by <a
+									href="http://webthemez.com/" rel="develop">WebThemez.com</a>
+							</p>
+						</div>
+					</div>
+
+				</div>
+				<!-- /row of panels -->
+			</div>
+		</div>
+		
 	</footer>
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->

@@ -1,4 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -20,9 +22,13 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel='stylesheet' id='camera-css' href='css/camera.css'
 	type='text/css' media='all'>
+	
+	  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+
+<script src="/js/back.js"></script>
 
 </head>
-<body>
+<body onload="nobackbutton();">
 	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse">
 		<div class="container">
@@ -33,30 +39,17 @@
 					<span class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
-				<a class="img-responsive" href="<c:url value="/"/>"> <img
+				<a class="img-responsive" href="<c:url value="/profesor"/>"> <img
 					src="img/logo.png" width="200" height="90"
 					alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-					<li><a href="<c:url value="profesor"/>">Mis Cursos</a></li>
-					<li><a href="<c:url value="profesor"/>">Estadisticas</a></li>
-					<li>
-			<div class="col-md-2">
-			<a class="btn btn-two btn-success" href="/profesor/crearCurso">Crear Curso</a>
-			</div></li>
-
-					<li><button type="button" class="btn btn-danger">Denuncia</button></li>
+					<li class="active"><a href="<c:url value="profesor"/>">Inicio</a></li>
+					<li><a href="<c:url value="/verCursosProfesores"/>">Ver Cursos</a></li>
 					
-					<li class="dropdown">
-						<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
-						  ${nombre} </a>
-						<ul class="dropdown-menu">
-							<li><a class="btn btn-two btn"
-						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
-						</ul></li>
-
+					<li><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#charger-manual">Denuncia</button></li>
+					
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -64,139 +57,60 @@
 	</div>
 </head>
 <!-- /.navbar -->
-<div class="container emp-profile">
-	<form method="post">
-		<div class="row">
-			<div class="col-md-4">
-				<div class="profile-img">
-					<img src="img/perfil.png" width="200" height="90"
-						alt="Techro HTML5 template">
-					<div class="file btn btn-lg btn-primary">
-						Cambiar Foto <input type="file" name="file" />
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="profile-head">
-					<h5>Nombre usuario</h5>
-					<h6>Profesion</h6>
-					<p class="proile-rating">
-						calificacion : <span>8/10</span>
-					</p>
-					<ul class="nav nav-tabs" id="myTab" role="tablist">
-						<li class="nav-item"><a class="nav-link active" id="home-tab"
-							data-toggle="tab" href="#home" role="tab" aria-controls="home"
-							aria-selected="true">Acerca de</a></li>
-						<li class="nav-item"><a class="nav-link" id="profile-tab"
-							data-toggle="tab" href="#profile" role="tab"
-							aria-controls="profile" aria-selected="false">Cronologia</a></li>
-					</ul>
-				</div>
-			</div>
-			<div class="col-md-2">
-				<input type="submit" class="profile-edit-btn" name="btnAddMore"
-					value="Editar Perfil" />
-			</div>
-			<div class="col-md-2">
-			<a class="btn btn-two btn-success" href="/profesor/crearCurso">Crear Curso</a>
-			</div>
-			
-		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<div class="profile-work">
-					<p>CV</p>
-					<p>Habilidades</p>
-					<a href="">Habilidad 1</a><br /> <a href="">Habilidad 2</a><br />
-					<a href="">Habilidad 3</a><br />
-				</div>
-			</div>
-			<div class="col-md-8">
-				<div class="tab-content profile-tab" id="myTabContent">
-					<div class="tab-pane fade show active" id="home" role="tabpanel"
-						aria-labelledby="home-tab">
-						<div class="row">
-							<div class="col-md-6">
-								<label>Nombre</label>
-							</div>
-							<div class="col-md-6">
-								<p>${persona.nombre}</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>Nombre</label>
-							</div>
-							<div class="col-md-6">
-								<p>${persona.apellido}</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>Email</label>
-							</div>
-							<div class="col-md-6">
-								<p>${persona.username}</p>
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="profile" role="tabpanel"
-						aria-labelledby="profile-tab">
-						<div class="row">
-							<div class="col-md-6">
-								<label>Experiencia</label>
-							</div>
-							<div class="col-md-6">
-								<p>Experto</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>Costo por Hora</label>
-							</div>
-							<div class="col-md-6">
-								<p>10$/hr</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>Total Cursos</label>
-							</div>
-							<div class="col-md-6">
-								<p>23</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>Nivel de Ingles</label>
-							</div>
-							<div class="col-md-6">
-								<p>Experto</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<label>Disponibilidad</label>
-							</div>
-							<div class="col-md-6">
-								<p>6 meses</p>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-								<label>Biografia</label><br />
-								<p>Tu descripcion</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
-</div>
+<section class="container">
+
+
+<c:if test="${success != null}">
+	<div class="alert alert-info">${success}</div>
+</c:if>
+<c:if test="${error != null}">
+	<div class="alert alert-danger">${error}</div>
+</c:if>
+
+<div class="col-md-4"><div class="title-box clearfix "><h2 class="section-title">Perfil</h2></div> 
+        <h3 class="title-box_primary" ><span>${nombre}</span></h3>
+        <h3 class="title-box_primary" ><span>${apellido}</span></h3>
+        <h3 class="title-box_primary" ><span>${username}</span></h3>
+        <br>  
+          <a class="btn btn-two btn-success" href="/profesor/crearCurso">Crear Curso</a>
+        <br></br>
+      <a class="btn btn-danger btn-two" href="<c:url value="/logout" />">Cerrar Sesion</a>
+          </div>
+          
+          <div class="col-md-8">
+          	<div class="container">
+	
+		<h2 class="text">Cursos que impartes</h2>
+        <hr/>
+          <!--CARDSSS-->
+	<div class="padre">
+	
+	<c:forEach var="curso" items="${cursos}">
+  <div class="card">
+     <div class="container">
+   <h4><b><a href="<c:url value="/profesor/asesorias/${curso.ID_CURSO}"/>">${curso.TITULO}</a></b></h4>
+    <label>Descripción</label> 
+    <p>${curso.DESCRIPCION}</p>
+    <label>Nivel educativo</label>
+    <ul>
+    <c:forEach var="nivel" items="${curso.niveles}">
+      <li>${nivel.NIVEL}</li>
+  	</c:forEach>
+  	</ul>
+     <label>Horario</label>
+    <p>${curso.HORARIO}</p>  
+    <p>$ ${curso.COSTO}</p>
+      </div>
+  </div>
+ 	</c:forEach>
+  <!--CARDSSS-->
+  </div><!-- padre -->
+         </div>
+      </div>
+     
+	</section>
+		
 <footer id="footer">
-
-
 	<div class="social text-center">
 		<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
 			class="fa fa-facebook"></i></a>
@@ -204,13 +118,9 @@
 
 	<div class="clear"></div>
 	<!--CLEAR FLOATS-->
-	</div>
 	<div class="footer2">
 		<div class="container">
 			<div class="row">
-
-
-
 				<div class="col-md-6 panel">
 					<div class="panel-body">
 					<p class="text">
@@ -237,6 +147,42 @@
 	</div>
 </footer>
 
+
+<div class="modal fade" id="charger-manual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		
+			<!-- Empieza Formulario --> 
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">Denuncia</h4>
+			</div>
+			<div class="modal-body">
+				<form method="POST" action="/denunciar/profesor" class="form-light mt-20" role="form">
+					<div class="form-group">
+						<label>Correo del Alumno a denunciar</label>
+						<br></br>
+  <select class="form-control selectpicker" data-live-search="true" name="denunciado" id="denunciado">
+    <c:forEach items="${clientees}" var="alumno">
+    <option><c:out value="${alumno.ID_PERSONA.username}" /></option>
+    </c:forEach>
+    </select>
+					</div>	
+					<div class="form-group">
+						<label>Denuncia</label>
+						<textarea rows="4" cols="50" name="problema" id="problema" class="form-control" placeholder="Comentario"></textarea>
+					</div>
+					<button class="btn btn-blue" type="submit">Denunciar</button>		
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+			</div>
+		</div>
+		<!-- Termina Formulario -->
+
+</div>
+</div>
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 <script src="js/modernizr-latest.js"></script>
 <script type='text/javascript' src='js/jquery.min.js'></script>
