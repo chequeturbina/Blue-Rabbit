@@ -74,9 +74,20 @@ public class Curso implements Serializable{
     
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<NivelEducativo> niveles = new ArrayList<>();
+    
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<Mensajes> mensajes = new ArrayList<>();
 
     
-    @ManyToMany(mappedBy = "cursos")
+    public List<Mensajes> getMensajes() {
+		return mensajes;
+	}
+
+	public void setMensajes(List<Mensajes> mensajes) {
+		this.mensajes = mensajes;
+	}
+
+	@ManyToMany(mappedBy = "cursos")
     private List<Alumno> alumno = new ArrayList<>();
 	
 

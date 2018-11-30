@@ -27,6 +27,19 @@ public class Alumno implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long ID_ALUMNO;
 	
+	@OneToOne(cascade={CascadeType.ALL})
+	  @JoinColumn(name="ID_PERSONA")
+	private Persona ID_PERSONA;
+
+	
+	public Persona getID_PERSONA() {
+		return ID_PERSONA;
+	}
+
+	public void setID_PERSONA(Persona iD_PERSONA) {
+		ID_PERSONA = iD_PERSONA;
+	}
+
 	@OneToOne(cascade= {CascadeType.ALL})
 	 @JoinColumn(name="ID_NIVEL")
 	private NivelEducativo ID_NIVEL;

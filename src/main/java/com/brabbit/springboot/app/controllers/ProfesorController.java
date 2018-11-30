@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -70,6 +71,9 @@ public class ProfesorController {
 	
 	@Autowired
 	private DenunciaDaoImplement denunciaDao;
+	
+	@Autowired
+	private AlumnoDaoImplement alumNoDao;
 	
 	@RequestMapping("/profesor")
 	public String Profesor(Model model, Authentication authentication, Principal principal) {
@@ -293,21 +297,24 @@ public class ProfesorController {
 		return "redirect:/profesor";
 	}
 	
-	@RequestMapping("/profesor/miscursos")
-	public String profesorCursos(Model model, Authentication authentication, Principal principal) {
+	@RequestMapping(value="/profesor/asesorias/{id}", method = RequestMethod.GET)
+	public String profesorCursos(Model model, Authentication authentication, Principal principal,@PathVariable(value = "id") Long id) {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
 		Persona persona = personDao.porNombre(name);
-
+		//obetndo el profesor
 		System.out.println("******************************************************************");
 		System.out.println(persona.getNombre()+" NOMBRE");
 		System.out.println("******************************************************************");
 		Profesor profesor = profesorDao.porId(persona.getId());
 		System.out.println("******************************************************************");
 		System.out.println(profesor.getRFC()+" RFC");
-		
-		return "miscursos";
+		Curso curso = cursoDao.findById(id);
+		List<Alumno> alumnos=curso.getAlumno();
+		model.addAttribute("alumnos", alumnos);
+		model.addAttribute("curso", curso);
+		return "CursoUsers";
 	}
 	
 	@RequestMapping(value = "/denunciar/profesor")
@@ -345,18 +352,7 @@ public class ProfesorController {
 		
 	}
 	
-	@RequestMapping("/verCursosProfesores")
 
-	public String cursosDeOtros(Model model) {
-         List<Curso> Cursos= cursoDao.listarCursosT();
-		
-		for(Curso element : Cursos) {
-			  System.out.println(element. getTITULO());
-			  System.out.println(element.getPROFESOR());
-			}
-		model.addAttribute("cursos", Cursos);
-		return "cursosDeOtros";
-	}
 
 	
 }

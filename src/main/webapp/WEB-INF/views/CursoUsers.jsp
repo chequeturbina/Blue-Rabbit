@@ -22,15 +22,10 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel='stylesheet' id='camera-css' href='css/camera.css'
 	type='text/css' media='all'>
-	
-	
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
-
-<script src="/js/back.js"></script>
 
 </head>
-<body onload="nobackbutton();">
-
+<body>
+	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
@@ -40,70 +35,89 @@
 					<span class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
-				<a class="img-responsive" href="<c:url value="/alumno"/>"> <img
+				<a class="img-responsive" href="<c:url value="/"/>"> <img
 					src="img/logo.png" width="200" height="90"
 					alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="<c:url value="alumno"/>">Inicio</a></li>
-					<li><a href="<c:url value="/alumno/cursos"/>">Cursos</a></li>
+					<li class="active"><a href="<c:url value="profesor"/>">Inicio</a></li>
+					<li><a href="<c:url value="profesor"/>">Estadisticas</a></li>
+					<li>
+			<div class="col-md-2">
+			<a class="btn btn-two btn-success" href="/profesor/crearCurso">Crear Curso</a>
+			</div></li>
 
 					<li><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#charger-manual">Denuncia</button></li>
 					
+					<li class="dropdown">
+						<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
+						  ${nombre} </a>
+						<ul class="dropdown-menu">
+							<li><a class="btn btn-two btn"
+						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
+						</ul></li>
+
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
 		</div>
 	</div>
-	
-
-</body>
-
+</head>
 <!-- /.navbar -->
- <section class="container">
-
+<div class="container emp-profile">
 <c:if test="${success != null}">
-			<div class="alert alert-info">${success}</div>
-		</c:if>
-     
-      	<div class="col-md-4"><div class="title-box clearfix "><h2 class="section-title">Perfil</h2></div> 
-        <h3 class="title-box_primary" ><span>${nombre}</span></h3>
-        <h3 class="title-box_primary" ><span>${apellido}</span></h3>
-        <h3 class="title-box_primary" ><span>${username}</span></h3>
-        <h3 class="title-box_primary" ><span>${nivel}</span></h3> 
-        <br>  
-        <a class="btn btn-danger btn-two" href="<c:url value="/logout" />">Cerrar Sesion</a>  
-          </div>
-          
-          <div class="col-md-8">
-          	<div class="container">
+	<div class="alert alert-info">${success}</div>
+</c:if>
+<c:if test="${error != null}">
+	<div class="alert alert-danger">${error}</div>
+</c:if>
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="profile-head" >
+				<h1><c:out value="${nombre}" /></h1>
+			</div>
+		</div>
+	</div>
+		<!-- container CARDS -->
+	<div class="container">
 	
-		<h2 class="text">Mis Cursos</h2>
+		<h2 class="text-center">Cursos que impartes </h2>
         <hr/>
-          <!--CARDSSS-->
+	
+	<!--CARDSSS-->
 	<div class="padre">
 	
-	<c:forEach var="curso" items="${cursos}">
+	<c:forEach var="alumno" items="${alumnos}">
   <div class="card">
+  <form  id="aa" method="POST" action="/profesor/chat/${curso.ID_CURSO}" class="form-light mt-20" role="form">
      <div class="container">
-    <h4><b><a href="<c:url value="/alumno/cursos/chat/${curso.ID_CURSO}"/>">${curso.TITULO}</a></b></h4>
-    <label>Profesor:${curso.PROFESOR}</label>
-    <br>
-    <label>DescripciÃ³n</label> 
-    <p>${curso.DESCRIPCION}</p> 
+     <h3>${curso.TITULO}</h3>
+     <h4><b><a href="#" onclick="document.getElementById('aa').submit();">${alumno.ID_PERSONA.nombre}</a></b></h4>      
+    <label>Descripción</label> 
+    <p>${curso.DESCRIPCION}</p>
+    <label>Nivel educativo</label>
+    <ul>
+    <c:forEach var="nivel" items="${curso.niveles}">
+      <li>${nivel.NIVEL}</li>
+  	</c:forEach>
+  	</ul>
      <label>Horario</label>
     <p>${curso.HORARIO}</p>  
       </div>
   </div>
+  <input type="hidden" value="${alumno.ID_ALUMNO}" name="idAlumno" >
+  </form>
  	</c:forEach>
   <!--CARDSSS-->
   </div><!-- padre -->
-         </div>
-      </div>
-      </section>
+     </div>
+		<!-- container CARDS -->
+</div>
+			</div>
 
-
+		<!-- Termina Formulario -->
 		
 <footer id="footer">
 	<div class="social text-center">
@@ -118,7 +132,7 @@
 			<div class="row">
 				<div class="col-md-6 panel">
 					<div class="panel-body">
-						<p class="text">
+					<p class="text">
 							<sec:authorize access="isAuthenticated()">
 			Usuario logeado: <sec:authentication var="principal"
 									property="principal" /> ${principal.username} 
@@ -142,6 +156,7 @@
 	</div>
 </footer>
 
+
 <div class="modal fade" id="charger-manual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -152,16 +167,10 @@
 				<h4 class="modal-title">Denuncia</h4>
 			</div>
 			<div class="modal-body">
-				<form method="POST" action="/denunciar/alumno" class="form-light mt-20" role="form">
+				<form method="POST" action="/denunciar/profesor" class="form-light mt-20" role="form">
 					<div class="form-group">
 						<label>Correo del Alumno a denunciar</label>
-			<br></br>
-  <select class="form-control selectpicker" data-live-search="true" name="denunciado" id="denunciado">
-    <c:forEach items="${clientees}" var="profesor">
-    <option><c:out value="${profesor.ID_PERSONA.username}" /></option>
-    </c:forEach>
-    </select>
-
+						<input type="email" name="denunciado" id="denunciado" class="form-control" placeholder="Correo Alumno">
 					</div>	
 					<div class="form-group">
 						<label>Denuncia</label>
@@ -176,7 +185,8 @@
 		</div>
 		<!-- Termina Formulario -->
 
-
+</div>
+</div>
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 <script src="js/modernizr-latest.js"></script>
 <script type='text/javascript' src='js/jquery.min.js'></script>
@@ -187,15 +197,25 @@
 <script type='text/javascript' src='js/camera.min.js'></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/custom.js"></script>
+<script>
+	jQuery(function() {
 
+		jQuery('#camera_wrap_4').camera({
+			transPeriod : 500,
+			time : 3000,
+			height : '600',
+			loader : 'false',
+			pagination : true,
+			thumbnails : false,
+			hover : false,
+			playPause : false,
+			navigation : false,
+			opacityOnGrid : false,
+			imagePath : 'assets/images/'
+		});
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
-
+	});
+</script>
 
 </body>
-
-		<!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
- </html>
+</html>
