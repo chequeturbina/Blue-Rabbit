@@ -44,10 +44,7 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li class="active"><a href="<c:url value="alumno"/>">Inicio</a></li>
-					<!--  <li><a href="<c:url value="alumno/cursos"/>">Cursos</a></li>-->
-
-				
-					<!-- chorizote para iniciar sesion-->
+					<li><a href="<c:url value="alumno/cursos"/>">Cursos</a></li>
 
 					<li><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#charger-manual">Denuncia</button></li>
 
@@ -82,7 +79,7 @@
 <!-- container -->
 	<div class="container">
 	
-		<h2 class="text">Cursos Disponibles</h2>
+		<h2 class="text">Mis Cursos</h2>
         <hr/>
 	
 	<!--CARDSSS-->

@@ -84,7 +84,9 @@ public class RutasController {
 	}
 
 	
-	@RequestMapping("/cursosVisitante")
+
+	@RequestMapping("/alumno/cursos")
+
 	public String cursosDisponibles(Model model) {
          List<Curso> Cursos= cursoDao.listarCursosT();
 		

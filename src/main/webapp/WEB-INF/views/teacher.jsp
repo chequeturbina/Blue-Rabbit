@@ -94,7 +94,12 @@
      <div class="container">
     <h4><b>${curso.TITULO}</b></h4>
     <label>Descripción</label> 
-    <p>${curso.DESCRIPCION}</p> 
+    <p>${curso.DESCRIPCION}</p>
+    <label>Nivel educativo</label>
+    <ul>
+    <c:forEach var="nivel" items="${curso.niveles}">
+      <li>${nivel.NIVEL}</li>
+  	</c:forEach>
      <label>Horario</label>
     <p>${curso.HORARIO}</p>  
       </div>
