@@ -166,6 +166,7 @@ public class AlumnoController {
 			alumno.setID_NIVEL(niv);
 
 			System.out.println(niv.getNIVEL() + "Si lo logro");
+			alumno.setID_PERSONA(persona);
 			alumNoDao.save(alumno);
 			System.out.println(persona.getId());
 
