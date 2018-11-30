@@ -22,13 +22,11 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel='stylesheet' id='camera-css' href='css/camera.css'
 	type='text/css' media='all'>
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-	<script src="assets/js/html5shiv.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
+
+<script src="/js/back.js"></script>
+
 </head>
-<body>
+<body onload="nobackbutton();">
 	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse">
 		<div class="container">
@@ -39,7 +37,7 @@
 					<span class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
-				<a class="img-responsive" href="<c:url value="/"/>"> <img
+				<a class="img-responsive" href="<c:url value="admin"/>"> <img
 					src="img/logo.png" width="200" height="90"
 					alt="Techro HTML5 template"></a>
 			</div>
@@ -48,17 +46,12 @@
 					<li class="active"><a href="<c:url value="admin"/>">Inicio</a></li>
 					<li><a href="<c:url value="eliminarUsuario"/>">Eliminar</a></li>
 					<li><a href="<c:url value="verDenuncias"/>">Peticiones Denuncia</a></li>
-					<li><a href="<c:url value="admin"/>">Cobrar</a></li>
-
-					<!-- chorizote para Cerrar Sesion-->
-
-					
+	
 						<li class="dropdown">
-						<a class="dropdown-toggle" href="#" data-toggle="dropdown">
-						  ${nombre} 
+						<p class="dropdown-toggle btn btn-info btn-two" data-toggle="dropdown">${nombre}<b class="caret"></b></p>
 						<ul class="dropdown-menu">
-							<li><a class="btn btn-two btn-blue"
-						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
+						    <li><a>${username}</a></li>
+							<li><a class="btn btn-danger btn-sm" href="<c:url value="/logout" />">Cerrar Sesion</a></li>
 						</ul></li>
 					<!--Hasta Aqui para Cerrar Sesion-->
 

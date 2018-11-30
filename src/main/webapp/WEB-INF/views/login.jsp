@@ -1,6 +1,8 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,9 +20,12 @@
 <link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
 <link rel="stylesheet" href="/css/style.css">
 
+
+<script src="/js/back.js"></script>
+
 </head>
 
-<body>
+<body onload="nobackbutton();">
 
 	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse">
@@ -32,13 +37,19 @@
 					<span class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
-				<a class="img-responsive" href="<c:url value="/"/>"> <a
-					class="img-responsive" href="<c:url value="/"/>"> <img
+				<a class="img-responsive" href="<c:url value="/"/>"> <img
 						src="/img/logo.png" width="200" height="90"
 						alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
+				<li class="dropdown">
+					     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro<b class="caret"></b></a>
+						    <ul class="dropdown-menu">
+						        <li><a  href="<c:url value="/registroA"/>">Alumno</a></li>
+								<li><a  href="<c:url value="/registroP"/>">Profesor</a></li>
+							</ul>	
+					</li>
 					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
 				</ul>
 			</div>
@@ -79,7 +90,7 @@
 				<h3 class="section-title"></h3>
 
 				<form method="POST" action="/login" class="form-light mt-20"
-					role="form" modelAttribute="message">
+					role="form">
 					<div class="form-group">
 						<label> Email </label> <input name="username" id="username"
 							type="email" required autocomplete="off" class="form-control"
@@ -91,10 +102,10 @@
 							placeholder="Password" autofocus required>
 					</div>
 
-					<input type="submit" class="btn btn-two btn-blue"
+					<input type="submit" class="btn btn-two btn-warning"
 						value="Inicar Sesion"></input>
 					<p>
-						<br />
+						<br/>
 					</p>
 				</form>
 			</div>
@@ -110,7 +121,7 @@
 				class="fa fa-facebook"></i></a>
 		</div>
 
-		<div class="clear"></div>
+		<div class="clear">
 		<!--CLEAR FLOATS-->
 		</div>
 		<div class="footer2">

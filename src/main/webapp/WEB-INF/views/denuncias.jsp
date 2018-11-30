@@ -48,7 +48,7 @@
 					<span class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
-				<a class="img-responsive" href="<c:url value="/"/>"> <img
+				<a class="img-responsive" href="<c:url value="admin"/>"> <img
 					src="img/logo.png" width="200" height="90"
 					alt="Techro HTML5 template"></a>
 			</div>
@@ -57,13 +57,12 @@
 					<li><a href="<c:url value="admin"/>">Inicio</a></li>
 					<li><a href="<c:url value="eliminarUsuario"/>">Eliminar</a></li>
 					<li class="active"><a href="<c:url value="denuncias"/>">Peticiones Denuncia</a></li>
-					<li><a href="<c:url value="admin"/>">Cobrar</a></li>
 
-					<li class="dropdown"><a class="dropdown-toggle" href="#"
-						data-toggle="dropdown"> ${nombre}</a>
+					<li class="dropdown">
+						<p class="dropdown-toggle btn btn-info btn-two" data-toggle="dropdown">${nombre}<b class="caret"></b></p>
 						<ul class="dropdown-menu">
-							<li><a class="btn btn-two btn-blue"
-								href="<c:url value="/logout" />">Cerrar Sesion</a></li>
+						    <li><a>${username}</a></li>
+							<li><a class="btn btn-danger btn-sm" href="<c:url value="/logout" />">Cerrar Sesion</a></li>
 						</ul></li>
 					<!--Hasta Aqui para Cerrar Sesion-->
 

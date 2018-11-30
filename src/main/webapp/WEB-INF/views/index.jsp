@@ -9,8 +9,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description"
-	content="free-educational-responsive-web-template-webEdu">
+<meta name="description" content="Blue-Rabbit">
 <meta name="author" content="webThemez.com">
 <title>Blue-Rabbit</title>
 <link rel="favicon" href="img/favicon.png">
@@ -25,9 +24,11 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<script src="/js/back.js"></script>
 
 </head>
-<body>
+<body onload="nobackbutton();">
+	
 	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse">
 		<div class="container">
@@ -54,15 +55,12 @@
 							</ul>	
 					</li>
 					
-
 					<li>
-						<sec:authorize access="!isAuthenticated()">
 							<form action="/loginpage">
-								<input type="submit" class="btn btn-two btn-blue"
+								<input type="submit" class="btn btn-two btn-warning"
 								value="Iniciar Sesion"></input>
 							</form>
-						</sec:authorize>
-					</li>
+    				</li>
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -111,7 +109,6 @@
 					<h4>Cursos en Linea</h4>
 					<p>Descripcion.</p>
 					<p>
-						<a href="#"><em>Leer mas</em></a>
 					</p>
 				</div>
 				<!--grey box -->
@@ -126,7 +123,6 @@
 					<h4>Tendencias</h4>
 					<p>Descripcion.</p>
 					<p>
-						<a href="#"><em>Leer mas</em></a>
 					</p>
 				</div>
 				<!--grey box -->
@@ -141,7 +137,6 @@
 					<h4>Destacado</h4>
 					<p>Descripcion.</p>
 					<p>
-						<a href="#"><em>Leer mas</em></a>
 					</p>
 				</div>
 				<!--grey box -->
@@ -168,7 +163,7 @@
 											<h5>Desarrollador</h5>
 											</p>
 											<p>Descripcion del curso</p>
-											<a href="<c:url value="/"/>">Leer mas...</a>
+											<a href="<c:url value="/cursosVisitante"/>">Leer mas...</a>
 										</div>
 									</div>
 								</div>
@@ -189,7 +184,7 @@
 											<h5>Fotografia</h5>
 											</p>
 											<p>Descripcion del curso.</p>
-											<a href="<c:url value="/"/>">Leer mas...</a>
+											<a href="<c:url value="/cursosVisitante"/>">Leer mas...</a>
 										</div>
 									</div>
 								</div>
@@ -209,7 +204,7 @@
 											<h5>Edicion de Audio</h5>
 											</p>
 											<p>Descripcion Del curso.</p>
-											<a href="<c:url value="/"/>">Leer mas...</a>
+											<a href="<c:url value="/cursosVisitante"/>">Leer mas...</a>
 										</div>
 									</div>
 								</div>
@@ -265,37 +260,39 @@
 			</div>
 		</section>
 
+</div>
 
 		<footer id="footer">
-
-
-			<div class="social text-center">
-				<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
-					class="fa fa-facebook"></i></a>
-			</div>
-
-			<div class="clear"></div>
-			<!--CLEAR FLOATS-->
-	</div>
-	<div class="footer2">
-		<div class="container">
-			<div class="row">
-
-
-
-				<div class="col-md-6 panel">
-					<div class="panel-body">
-						<p class="text-right">
-							Copyright &copy; 2014. Template by <a href="BlueRabbit"
-								rel="develop">Blue Rabbit International</a>
-						</p>
-					</div>
-				</div>
-
-			</div>
-			<!-- /row of panels -->
+		<div class="social text-center">
+			<a href="#"><i class="fa fa-twitter"></i></a> 
+			<a href="#"><i class="fa fa-facebook"></i></a>
 		</div>
-	</div>
+		<div class="footer2">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-6 panel">
+						<div class="panel-body">
+							<p class="simplenav">
+								<a href="<c:url value="/"/>">Inicio</a>
+							</p>
+						</div>
+					</div>
+
+					<div class="col-md-6 panel">
+						<div class="panel-body">
+							<p class="text-right">
+								Copyright &copy; 2014. Template by <a
+									href="http://webthemez.com/" rel="develop">WebThemez.com</a>
+							</p>
+						</div>
+					</div>
+
+				</div>
+				<!-- /row of panels -->
+			</div>
+		</div>
+		
 	</footer>
 
 	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->

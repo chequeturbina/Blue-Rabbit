@@ -1,41 +1,23 @@
 package com.brabbit.springboot.app.controllers;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Set;
-
-import javax.persistence.Access;
-import javax.persistence.EntityManager;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.logging.log4j.spi.LoggerContextFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
-import org.springframework.format.annotation.DateTimeFormat;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.validation.Validator;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.brabbit.springboot.app.models.entity.Alumno;
@@ -56,7 +38,6 @@ import com.brabbit.springboot.app.models.service.PersonaDaoImplement;
 import com.brabbit.springboot.app.models.service.ProfesorDaoImplement;
 import com.brabbit.springboot.app.models.service.RoleDaoImplement;
 
-import java.security.Principal;
 
 
 @Controller
@@ -66,6 +47,9 @@ public class AlumnoController {
 	
 	@Autowired
 	private PersonaDaoImplement personDao;
+	
+	@Autowired
+	private ProfesorDaoImplement profesorDao;
 
 	@Autowired
 	private AlumnoDaoImplement alumNoDao;
@@ -97,7 +81,12 @@ public class AlumnoController {
 		
 		String username = authentication.getName();
 		Persona validar = personDao.porNombre(username);
+		Alumno nivelid = alumNoDao.porId(validar.getId());
+		NivelEducativo id = nivelid.getID_NIVEL();
 		model.addAttribute("nombre", validar.getNombre());
+		model.addAttribute("username", validar.getUsername());
+		model.addAttribute("apellido", validar.getApellido());
+		model.addAttribute("nivel",id.getNIVEL());
 		
 
 		System.out.println("******************************************************************");
@@ -108,10 +97,16 @@ public class AlumnoController {
 		System.out.println(alumno.getID_ALUMNO());
         List<Curso> cursos = alumno.getCursos();
         
+        List<Profesor> ids = profesorDao.findAll();
+        
+        
+        
     	for(Curso element : cursos) {
 			  System.out.println(element. getTITULO());	
 			}
     	
+    	List<Persona> clientes = personDao.findAll();
+    	model.addAttribute("clientees",ids);
         model.addAttribute("cursos", cursos);
 		
 		return "student";
@@ -121,17 +116,15 @@ public class AlumnoController {
 	public String formularioPersona(@RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido,
 			@RequestParam("username") String username, @RequestParam("password") String password,
 			@RequestParam("nivelEdu") long nivel,
-			/*@RequestParam("Fecha_nacimiento") @DateTimeFormat(pattern = "yyyy-MM-dd") Date Fecha_nacimiento,*/
 			@RequestParam("ConfirmPass") String confirm, Model model,
 			@RequestParam(value = "error", required = false) String error, 
 			RedirectAttributes ra,
 			@RequestParam(value = "registro", required = false) String registro) {
 		
 		Persona persona = new Persona();
-		boolean validoC = false;
-		ValidarCorreo vc = new ValidarCorreo();
+		
+		
 		persona.setUsername(username);
-		validoC = vc.validar(username);
 		Persona validar = personDao.porCorreo(username);
 
 		/* No importara ahorita la verificacion del correo, hasta depsues */
@@ -146,7 +139,7 @@ public class AlumnoController {
 			persona.setApellido(apellido);
 			persona.setEnabled(true);
 			
-			//persona.setfNacimiento(Fecha_nacimiento);
+			
 			persona.addRole(role);
 			
 			System.out.println("******************" + persona.getId());
@@ -172,10 +165,6 @@ public class AlumnoController {
 
 	}
 
-	@RequestMapping("/alerta")
-	public String RegistroAlumno(Model model) {
-		return "ConfirmStudent";
-	}
 	
 	@RequestMapping(value = "/denunciar/alumno")
 	public String creaDenuncia(@RequestParam("denunciado")String denunciado,
@@ -212,20 +201,44 @@ public class AlumnoController {
 		
 	}
 	
+	@RequestMapping("/alumno/cursos")
 
-	@RequestMapping("alumno/cursos/{id}")
+	public String cursos(Model model, Authentication authentication, Principal principal) {
+         List<Curso> Cursos= cursoDao.listarCursosT();
+		
+		for(Curso element : Cursos) {
+			  System.out.println(element. getTITULO());
+			  System.out.println(element.getPROFESOR());
+			}
+		
+		if(authentication != null) {
+			logger.info("Hola ".concat(authentication.getName()));
+		}
+		
+		String username = authentication.getName();
+		Persona validar = personDao.porNombre(username);
+		model.addAttribute("nombre", validar.getNombre());
+		model.addAttribute("username", validar.getUsername());
+		
+		
+		model.addAttribute("cursos", Cursos);
+		return "CursosDisponibles";
+	}
+
+	@RequestMapping("/alumno/vercursos/{id}")
 	public String cursoss(@PathVariable(value = "id") Long id,Model model,
 			              Authentication authentication, Principal principal) {
         Curso curso= cursoDao.findById(id);
         String username = authentication.getName();
 		Persona validar = personDao.porNombre(username);
 		model.addAttribute("nombre", validar.getNombre());
+		model.addAttribute("username", validar.getUsername());
 		model.addAttribute("curso", curso);
 		return "curso";
 	}
 	
 	@RequestMapping("/alumno/comprar/{id}")
-	public String comprar(@PathVariable(value = "id") Long id,Model model) {
+	public String comprar(@PathVariable(value = "id") Long id,Model model,RedirectAttributes ra) {
 		
 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -242,6 +255,7 @@ public class AlumnoController {
         System.out.println(curso.getTITULO());		
         alumno.getCursos().add(curso);
         alumNoDao.save(alumno);
+        ra.addFlashAttribute("success", "Felicidades! Has comprado un curso");
 		return "redirect:/alumno";
 	}
 	

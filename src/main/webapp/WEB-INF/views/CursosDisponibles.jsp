@@ -16,11 +16,9 @@
 <!-- Custom styles for our template -->
 <link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
 <link rel="stylesheet" href="/css/style.css">
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-	<script src="assets/js/html5shiv.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
+
+<link rel='stylesheet' id='camera-css' href='css/camera.css'
+	type='text/css' media='all'>
 </head>
 
 <body>
@@ -34,34 +32,20 @@
 					<span class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
-				<a class="img-responsive" href="<c:url value="/"/>"> <a
-					class="img-responsive" href="<c:url value="/"/>"> <img
+				<a class="img-responsive" href="<c:url value="/alumno"/>"> <img
 						src="/img/logo.png" width="200" height="90"
 						alt="Techro HTML5 template"></a>
 			</div>
+			
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li><a href="<c:url value="/"/>">Inicio</a></li>
+					<li><a href="<c:url value="/alumno"/>">Inicio</a></li>
 					<li class="active"><a href="<c:url value="/cursos"/>">Tutorias</a></li>
 					
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown">Registro <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="<c:url value="/registroA"/>">Alumno</a></li>
-							<li><a href="<c:url value="/registroP"/>">Profesor</a></li>
-						</ul></li>
-					
-
-					<li>
-						<form action="/loginpage">
-							<input type="submit" class="btn btn-two btn-blue"
-								value="Iniciar Sesion"></input>
-						</form>
-					</li>
-
-			
-
-					<!--Hasta aqui acaba el puto chorizote-->
+				    <li>
+				    <a type="button" class="btn btn-danger btn-two" href="<c:url value="/logout" />">Cerrar Sesion</a>
+				    </li>
+						
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -74,22 +58,16 @@
 		<c:if test="${error != null}">
 			<div class="alert alert-danger">${error}</div>
 		</c:if>
+		
+		<h2 class="text">Cursos Disponibles</h2>
 
-
-
-	<!-- container -->
-	<div class="container">
-	
-		<h2 class="text-center">Cursos Disponibles</h2>
-        <hr/>
-	
-	<!--CARDSSS-->
+<!--CARDSSS-->
 	<div class="padre">
 	
 	<c:forEach var="curso" items="${cursos}">
   <div class="card">
      <div class="container">
-    <h4><b><a href="<c:url value="/alumno/cursos/${curso.ID_CURSO}"/>">${curso.TITULO}</a></b></h4>
+    <h4><b><a href="<c:url value="/alumno/vercursos/${curso.ID_CURSO}"/>">${curso.TITULO}</a></b></h4>
     <label>Profesor:${curso.PROFESOR}</label>
     <br>
     <label>Descripción</label> 
@@ -101,18 +79,12 @@
  	</c:forEach>
   <!--CARDSSS-->
   </div><!-- padre -->
-     </div>
-     
-	<!-- /container -->
+ </div>
 
 <footer id="footer">
-<div class="social text-center">
-			<a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i
-				class="fa fa-facebook"></i></a>
-		</div>
-
-		<div class="clear"></div>
-		<!--CLEAR FLOATS-->
+		<div class="social text-center">
+			<a href="#"><i class="fa fa-twitter"></i></a> 
+			<a href="#"><i class="fa fa-facebook"></i></a>
 		</div>
 		<div class="footer2">
 			<div class="container">
@@ -138,39 +110,21 @@
 				</div>
 				<!-- /row of panels -->
 			</div>
-		</div></footer>
+		</div>
+		
+	</footer>
 
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
+<script src="js/modernizr-latest.js"></script>
+<script type='text/javascript' src='js/jquery.min.js'></script>
+<script type='text/javascript' src='js/fancybox/jquery.fancybox.pack.js'></script>
 
-	<script src="js/modernizr-latest.js"></script>
-	<script type='text/javascript' src='js/jquery.min.js'></script>
-	<script type='text/javascript'
-		src='js/fancybox/jquery.fancybox.pack.js'></script>
-
-	<script type='text/javascript' src='js/jquery.mobile.customized.min.js'></script>
-	<script type='text/javascript' src='js/jquery.easing.1.3.js'></script>
-	<script type='text/javascript' src='js/camera.min.js'></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/custom.js"></script>
-	<script>
-		jQuery(function() {
-
-			jQuery('#camera_wrap_4').camera({
-				transPeriod : 500,
-				time : 3000,
-				height : '600',
-				loader : 'false',
-				pagination : true,
-				thumbnails : false,
-				hover : false,
-				playPause : false,
-				navigation : false,
-				opacityOnGrid : true,
-				imagePath : 'assets/images/'
-			});
-
-		});
-	</script>
+<script type='text/javascript' src='js/jquery.mobile.customized.min.js'></script>
+<script type='text/javascript' src='js/jquery.easing.1.3.js'></script>
+<script type='text/javascript' src='js/camera.min.js'></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+	
 
 </body>
 </html>

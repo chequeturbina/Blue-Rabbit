@@ -48,6 +48,10 @@ public class ProfesorController {
 	
 	@Autowired
 	private ProfesorDaoImplement profesorDao;
+	
+	@Autowired
+	private AlumnoDaoImplement alumNoDao;
+
 
 	@Autowired
 	private PersonaDaoImplement personDao;
@@ -84,7 +88,13 @@ public class ProfesorController {
 		for(Curso element : Cursos) {
 			  System.out.println(element. getTITULO());
 			}
-		model.addAttribute("cursos", Cursos);	
+		
+		List<Alumno> ids = alumNoDao.findAll();
+		
+		model.addAttribute("username", validar.getUsername());
+		model.addAttribute("apellido", validar.getApellido());
+		model.addAttribute("cursos", Cursos);
+		model.addAttribute("clientees", ids);	
 		
 		return "teacher";
 	}
@@ -333,6 +343,19 @@ public class ProfesorController {
 			
 		}
 		
+	}
+	
+	@RequestMapping("/verCursosProfesores")
+
+	public String cursosDeOtros(Model model) {
+         List<Curso> Cursos= cursoDao.listarCursosT();
+		
+		for(Curso element : Cursos) {
+			  System.out.println(element. getTITULO());
+			  System.out.println(element.getPROFESOR());
+			}
+		model.addAttribute("cursos", Cursos);
+		return "cursosDeOtros";
 	}
 
 	

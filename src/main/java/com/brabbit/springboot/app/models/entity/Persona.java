@@ -33,7 +33,6 @@ public class Persona implements Serializable{
 	private String nombre;
 	private String apellido;
 	private char sexo;
-	private Date fNacimiento;
 	private String username;
 	private String password;
 	@Temporal(TemporalType.DATE)
@@ -102,13 +101,7 @@ public class Persona implements Serializable{
 		this.sexo = sexo;
 	}
 
-	public Date getfNacimiento() {
-		return fNacimiento;
-	}
-
-	public void setfNacimiento(Date fNacimiento) {
-		this.fNacimiento = fNacimiento;
-	}
+	
 
 	public String getUsername() {
 		return username;

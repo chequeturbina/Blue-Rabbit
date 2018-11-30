@@ -11,6 +11,7 @@
 <meta name="description" content="Blue-Rabbit">
 <meta name="author" content="webThemez.com">
 <title>"Blue-Rabbit"</title>
+
 <link rel="favicon" href="/img/favicon.png">
 <link rel="stylesheet" media="screen"
 	href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
@@ -19,16 +20,12 @@
 <!-- Custom styles for our template -->
 <link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
 <link rel="stylesheet" href="/css/style.css">
+<link rel='stylesheet' id='camera-css' href='css/camera.css'
+	type='text/css' media='all'>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js"></script>
-
-<script src="/assets/js/custom.js"></script>
-
-<!-- If you're using Stripe for payments -->
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-
+<script src="/js/back.js"></script>
 
 
 </head>
@@ -43,21 +40,25 @@
 					data-target=".navbar-collapse">
 					<span class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
-				</button>
-				 <a class="img-responsive" href="<c:url value="/alumno"/>"> <img
+				</button> 
+				<a class="img-responsive" href="<c:url value="/"/>"><img
 						src="/img/logo.png" width="200" height="90"
 						alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="<c:url value="/alumno"/>">Inicio</a></li>
-					<li><a href="<c:url value="/alumno/cursos"/>">Volver</a></li>
-						
-				    <li>
-				    <a type="button" class="btn btn-danger btn-two" href="<c:url value="/logout" />">Cerrar Sesion</a>
-				    </li>
-						
-					<!--Hasta aqui acaba el puto chorizote-->
+					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
+					
+					<li><a href="<c:url value="/cursosVisitante"/>">Volver</a></li>
+					
+					
+					<li>
+						<form action="/loginpage">
+								<input type="submit" class="btn btn-two btn-warning"
+								value="Iniciar Sesion"></input>
+							</form>
+					</li>
+
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -102,8 +103,7 @@
            <div class="col-md-4"></div>
         <div class="col-xs-12 col-md-4 ">
         
-        
-            <!-- CREDIT CARD FORM STARTS HERE -->
+        <!-- este lo quitamos en visitante
             <div class="panel panel-default credit-card-box">
                 <div class="panel-heading display-table" >
                     <div class="row display-tr" >
@@ -182,9 +182,11 @@
                     </form>
                 </div>
             </div>            
-            <!-- CREDIT CARD FORM ENDS HERE -->
             
-            
+             -->
+            <div class="col-xs-12">
+                                <a href="<c:url value="/loginpage"/>" class="subscribe btn btn-success btn-lg btn-block" type="button">Comprar</a>
+                            </div>
         </div>            
         
        
@@ -265,7 +267,7 @@
 
 <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
 
-	<script src="js/modernizr-latest.js"></script>
+<script src="js/modernizr-latest.js"></script>
 	<script type='text/javascript' src='js/jquery.min.js'></script>
 	<script type='text/javascript'
 		src='js/fancybox/jquery.fancybox.pack.js'></script>
@@ -280,4 +282,3 @@
 
 </body>
 </html>
-
