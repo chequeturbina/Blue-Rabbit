@@ -24,11 +24,8 @@
 	type='text/css' media='all'>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-	<script src="assets/js/html5shiv.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
+
+
 </head>
 <body>
 	<!-- Fixed navbar -->
@@ -48,7 +45,7 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-					<li><a href="<c:url value="/"/>">Tutorias</a></li>
+					<li><a href="<c:url value="/cursos"/>">Tutorias</a></li>
 					<li>
 						<sec:authorize access="!isAuthenticated()">
 							<form action="/loginpage">
@@ -246,6 +243,7 @@
 							</div>
 						</div>
 					</div>
+					
 					<div class="col-lg-4 col-md-4 col-sm-12">
 						<div class="newsBox">
 							<div class="thumbnail">
