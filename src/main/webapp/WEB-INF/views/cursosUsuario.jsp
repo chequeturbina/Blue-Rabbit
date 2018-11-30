@@ -15,14 +15,14 @@
 	content="free-educational-responsive-web-template-webEdu">
 <meta name="author" content="webThemez.com">
 <title>Blue-Rabbit</title>
-<link rel="favicon" href="img/favicon.png">
+<link rel="favicon" href="/img/favicon.png">
 <link rel="stylesheet" media="screen"
 	href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/bootstrap-theme.css" media="screen">
-<link rel="stylesheet" href="css/style.css">
-<link rel='stylesheet' id='camera-css' href='css/camera.css'
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
+<link rel="stylesheet" href="/css/style.css">
+<link rel='stylesheet' id='camera-css' href='/css/camera.css'
 	type='text/css' media='all'>
 	
 	  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
@@ -41,20 +41,17 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="img-responsive" href="<c:url value="/profesor"/>"> <img
-					src="img/logo.png" width="200" height="90"
+					src="/img/logo.png" width="200" height="90"
 					alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="<c:url value="/profesor"/>">Inicio</a></li>
+					<li class="active"><a href="<c:url value="/profesor"/>">Volver</a></li>
 					
-					<li class="dropdown">
-						<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
-						  ${nombre} </a>
-						<ul class="dropdown-menu">
-							<li><a class="btn btn-two btn"
+					
+							<li><a class="btn btn-two btn-danger"
 						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
-						</ul></li>
+						
 
 				</ul>
 			</div>
@@ -94,6 +91,10 @@
   <form  id="${alumno.ID_ALUMNO}" method="POST" action="/profesor/cursos/chat/${curso.ID_CURSO}" class="form-light mt-20" role="form">
      <div class="container">
      <h3>${curso.TITULO}</h3>
+     </div>
+     </form>
+     </div>
+     </c:forEach>
 
 
 		<!-- Termina Formulario -->
@@ -149,5 +150,8 @@
 <script src="js/custom.js"></script>
 
 
+</div>
+</div>
+</div>
 </body>
 </html>

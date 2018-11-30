@@ -460,7 +460,7 @@ public class ProfesorController {
 		
 		model.addAttribute("alumnos", alumnos);
 		model.addAttribute("curso", curso);
-		return "CursoUsuario";
+		return "cursosUsuario";
 	}
 
 	
