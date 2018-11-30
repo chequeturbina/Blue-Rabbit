@@ -52,6 +52,10 @@ public class ProfesorController {
 	
 	@Autowired
 	private ProfesorDaoImplement profesorDao;
+	
+	@Autowired
+	private AlumnoDaoImplement alumNoDao;
+
 
 	@Autowired
 	private PersonaDaoImplement personDao;
@@ -71,8 +75,7 @@ public class ProfesorController {
 	@Autowired
 	private DenunciaDaoImplement denunciaDao;
 	
-	@Autowired
-	private AlumnoDaoImplement alumNoDao;
+
 	
 	//MENSAJES
 	@Autowired
@@ -96,7 +99,13 @@ public class ProfesorController {
 		for(Curso element : Cursos) {
 			  System.out.println(element. getTITULO());
 			}
-		model.addAttribute("cursos", Cursos);	
+		
+		//List<Alumno> ids = alumNoDao.findAll();
+		
+		model.addAttribute("username", validar.getUsername());
+		model.addAttribute("apellido", validar.getApellido());
+		model.addAttribute("cursos", Cursos);
+		//model.addAttribute("clientees", ids);	
 		
 		return "teacher";
 	}
@@ -190,7 +199,7 @@ public class ProfesorController {
 			 @RequestParam(value="maestria",required=false) String maestria,
 			 @RequestParam(value="doctorado",required=false) String doctorado,
 			 @RequestParam("horario")String horario,
-			 Model model, Authentication authentication, Principal principal) {
+			 Model model, Authentication authentication, Principal principal,RedirectAttributes ra) {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
@@ -290,7 +299,7 @@ public class ProfesorController {
 				logger.info("Hola ".concat(authentication.getName()));
 			}
 			
-			
+		 ra.addFlashAttribute("success", "Curso Creado con exito!!");
 					
 		return "redirect:/profesor";
 	}
@@ -350,7 +359,19 @@ public class ProfesorController {
 		
 	}
 	
-	
+	//METODO PARA ESPIAR LO QUE ENSEÑAN LOS DEMAS
+	@RequestMapping("/verCursosProfesores")
+
+	public String cursosDeOtros(Model model) {
+         List<Curso> Cursos= cursoDao.listarCursosT();
+		
+		for(Curso element : Cursos) {
+			  System.out.println(element. getTITULO());
+			  System.out.println(element.getPROFESOR());
+			}
+		model.addAttribute("cursos", Cursos);
+		return "cursosDeOtros";
+	}
 	
 	/*
 	 * METODO TE REDIRECCIONA AL CHAT
@@ -422,7 +443,6 @@ public class ProfesorController {
 		
 	}
 
-	
 
 	
 }

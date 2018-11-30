@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.brabbit.springboot.app.models.dao.IUsuarioDao;
+import com.brabbit.springboot.app.models.entity.Alumno;
 import com.brabbit.springboot.app.models.entity.Curso;
 import com.brabbit.springboot.app.models.entity.NivelEducativo;
 import com.brabbit.springboot.app.models.entity.Persona;
@@ -51,15 +52,7 @@ public class RutasController {
 	@GetMapping("/")
 	public String inicio(Model model,Authentication authentication,
 			HttpServletRequest request) {
-		if(authentication != null) {
-			logger.info("Hola usuario autenticado, tu username es: ".concat(authentication.getName()));
-			String username = authentication.getName();
-			Persona validar = personDao.porNombre(username);
-			model.addAttribute("nombre", validar.getNombre());
-		}
 		
-		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		return "index";
 	}
 
@@ -85,7 +78,7 @@ public class RutasController {
 
 	
 
-	@RequestMapping("/alumno/cursos")
+	@RequestMapping("/cursosVisitante")
 
 	public String cursosDisponibles(Model model) {
          List<Curso> Cursos= cursoDao.listarCursosT();
@@ -95,7 +88,17 @@ public class RutasController {
 			  System.out.println(element.getPROFESOR());
 			}
 		model.addAttribute("cursos", Cursos);
-		return "CursosDisponibles";
+		return "cursosVisitante";
+	}
+	
+	@RequestMapping("/comprarVisitante/{id}")
+	public String comprarVisitante(@PathVariable(value = "id") Long id,Model model) {
+		
+
+        Curso curso= cursoDao.findById(id);
+        model.addAttribute("curso", curso);		
+       
+		return "comprarVisitante";
 	}
 	
 	

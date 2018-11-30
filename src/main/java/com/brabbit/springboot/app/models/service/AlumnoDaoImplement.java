@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.brabbit.springboot.app.models.entity.Alumno;
-import com.brabbit.springboot.app.models.entity.NivelEducativo;
 import com.brabbit.springboot.app.models.entity.Profesor;
 
 @Repository
@@ -31,6 +30,11 @@ public class AlumnoDaoImplement implements InterfaceAlumnoDao {
  		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
  		System.out.println(results);
  		return results.isEmpty() ? null : results.get(0);
+	}
+
+	public List<Alumno> findAll() {
+		List<Alumno> clientes = em.createQuery("SELECT e FROM Alumno e", Alumno.class).getResultList();
+		return clientes;
 	}
 
 }

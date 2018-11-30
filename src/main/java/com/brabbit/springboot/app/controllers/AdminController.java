@@ -54,6 +54,7 @@ public class AdminController {
 		String username = authentication.getName();
 		Persona validar = personDao.porNombre(username);
 		model.addAttribute("nombre", validar.getNombre());
+		model.addAttribute("username", validar.getUsername());
 		
 		
 		return "admin";
@@ -72,6 +73,7 @@ public class AdminController {
 		String username = authentication.getName();
 		Persona validar = personDao.porNombre(username);
 		model.addAttribute("nombre", validar.getNombre());
+		model.addAttribute("username", validar.getUsername());
 		model.addAttribute("clientees",clientes);
 		
 		
@@ -103,7 +105,7 @@ public class AdminController {
 		String username = authentication.getName();
 		Persona validar = personDao.porNombre(username);
 		model.addAttribute("nombre", validar.getNombre());
-		
+		model.addAttribute("username", validar.getUsername());
 		model.addAttribute("denunciaas",denuncias);
 		
 		

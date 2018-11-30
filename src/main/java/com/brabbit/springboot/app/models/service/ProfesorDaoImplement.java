@@ -22,8 +22,8 @@ public class ProfesorDaoImplement implements InterfaceProfesorDao {
 	@Transactional(readOnly = true)
 	@Override
 	public List<Profesor> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Profesor> clientes = em.createQuery("SELECT e FROM Profesor e", Profesor.class).getResultList();
+		return clientes;
 	}
 
 	@Transactional
@@ -48,5 +48,7 @@ public class ProfesorDaoImplement implements InterfaceProfesorDao {
 		System.out.println(results);
 		return results.isEmpty() ? null : results.get(0);
 	}
+	
+
 	
 }

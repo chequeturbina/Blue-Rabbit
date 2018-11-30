@@ -31,16 +31,14 @@
 					<span class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
-				<a class="img-responsive" href="<c:url value="/"/>"> <a
-					class="img-responsive" href="<c:url value="/"/>"> <img
+				<a class="img-responsive" href="<c:url value="/"/>"> <img
 						src="/img/logo.png" width="200" height="90"
 						alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
-					<li><a href="<c:url value="/"/>">Tutorias</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
+					<li><a href="<c:url value="/"/>">Inicio</a></li>
+					<li class="active" class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown">Registro <b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="<c:url value="/registroA"/>">Alumno</a></li>
@@ -48,17 +46,6 @@
 						</ul></li>
 
 					<!-- chorizote para iniciar sesion-->
-
-					<li>
-						<form action="/loginpage">
-							<input type="submit" class="btn btn-two btn-blue"
-								value="Iniciar Sesion"></input>
-						</form>
-					</li>
-
-
-					<li><button type="button" class="btn btn-danger">Denuncia</button></li>
-
 
 				</ul>
 			</div>
@@ -88,7 +75,7 @@
 				<h3 class="section-title"></h3>
 
 				<form method="POST" action="/registro/alumno"
-					class="form-light mt-20" role="form" modelAttribute="message">
+					class="form-light mt-20" >
 					<div class="form-group">
 						<label> Nombre </label> <input name="nombre" type="text" required
 							autocomplete="off" class="form-control" placeholder="Nombre"
@@ -129,12 +116,7 @@
 						</div>
 					</div>
 					
-					<!-- Esto se fue a la mierda
-					<div class="form-group">
-						<label> Fecha de Nacimiento </label> <input type="date"
-							name="Fecha_nacimiento" class="form-control" required>
-					</div>
-					 -->
+
 					
 					<div class="form-group">
 						<label>Nivel Academico</label>
@@ -147,7 +129,7 @@
 							</select>
 						</div>
 					</div>
-					<input type="submit" class="btn btn-two btn-blue"
+					<input type="submit" class="btn btn-two btn-success"
 						value="Registrarse"></input>
 					<p>
 						<br />

@@ -22,8 +22,11 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel='stylesheet' id='camera-css' href='css/camera.css'
 	type='text/css' media='all'>
+	
+	
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
 
- <script src="/assets/js/custom.js"></script>
+<script src="/js/back.js"></script>
 
 </head>
 <body onload="nobackbutton();">
@@ -37,26 +40,17 @@
 					<span class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
-				<a class="img-responsive" href="<c:url value="/"/>"> <img
+				<a class="img-responsive" href="<c:url value="/alumno"/>"> <img
 					src="img/logo.png" width="200" height="90"
 					alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li class="active"><a href="<c:url value="alumno"/>">Inicio</a></li>
-					<li><a href="<c:url value="alumno/cursos"/>">Cursos</a></li>
+					<li><a href="<c:url value="/alumno/cursos"/>">Cursos</a></li>
 
 					<li><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#charger-manual">Denuncia</button></li>
-
-					<li class="dropdown">
-						<a class="dropdown-toggle btn btn-blue" href="#" data-toggle="dropdown">
-						  ${nombre} </a>
-						<ul class="dropdown-menu">
-							<li><a class="btn btn-two btn"
-						href="<c:url value="/logout" />">Cerrar Sesion</a></li>
-						</ul></li>
-					<!--Hasta aqui acaba el puto chorizote-->
-
+					
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
@@ -65,24 +59,29 @@
 	
 
 </body>
+
 <!-- /.navbar -->
-<div class="container emp-profile">
+ <section class="container">
+
 <c:if test="${success != null}">
-	<div class="alert alert-info">${success}</div>
-</c:if>
-<c:if test="${error != null}">
-	<div class="alert alert-danger">${error}</div>
-</c:if>
-
-
-
-<!-- container -->
-	<div class="container">
+			<div class="alert alert-info">${success}</div>
+		</c:if>
+     
+      	<div class="col-md-4"><div class="title-box clearfix "><h2 class="section-title">Perfil</h2></div> 
+        <h3 class="title-box_primary" ><span>${nombre}</span></h3>
+        <h3 class="title-box_primary" ><span>${apellido}</span></h3>
+        <h3 class="title-box_primary" ><span>${username}</span></h3>
+        <h3 class="title-box_primary" ><span>${nivel}</span></h3> 
+        <br>  
+        <a class="btn btn-danger btn-two" href="<c:url value="/logout" />">Cerrar Sesion</a>  
+          </div>
+          
+          <div class="col-md-8">
+          	<div class="container">
 	
 		<h2 class="text">Mis Cursos</h2>
         <hr/>
-	
-	<!--CARDSSS-->
+          <!--CARDSSS-->
 	<div class="padre">
 	
 	<c:forEach var="curso" items="${cursos}">
@@ -91,7 +90,7 @@
     <h4><b><a href="<c:url value="/alumno/cursos/chat/${curso.ID_CURSO}"/>">${curso.TITULO}</a></b></h4>
     <label>Profesor:${curso.PROFESOR}</label>
     <br>
-    <label>Descripción</label> 
+    <label>Descripcion</label> 
     <p>${curso.DESCRIPCION}</p> 
      <label>Horario</label>
     <p>${curso.HORARIO}</p>  
@@ -100,10 +99,11 @@
  	</c:forEach>
   <!--CARDSSS-->
   </div><!-- padre -->
-     </div>
-     
-	<!-- /container -->
-</div>	
+         </div>
+      </div>
+      </section>
+
+
 		
 <footer id="footer">
 	<div class="social text-center">
@@ -155,7 +155,13 @@
 				<form method="POST" action="/denunciar/alumno" class="form-light mt-20" role="form">
 					<div class="form-group">
 						<label>Correo del Alumno a denunciar</label>
-						<input type="email" name="denunciado" id="denunciado" class="form-control" placeholder="Correo Alumno">
+			<br></br>
+  <select class="form-control selectpicker" data-live-search="true" name="denunciado" id="denunciado">
+    <c:forEach items="${clientees}" var="profesor">
+    <option><c:out value="${profesor.ID_PERSONA.username}" /></option>
+    </c:forEach>
+    </select>
+
 					</div>	
 					<div class="form-group">
 						<label>Denuncia</label>
@@ -182,6 +188,9 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/custom.js"></script>
 
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/js/bootstrap-select.min.js"></script>
 
 
 </body>
