@@ -88,10 +88,6 @@ public class AlumnoController {
 		Persona validar = personDao.porNombre(username);
 		Alumno nivelid = alumNoDao.porId(validar.getId());
 		NivelEducativo id = nivelid.getID_NIVEL();
-		model.addAttribute("nombre", validar.getNombre());
-		model.addAttribute("username", validar.getUsername());
-		model.addAttribute("apellido", validar.getApellido());
-		model.addAttribute("nivel",id.getNIVEL());
 		
 		//OBTENEMOS EL ALUMNO DE VALIDAR
 		System.out.println("******************************************************************");
@@ -112,6 +108,11 @@ public class AlumnoController {
 			  System.out.println(element. getTITULO());	
 			}
     	
+
+    	model.addAttribute("nombre", validar.getNombre());
+		model.addAttribute("username", validar.getUsername());
+		model.addAttribute("apellido", validar.getApellido());
+		model.addAttribute("nivel",id.getNIVEL());
     	 model.addAttribute("clientees", ids);
         model.addAttribute("cursos", cursos);
 		
@@ -128,7 +129,6 @@ public class AlumnoController {
 			@RequestParam(value = "registro", required = false) String registro) {
 		
 		Persona persona = new Persona();
-		
 		
 		persona.setUsername(username);
 		Persona validar = personDao.porCorreo(username);
@@ -147,19 +147,21 @@ public class AlumnoController {
 			
 			
 			persona.addRole(role);
-			
+			personDao.save(persona);
 			System.out.println("******************" + persona.getId());
 			System.out.println("******************PERSONA CREADA");
 			System.out.println(persona.getId());
 
 			
-			personDao.save(persona);
 			NivelEducativo niv = nivelEduDao.findOne(nivel);
 			alumno.setID_NIVEL(niv);
+			alumNoDao.save(alumno);
+			
 
 			System.out.println(niv.getNIVEL() + "Si lo logro");
 			alumno.setID_PERSONA(persona);
 			alumNoDao.save(alumno);
+			
 			System.out.println(persona.getId());
 
 			

@@ -74,6 +74,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 	        }
 	        
 	        if(isAlumno){
+	        	System.out.println("pasa");
 	        	response.sendRedirect("/alumno");
 	        } else if (isProfesor) {
 	            response.sendRedirect("/profesor");

@@ -381,7 +381,7 @@ public class ProfesorController {
 		System.out.println(validar.getNombre()+" NOMBRE");
 		System.out.println("******************************************************************");
 		//CASAMOS EL ALUMNO
-		Alumno alumno = alumNoDao.porId(idAlumn);
+		Alumno alumno = alumNoDao.porId2(idAlumn);
 		Persona alumnop = alumno.getID_PERSONA();
 		System.out.println("********************ID DE ALUMNO**********************************************");
 		System.out.println(alumno.getID_ALUMNO());
