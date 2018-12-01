@@ -31,8 +31,11 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel='stylesheet' id='camera-css' href='css/camera.css'
 	type='text/css' media='all'>
-
-
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+	<script src="assets/js/html5shiv.js"></script>
+	<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
 </head>
 <body>
 	<main role="main" class="container"> <!-- Fixed navbar -->
@@ -52,8 +55,8 @@
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
 					<li><a href="<c:url value="admin"/>">Inicio</a></li>
-					<li class="active"><a href="<c:url value="eliminarUsuario"/>">Eliminar</a></li>
-					<li><a href="<c:url value="verDenuncias"/>">Peticiones Denuncia</a></li>
+					<li><a href="<c:url value="eliminarUsuario"/>">Eliminar</a></li>
+					<li class="active"><a href="<c:url value="denuncias"/>">Peticiones Denuncia</a></li>
 
 					<li class="dropdown">
 						<p class="dropdown-toggle btn btn-info btn-two" data-toggle="dropdown">${nombre}<b class="caret"></b></p>
@@ -73,13 +76,13 @@
 	</head>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-		<h1>Usuarios</h1>
+		<h1>Denuncias</h1>
 		</div>
 		<div class="col-xs-4 col-xs-offset-2">
 			<div class="input-group input-group-md">
 				<span class="input-group-addon">Buscar</span> <input id="filtrar"
 					type="text" class="form-control"
-					placeholder="Ingresa nombre de la persona ..." />
+					placeholder="Ingresa a la persona que denuncias ..." />
 			</div>
 		</div>
 	</div>
@@ -94,28 +97,20 @@
 			<table class="table table-striped table-bordered">
 				<thead class="thead-inverse">
 					<tr>
-						<th sec:authorize="hasRole('ROLE_ALUMNO')">id</th>
-						<th>nombre</th>
-						<th>apellido</th>
-						<th>email</th>
-						<th>eliminar</th>
+						<th>id</th>
+						<th>Denunciante</th>
+						<th>Denunciado</th>
+						<th>Denuncia</th>
 					</tr>
 				</thead>
 				<tbody class="buscar">
-					<c:forEach items="${clientees}" var="personas">
+					<c:forEach items="${denunciaas}" var="denuncias">
 						<tr>
-						
-							<td><c:out value="${personas.id}" /></td>
-							<td><c:out value="${personas.nombre}" /></td>
-							<td><c:out value="${personas.apellido}" /></td>
-							<td><span><c:out value="${personas.username}" /></span></td>
-							<td><a class="btn btn-danger btn-xs"
-								href="<c:url value="eliminar/ + ${personas.id}"/>"
-								onclick="return confirm('Estas seguro que quieres eliminar?');"
-								<c:if test="${personas.id == 1}"><c:out value="disabled='disabled'"/></c:if>"
-								>Eliminar</a></td>
+							<td><c:out value="${denuncias.id}" /></td>
+							<td><c:out value="${denuncias.denunciante}" /></td>
+							<td><c:out value="${denuncias.denunciado}" /></td>
+							<td><span><c:out value="${denuncias.problema}" /></span></td>
 						</tr>
-					
 					</c:forEach>
 				</tbody>
 			</table>

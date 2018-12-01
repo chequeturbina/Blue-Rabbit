@@ -1,8 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,14 +16,14 @@
 <!-- Custom styles for our template -->
 <link rel="stylesheet" href="/css/bootstrap-theme.css" media="screen">
 <link rel="stylesheet" href="/css/style.css">
-
-
-<script src="/js/back.js"></script>
-
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+	<script src="assets/js/html5shiv.js"></script>
+	<script src="assets/js/respond.min.js"></script>
+	<![endif]-->
 </head>
 
-<body onload="nobackbutton();">
-
+<body>
 	<!-- Fixed navbar -->
 	<div class="navbar navbar-inverse">
 		<div class="container">
@@ -37,25 +34,37 @@
 					<span class="icon-bar"></span><span class="icon-bar"></span><span
 						class="icon-bar"></span>
 				</button>
-				<a class="img-responsive" href="<c:url value="/"/>"> <img
+				<a class="img-responsive" href="<c:url value="/"/>"> <a
+					class="img-responsive" href="<c:url value="/"/>"> <img
 						src="/img/logo.png" width="200" height="90"
 						alt="Techro HTML5 template"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav pull-right mainNav">
-				<li class="dropdown">
-					     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Registro<b class="caret"></b></a>
-						    <ul class="dropdown-menu">
-						        <li><a  href="<c:url value="/registroA"/>">Alumno</a></li>
-								<li><a  href="<c:url value="/registroP"/>">Profesor</a></li>
-							</ul>	
-					</li>
 					<li class="active"><a href="<c:url value="/"/>">Inicio</a></li>
+					<li><a href="<c:url value="/"/>">Tutorias</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown">Registro <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="<c:url value="/registroA"/>">Alumno</a></li>
+							<li><a href="<c:url value="/registroP"/>">Profesor</a></li>
+						</ul></li>
+					<!-- chorizote para iniciar sesion-->
+
+					<li>
+						<form action="/loginpage">
+							<input type="submit" class="btn btn-two btn-blue"
+								value="Iniciar Sesion"></input>
+						</form>
+					</li>
+
+					<li><button type="button" class="btn btn-danger">Denuncia</button></li>
+
+					<!--Hasta aqui acaba el puto chorizote-->
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
 		</div>
-
 	</div>
 	<!-- /.navbar -->
 
@@ -63,55 +72,18 @@
 		<div class="row">
 			<div class="col">
 				<header id="head" class="secondary">
-					<h1>Iniciar Sesion</h1>
+					<h1>Registrate</h1>
 				</header>
 			</div>
 		</div>
-
 		<c:if test="${error != null}">
 			<div class="alert alert-danger">${error}</div>
 		</c:if>
-		<c:if test="${info != null}">
-			<div class="alert alert-danger">${info}</div>
-		</c:if>
-		<c:if test="${success != null}">
-			<div class="alert alert-info">${success}</div>
-		</c:if>
-		<c:if test="${registro != null}">
-			<div class="alert alert-info">${registro}</div>
-		</c:if>
 	</div>
 
 
-	<!-- container -->
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8">
-				<h3 class="section-title"></h3>
 
-				<form method="POST" action="/login" class="form-light mt-20"
-					role="form">
-					<div class="form-group">
-						<label> Email </label> <input name="username" id="username"
-							type="email" required autocomplete="off" class="form-control"
-							placeholder="Email" autofocus required>
-					</div>
-					<div class="form-group">
-						<label> Password </label> <input name="password" id="password"
-							type="password" required autocomplete="off" class="form-control"
-							placeholder="Password" autofocus required>
-					</div>
-
-					<input type="submit" class="btn btn-two btn-warning"
-						value="Inicar Sesion"></input>
-					<p>
-						<br/>
-					</p>
-				</form>
-			</div>
-
-		</div>
-	</div>
+     
 	<!-- /container -->
 
 	<footer id="footer">
@@ -121,7 +93,7 @@
 				class="fa fa-facebook"></i></a>
 		</div>
 
-		<div class="clear">
+		<div class="clear"></div>
 		<!--CLEAR FLOATS-->
 		</div>
 		<div class="footer2">
@@ -150,14 +122,6 @@
 			</div>
 		</div>
 	</footer>
-
-
-	<!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script
-		src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-	<script src="/js/custom.js"></script>
 
 
 </body>
